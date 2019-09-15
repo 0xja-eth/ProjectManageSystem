@@ -1,0 +1,26 @@
+<div class="main_view" [ngSwitch]=type>
+  <div *ngSwitchCase="'Login'">
+    <h1>登陆</h1>
+    <app-input-field [data]=inputData.username></app-input-field>
+    <app-input-field [data]=inputData.password></app-input-field>
+    <div class="bottom_buttons">
+      <el-button class="submit_button" style="width: 40%; min-width: 92px;"
+                 type="success" (click)="onClick('login')">登陆</el-button>
+      <el-button class="submit_button" style="width: 20%; min-width: 92px;"
+                 type="warning" (click)="onClick('forget')">注册账号</el-button>
+      <el-button class="submit_button" style="width: 20%; min-width: 92px;"
+                 type="info" (click)="onClick('forget')">忘记密码</el-button>
+    </div>
+  </div>
+  <div *ngSwitchCase="'Register'">
+    <h1>注册</h1>
+    <app-input-field [data]=inputData.username></app-input-field>
+    <app-input-field [data]=inputData.password></app-input-field>
+    <app-input-field [data]=inputData.email></app-input-field>
+    <app-input-field [data]=inputData.code></app-input-field>
+    <div class="bottom_buttons">
+      <el-button class="submit_button" style="width: 20%; min-width: 92px;"
+                 type="success" (click)="onClick('register')"> 注册 </el-button>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~element-angular/theme/index.css";
+@import "./assets/dark.css";
+@import "./assets/light.css";
+body{
+  background-image: url("./assets/draksky.jpg");
+}
+.el-menu--horizontal {
+  border: none;
+}
+.el-button--primary {
+  background-color: rgb(192,128,228);
+  border-color: rgb(192,128,228);
+}
+.el-button--primary:hover {
+  background-color: rgb(228,144,255);
+  border-color: rgb(192,128,228);
+}
+.el-button--primary:active {
+  background-color: rgb(172,128,192);
+  border-color: rgb(192,128,228);
+}
