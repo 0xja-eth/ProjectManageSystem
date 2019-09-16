@@ -109,14 +109,14 @@ def convertAllDataType(data, type='str'):
     convertMultDataType(data, data, type)
 
 # 封装成功响应数据字典
-def getSuccessResponseDict(dict={}, list_encapsulate=settings.RESPONSE_LIST_ENCAP):
+def getSuccessResponseDict(dict={}):
 
     dict['status'] = ErrorType.Success.value
 
     return dict
 
 # 封装Emit数据字典
-def getSuccessEmitDict(type, dict={}, list_encapsulate=settings.RESPONSE_LIST_ENCAP):
+def getSuccessEmitDict(type, dict={}):
 
     dict['type'] = type
     dict['status'] = ErrorType.Success.value
