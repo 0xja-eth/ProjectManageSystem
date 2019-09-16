@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a4318e1-8c07-482c-9059-0c941c407d7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/user_module/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/view_func_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/gantt.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/gantt.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/gantt.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/gantt.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/gantt.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/link.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/gantt/task.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectManageSystemServer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManageSystemServer/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_module/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/view_func_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/view_func_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,13 +10,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="91" column="5" selection-start-line="80" selection-start-column="13" selection-end-line="91" selection-end-column="5" />
+            <state relative-caret-position="330">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
         </entry>
@@ -45,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#649#681#0" expanded="true" />
               </folding>
@@ -66,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2070">
+            <state relative-caret-position="532">
               <caret line="138" selection-start-line="138" selection-end-line="138" />
             </state>
           </provider>
@@ -76,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/project_module/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -90,14 +72,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/view_func_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            <state relative-caret-position="532">
+              <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
                 <element signature="e#1256#2088#0" />
+                <element signature="e#2272#2312#0" />
               </folding>
             </state>
           </provider>
@@ -107,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/user_module/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
               <folding>
                 <element signature="e#1#33#0" expanded="true" />
               </folding>
@@ -115,13 +98,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_module/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/models.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -139,14 +127,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings.py" />
         <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/utils/exception.py" />
         <option value="$PROJECT_DIR$/ProjectManageSystemServer/urls.py" />
         <option value="$PROJECT_DIR$/user_module/urls.py" />
-        <option value="$PROJECT_DIR$/utils/view_func_utils.py" />
         <option value="$PROJECT_DIR$/user_module/views.py" />
+        <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings.py" />
+        <option value="$PROJECT_DIR$/utils/view_func_utils.py" />
       </list>
     </option>
   </component>
@@ -173,11 +161,6 @@
             <path>
               <item name="ProjectManageSystemServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProjectManageSystemServer" type="462c0819:PsiDirectoryNode" />
-              <item name="ProjectManageSystemServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProjectManageSystemServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjectManageSystemServer" type="462c0819:PsiDirectoryNode" />
               <item name="user_module" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -198,6 +181,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -224,6 +208,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="ProjectManageSystemServer.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -255,23 +240,23 @@
       <workItem from="1568012398947" duration="2406000" />
       <workItem from="1568102560082" duration="2039000" />
       <workItem from="1568475831074" duration="594000" />
-      <workItem from="1568544107253" duration="5451000" />
+      <workItem from="1568544107253" duration="8634000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10490000" />
+    <option name="totallyTimeSpent" value="13673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21006565" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25929978" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -294,13 +279,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="91" column="5" selection-start-line="80" selection-start-column="13" selection-end-line="91" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -308,17 +286,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project_module/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -332,30 +303,9 @@
     <entry file="file://$PROJECT_DIR$/user_module/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
           <folding>
             <element signature="e#1#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/view_func_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#1256#2088#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding>
-            <element signature="e#649#681#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -364,6 +314,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#649#681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/view_func_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#1256#2088#0" />
+            <element signature="e#2272#2312#0" />
+          </folding>
         </state>
       </provider>
     </entry>
