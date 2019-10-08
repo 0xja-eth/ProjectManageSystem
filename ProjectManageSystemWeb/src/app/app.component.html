@@ -39,7 +39,7 @@
 </div-->
 
 <div id="content" role="main">
-  <div id="project_content">
+  <!--div id="project_content">
     <div id="control_buttons">
       <el-button class="control_button" style="width: 96px;"
                  type="primary">新建任务</el-button>
@@ -49,7 +49,20 @@
     <div id="gantt_graph">
       <app-gantt></app-gantt>
     </div>
+  </div-->
+
+  <div id="left_menu">
+    <div el-col span="4">
+      <el-menu model="2">
+        <el-menu-item index="1" to="personal-infor">个人信息</el-menu-item>
+        <el-menu-item index="2" to="code-change">修改密码</el-menu-item>
+      </el-menu>
+    </div>
+  </div>
+
+  <div id="right_content">
+    <router-outlet></router-outlet>
   </div>
 </div>
 
-<router-outlet></router-outlet>
+
