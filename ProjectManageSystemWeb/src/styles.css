@@ -20,3 +20,15 @@ body{
   background-color: rgb(172,128,192);
   border-color: rgb(192,128,228);
 }
+
+/*.el-icon-plus {*/
+/*  display: inline-block;*/
+/*}*/
+
+.el-input{
+  width: 20em;
+}
+
+/*.el-form-item{*/
+/*  display: inline-block;*/
+/*}*/
