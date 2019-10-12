@@ -8,8 +8,9 @@ import { GanttModule } from './gantt/gantt.module';
 
 import { ElModule } from 'element-angular';
 import { InputFieldComponent } from './input-field/input-field.component'
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 // import {DayPilotModule} from 'daypilot-pro-angular';
 
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     InputFieldComponent,
     LoginComponent,
+    LoginPageComponent,
     /*GanttComponent*/
   ],
   imports: [
@@ -27,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     GanttModule,
     ElModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

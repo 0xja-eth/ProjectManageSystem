@@ -2,8 +2,24 @@
 @import "~element-angular/theme/index.css";
 @import "./assets/dark.css";
 @import "./assets/light.css";
+
+/*theme R, G, B*/
+root{--themeColor: rgb(192, 192, 255);}
+
+html {
+  width: 100%; height: 100%;
+}
 body{
-  background-image: url("./assets/draksky.jpg");
+  /*background-image: url("./assets/draksky.jpg");*/
+  margin: 0;
+  width: 100%; height: 100%;
+
+  background:  rgb(192, 192, 255);
+  background: -webkit-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
+  background: -moz-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
+  background: -ms-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
+  background: -o-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
+  background: linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
 }
 .el-menu--horizontal {
   border: none;
