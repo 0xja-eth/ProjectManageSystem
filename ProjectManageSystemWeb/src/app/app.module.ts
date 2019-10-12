@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { GanttModule } from './gantt/gantt.module';
 
 import { ElModule } from 'element-angular';
+
 import { InputFieldComponent } from './input-field/input-field.component';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -15,6 +16,11 @@ import { PersonalInforComponent } from './personal-infor/personal-infor.componen
 import { CodeChangeComponent } from './code-change/code-change.component';
 import { ReactiveFormsModule} from "@angular/forms";
 
+//import { InputFieldComponent } from './input-field/input-field.component'
+//import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+//import { LoginComponent } from './login/login.component';
+//import { LoginPageComponent } from './login-page/login-page.component';
+
 // import {DayPilotModule} from 'daypilot-pro-angular';
 
 @NgModule({
@@ -22,8 +28,12 @@ import { ReactiveFormsModule} from "@angular/forms";
     AppComponent,
     InputFieldComponent,
     LoginComponent,
+    
     PersonalInforComponent,
     CodeChangeComponent,
+    
+    //LoginPageComponent,
+    
     /*GanttComponent*/
   ],
   imports: [
@@ -33,7 +43,7 @@ import { ReactiveFormsModule} from "@angular/forms";
     GanttModule,
     ElModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
