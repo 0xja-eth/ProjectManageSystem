@@ -29,27 +29,40 @@
   星云6 <span style="font-size: 32px; font-weight: normal"> // 你的IT项目在线管理平台</span>
 </div>
 
-<div id="prompt_window">
+<!--div id="prompt_window">
   <div id="login_window">
     <app-login type="Login" (onSubmit)="onLogin($event)"></app-login>
   </div>
-<!--  <div id="register_window">-->
-<!--    <app-login type="Register" (onSubmit)="onLogin($event)"></app-login>-->
-<!--  </div>-->
+  <div id="register_window">
+    <app-login type="Register" (onSubmit)="onLogin($event)"></app-login>
+  </div>
 </div>
 
-<!--<div id="content" role="main">-->
-<!--  <div id="project_content">-->
-<!--    <div id="control_buttons">-->
-<!--      <el-button class="control_button" style="width: 96px;"-->
-<!--                 type="primary">新建任务</el-button>-->
-<!--      <el-button class="control_button" style="width: 96px;"-->
-<!--                 type="primary">修改任务</el-button>-->
-<!--    </div>-->
-<!--    <div id="gantt_graph">-->
-<!--      <app-gantt></app-gantt>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div id="content" role="main">
+  <div id="project_content">
+    <div id="control_buttons">
+      <el-button class="control_button" style="width: 96px;"
+                 type="primary">新建任务</el-button>
+      <el-button class="control_button" style="width: 96px;"
+                 type="primary">修改任务</el-button>
+    </div>
+    <div id="gantt_graph">
+      <app-gantt></app-gantt>
+    </div>
+  </div>
+
+  <div id="left_menu">
+    <div el-col span="4">
+      <el-menu model="2">
+        <el-menu-item index="1" to="personal-infor">个人信息</el-menu-item>
+        <el-menu-item index="2" to="code-change">修改密码</el-menu-item>
+      </el-menu>
+    </div>
+  </div>
+
+  <div id="right_content">
+    <router-outlet></router-outlet>
+  </div>
+</div-->
 
 <router-outlet></router-outlet>

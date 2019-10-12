@@ -1,0 +1,30 @@
+div {
+  margin: 1.5em;
+}
+
+div {
+
+}
+
+/*头像相关*/
+.avatar-uploader {
+  text-align: center;
+}
+
+.avatar-uploader-icon {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+
+.formContain {
+  padding: 10px;
+  text-align: center;
+}
