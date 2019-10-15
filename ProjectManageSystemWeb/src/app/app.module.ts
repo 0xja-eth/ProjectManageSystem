@@ -14,6 +14,8 @@ import { RouterModule, Routes} from '@angular/router';
 import { PersonalInforComponent } from './personal-infor/personal-infor.component';
 import { CodeChangeComponent } from './code-change/code-change.component';
 import { ReactiveFormsModule} from "@angular/forms";
+import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { ChatDetailComponent } from './chat-detail/chat-detail.component';
 
 // import {DayPilotModule} from 'daypilot-pro-angular';
 
@@ -24,6 +26,8 @@ import { ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     PersonalInforComponent,
     CodeChangeComponent,
+    ChatRoomComponent,
+    ChatDetailComponent,
     /*GanttComponent*/
   ],
   imports: [
