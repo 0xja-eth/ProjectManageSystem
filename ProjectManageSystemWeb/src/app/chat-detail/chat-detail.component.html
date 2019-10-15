@@ -1,0 +1,11 @@
+<ul *ngFor="let msg of msgList.msg">
+  <li class="msg_left" *ngIf="msg.speaker != 'myself'">
+    <label *ngIf="msgList.group">{{msg.speaker}}</label>
+    <p class="msg_card" [innerHTML]="msg.content"></p>
+  </li>
+
+  <li class="msg_right" *ngIf="msg.speaker == 'myself'">
+    <p class="msg_card" [innerHTML]="msg.content"></p>
+<!--    <p class="msg_card">{{msg.content}}</p>-->
+  </li>
+</ul>

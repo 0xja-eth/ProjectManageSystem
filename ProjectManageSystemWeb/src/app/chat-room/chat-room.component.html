@@ -1,0 +1,39 @@
+
+<div class="chat_box">
+  <div class="chat_left">
+<!--    <div class="top">-->
+<!--      <el-input type="text" placeholder="搜索" style="width:140px;"></el-input>-->
+<!--      <el-button class="search_btn">search</el-button>-->
+<!--    </div>-->
+
+    <div class="center">
+      <ul>
+        <li *ngFor="let friend of friendsMsg"
+            [class.selected]="friend === selectedFriend"
+            (click)="onSelect(friend)">
+          <span style="margin-left: 10px;">{{friend.name}}</span>
+          <div class="setEllipsis" *ngIf="friend.msg.length > 0" style="margin-left: 10px;">
+            {{displayLatest(friend)}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="chat_right" *ngIf="selectedFriend">
+    <div class="top">
+      <span style="margin-left: 20px;">{{selectedFriend.name}}</span>
+    </div>
+
+    <div #scrollMe class="center">
+      <app-chat-detail [msgList]="selectedFriend"></app-chat-detail>
+    </div>
+
+    <div class="footer">
+      <el-input type="textarea" [autosize]="{ minRows: 5, maxRows: 8 }" resize="none"
+                placeholder="在此输入发送内容" [(ngModel)]="newMessage"
+                (keyup.enter)="onEnter()"></el-input>
+      <el-button type="primary" (click)="pushMessage()">发送</el-button>
+    </div>
+  </div>
+</div>

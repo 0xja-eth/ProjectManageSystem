@@ -2,10 +2,6 @@ div {
   margin: 1.5em;
 }
 
-div {
-
-}
-
 /*头像相关*/
 .avatar-uploader {
   text-align: center;
@@ -26,5 +22,5 @@ div {
 
 .formContain {
   padding: 10px;
-  text-align: center;
+  /*text-align: center;*/
 }
