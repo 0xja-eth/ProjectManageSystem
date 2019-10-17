@@ -2,30 +2,40 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DayPilot, DayPilotGanttComponent} from 'daypilot-pro-angular';
 
 var tasks = [
+
   {
     "id": 1,
-    "text": "Group 1",
+    "text": "项目管理系统",
     "complete": 35,
     "children": [
       {
         "id": 2,
         "start": "2019-09-04T00:00:00",
         "end": "2019-09-11T00:00:00",
-        "text": "Task 1",
-        "complete": 60
-      },
-      {
-        "id": 3,
-        "start": "2019-09-11T00:00:00",
-        "end": "2019-09-16T00:00:00",
-        "text": "Task 2",
-        "complete": 0
+        "text": "启动阶段",
+        "complete": 60,
+        "children": [
+          {
+            "id": 3,
+            "start": "2019-09-04T00:00:00",
+            "end": "2019-09-11T00:00:00",
+            "text": "确立题目",
+            "complete": 0
+          },
+        ]
       },
       {
         "id": 4,
+        "start": "2019-09-11T00:00:00",
+        "end": "2019-09-16T00:00:00",
+        "text": "计划阶段",
+        "complete": 0
+      },
+      {
+        "id": 5,
         "start": "2019-09-16T00:00:00",
         "type": "Milestone",
-        "text": "Milestone 1",
+        "text": "计划阶段完成",
         "end": "2019-09-16T00:00:00"
       }
     ],
@@ -37,7 +47,7 @@ var tasks = [
 var links =  [
   {
     "from": 2,
-    "to": 3,
+    "to": 4,
     "type": "FinishToStart"
   }
 ];

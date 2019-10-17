@@ -1,23 +1,23 @@
 
 
-<div id="toolbar" role="banner">
-  <div id="logo">星云6 <span style="font-size: 14px; font-weight: normal">项目管理平台</span></div>
-  <div id="menu">
-    <el-menu [model]="0" (modelChange)="handle($event)" class="el-menu-demo" mode="horizontal"
-             active-text-color="#ffd04b"
-             text-color="#fff">
-      <el-menu-item index="1">个人中心</el-menu-item>
-      <el-submenu index="2" title="切换项目">
-        <el-menu-item index="2-1">新建项目</el-menu-item>
-        <el-menu-item index="2-2">百日高考</el-menu-item>
-        <el-menu-item index="2-3">项目管理系统</el-menu-item>
-        <el-menu-item index="2-4">Exermon GO</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="3">我的任务</el-menu-item>
-      <el-menu-item index="4">退出登录</el-menu-item>
-    </el-menu>
-  </div>
-</div>
+<!--<div id="toolbar" role="banner">-->
+<!--  <div id="logo">星云6 <span style="font-size: 14px; font-weight: normal">项目管理平台</span></div>-->
+<!--  <div id="menu">-->
+<!--    <el-menu [model]="0" (modelChange)="handle($event)" class="el-menu-demo" mode="horizontal"-->
+<!--             active-text-color="#ffd04b"-->
+<!--             text-color="#fff">-->
+<!--      <el-menu-item index="1">个人中心</el-menu-item>-->
+<!--      <el-submenu index="2" title="切换项目">-->
+<!--        <el-menu-item index="2-1">新建项目</el-menu-item>-->
+<!--        <el-menu-item index="2-2">百日高考</el-menu-item>-->
+<!--        <el-menu-item index="2-3">项目管理系统</el-menu-item>-->
+<!--        <el-menu-item index="2-4">Exermon GO</el-menu-item>-->
+<!--      </el-submenu>-->
+<!--      <el-menu-item index="3">我的任务</el-menu-item>-->
+<!--      <el-menu-item index="4">退出登录</el-menu-item>-->
+<!--    </el-menu>-->
+<!--  </div>-->
+<!--</div>-->
 
 <div class="sky">
   <div class="clouds_one"></div>
@@ -25,7 +25,7 @@
   <div class="clouds_three"></div>
 </div>
 
-<!--div id="login_title">
+<div id="login_title">
   星云6 <span style="font-size: 32px; font-weight: normal"> // 你的IT项目在线管理平台</span>
 </div>
 
@@ -33,10 +33,10 @@
   <div id="login_window">
     <app-login type="Login" (onSubmit)="onLogin($event)"></app-login>
   </div>
-  <div id="register_window">
-    <app-login type="Register" (onSubmit)="onLogin($event)"></app-login>
-  </div>
-</div-->
+<!--  <div id="register_window">-->
+<!--    <app-login type="Register" (onSubmit)="onLogin($event)"></app-login>-->
+<!--  </div>-->
+</div>
 
 <div id="content" role="main">
   <!--div id="project_content">
@@ -61,9 +61,8 @@
     </div>
   </div>
 
-  <div id="right_content">
-    <router-outlet></router-outlet>
-  </div>
+<!--  <div id="right_content">-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </div>-->
 </div>
-
 

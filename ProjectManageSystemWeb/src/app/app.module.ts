@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { GanttModule } from './gantt/gantt.module';
 
 import { ElModule } from 'element-angular';
+
+//import { InputFieldComponent } from './input-field/input-field.component'
+//import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+//import { LoginComponent } from './login/login.component';
+//import { LoginPageComponent } from './login-page/login-page.component';
+
 import { InputFieldComponent } from './input-field/input-field.component';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -24,6 +30,9 @@ import { ChatDetailComponent } from './chat-detail/chat-detail.component';
     AppComponent,
     InputFieldComponent,
     LoginComponent,
+
+//     LoginPageComponent,
+
     PersonalInforComponent,
     CodeChangeComponent,
     ChatRoomComponent,
@@ -37,7 +46,7 @@ import { ChatDetailComponent } from './chat-detail/chat-detail.component';
     GanttModule,
     ElModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
