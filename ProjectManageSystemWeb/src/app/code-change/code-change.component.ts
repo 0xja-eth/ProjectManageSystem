@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, forwardRef, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-code-change',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodeChangeComponent implements OnInit {
 
-  constructor() { }
+  private codeForm: FormGroup;
+
+  constructor(@Inject(forwardRef(() => FormBuilder)) private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.codeForm = this.formBuilder.group({
+      nickName: [''],
+      password_old: [''],
+      password_new: [''],
+      new_again: [''],
+    });
   }
 
+  submit(): void {
+    console.log(this.codeForm.value);
+  }
 }
