@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Chat } from './Chat';
+import { Chat } from './chat';
 
 @Component({
   selector: 'app-chat-detail',
