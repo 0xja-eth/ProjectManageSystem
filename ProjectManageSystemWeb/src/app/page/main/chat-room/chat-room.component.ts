@@ -1,6 +1,6 @@
 import {Component, forwardRef, Inject, OnInit} from '@angular/core';
 import {ElementRef, AfterViewChecked, ViewChild} from '@angular/core';
-import { Chat } from '../chat-detail/Chat';
+import { Chat } from '../chat-detail/chat';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({

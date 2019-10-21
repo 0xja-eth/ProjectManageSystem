@@ -43,6 +43,7 @@ class Task(models.Model):
 		(TaskLevel.Todo.value, '清单'),
 	]
 
+	order = models.PositiveSmallIntegerField(null=True)
 	name = models.CharField(max_length=24)
 	description = models.CharField(blank=True, max_length=128)
 	project = models.ForeignKey(to='project_module.Project', on_delete=models.CASCADE)

@@ -1,0 +1,79 @@
+
+<div class="main_view">
+  <h1>{{inputData().name}}</h1>
+  <el-form [formGroup]="formGroup" label-width="92px" [show-icon]="true" [show-message]="true">
+    <el-form-item label="用户名" [required]="true"
+                  [status]="statusCtrl('username')" [error]="messageCtrl('username')">
+      <el-input formControlName="username" placeholder="请输入用户名" [maxlength]="ConfigSystem.UnLength"></el-input>
+    </el-form-item>
+
+    <el-form-item label="密码" [required]="true"
+                  [status]="statusCtrl('password')" [error]="messageCtrl('password')">
+      <el-input formControlName="password" native-type="password" placeholder="请输入密码"
+                [maxlength]="ConfigSystem.PwdLength[1]"></el-input>
+    </el-form-item>
+
+    <el-form-item *ngIf="type=='register'||type=='forget'" label="重复密码" [required]="true"
+                  [status]="statusCtrl('repassword')" [error]="messageCtrl('repassword')">
+      <el-input formControlName="repassword" native-type="password" placeholder="请再次输入密码"
+                [maxlength]="ConfigSystem.PwdLength[1]"></el-input>
+    </el-form-item>
+
+    <el-form-item *ngIf="type=='register'" label="邮箱" [required]="true"
+                  [status]="statusCtrl('email')" [error]="messageCtrl('email')">
+      <el-input formControlName="email" class="email-input" placeholder="请输入邮箱地址"></el-input>
+      <el-button type="text" class="send-button" (click)="onClick('register_code')">发送验证码</el-button>
+    </el-form-item>
+    <el-form-item *ngIf="type=='forget'" label="邮箱" [required]="true"
+                  [status]="statusCtrl('email')" [error]="messageCtrl('email')">
+      <el-input formControlName="email" class="email-input" placeholder="请输入邮箱地址"></el-input>
+      <el-button type="text" class="send-button" (click)="onClick('forget_code')">发送验证码</el-button>
+    </el-form-item>
+
+    <el-form-item *ngIf="type=='register'||type=='forget'" label="验证码" [required]="true"
+                  [status]="statusCtrl('code')" [error]="messageCtrl('code')">
+      <el-input formControlName="code" class="code-input" [maxlength]="ConfigSystem.CodeLength"></el-input>
+    </el-form-item>
+
+  </el-form>
+  <div *ngIf="type=='login'">
+    <div class="bottom-buttons">
+      <el-button class="submit_button" style="margin-right: 64px;"
+                 type="text" (click)="switchForm('forget')">忘记密码</el-button>
+      <span>没有账号？
+        <el-button class="submit_button" type="text"
+                   (click)="switchForm('register')">立即注册</el-button>
+      </span>
+    </div>
+    <div class="bottom-buttons">
+      <el-button class="submit_button" style="width: 40%; min-width: 92px;"
+                 type="success" (click)="onClick('login')">登陆</el-button>
+    </div>
+  </div>
+  <div *ngIf="type=='register'">
+    <div class="bottom-buttons">
+        <span>已有账号？
+          <el-button class="submit_button" type="text"
+                     (click)="switchForm('login')">立即登陆</el-button>
+        </span>
+    </div>
+    <div class="bottom-buttons">
+      <el-button class="submit_button" style="width: 20%; min-width: 92px;"
+                 type="success" (click)="onClick('register')"> 注册 </el-button>
+    </div>
+  </div>
+  <div *ngIf="type=='forget'">
+    <div class="bottom-buttons">
+      <el-button class="submit_button" style="margin-right: 64px;"
+                 type="text" (click)="switchForm('login')">返回登陆</el-button>
+      <span>没有账号？
+        <el-button class="submit_button" type="text"
+                   (click)="switchForm('register')">立即注册</el-button>
+      </span>
+    </div>
+    <div class="bottom-buttons">
+      <el-button class="submit_button" style="width: 20%; min-width: 92px;"
+                 type="success" (click)="onClick('forget')"> 重置密码 </el-button>
+    </div>
+  </div>
+</div>

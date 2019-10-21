@@ -1,0 +1,43 @@
+.main_view{
+  text-align: center;
+}
+h1 {
+  margin: 0 0 24px;
+  color: darkgreen;
+}
+
+/deep/ .el-form-item {
+  text-align: left;
+}
+/deep/ .el-input {
+  margin-left: 36px;
+}
+/deep/ .el-form-item__error {
+  margin-left: 48px;
+}
+
+/deep/ .email-input{
+  width: 50%;
+}
+
+/deep/ .code-input{
+  width: 30%;
+}
+
+/deep/ .send-button{
+  width: 20%;
+  margin-left: 5%;
+}
+
+.bottom-buttons{
+  width: 100%;
+  margin-top: 12px;
+  text-align: center;
+}
+/*
+.bottom_buttons > .el-button{
+  width: 20%;
+  min-width: 92px;
+}
+*/
+

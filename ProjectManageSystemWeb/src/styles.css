@@ -14,28 +14,39 @@ body{
   margin: 0;
   width: 100%; height: 100%;
 
-  background:  rgb(192, 192, 255);
-  background: -webkit-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
-  background: -moz-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
-  background: -ms-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
-  background: -o-linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
-  background: linear-gradient(to top, rgb(192, 192, 255) 0%, rgb(255,255,255));
+  background:  rgba(192,255,192,0.75);
+  background: -webkit-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -moz-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -ms-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -o-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background-image: linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
 }
+
 .el-menu--horizontal {
   border: none;
 }
 .el-button--primary {
-  background-color: rgb(192,128,228);
-  border-color: rgb(192,128,228);
+  background-color: rgb(128,228,128);
+  border-color: rgb(128,228,128);
 }
-.el-button--primary:hover {
-  background-color: rgb(228,144,255);
-  border-color: rgb(192,128,228);
+  .el-button--primary:hover {
+    background-color: rgb(144,255,144);
+    border-color: rgb(128,228,128);
+  }
+  .el-button--primary:active {
+    background-color: rgb(128,192,128);
+    border-color: rgb(128,228,128);
+  }
+
+.el-button--text {
+  color: rgb(0,128,0);
+  text-decoration: underline;
 }
-.el-button--primary:active {
-  background-color: rgb(172,128,192);
-  border-color: rgb(192,128,228);
-}
+  .el-button--text:hover {
+    color: rgb(64,228,64);
+    text-decoration: underline;
+  }
+
 
 /*.el-icon-plus {*/
 /*  display: inline-block;*/
