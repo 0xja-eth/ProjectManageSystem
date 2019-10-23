@@ -7,6 +7,8 @@ import {ChatRoomComponent} from './chat-room/chat-room.component';
 import {ChatDetailComponent} from './chat-detail/chat-detail.component';
 import {CodeChangeComponent} from './code-change/code-change.component';
 import {ShareModule} from '../../share/share.module';
+import {FriendInfoComponent} from "./friend-info/friend-info.component";
+import { NoticeComponent } from './notice/notice.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import {ShareModule} from '../../share/share.module';
     ChatRoomComponent,
     ChatDetailComponent,
     CodeChangeComponent,
+    FriendInfoComponent,
+    NoticeComponent,
   ],
   imports: [
     ShareModule,

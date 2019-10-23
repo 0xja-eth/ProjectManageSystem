@@ -1,0 +1,15 @@
+<div id="content">
+  <div id="project-list" style="float: left">
+    <el-collapse [model]="[1]">
+      <el-collapse-item *ngFor="let project_item of existingProjects" [label]="project_item.projectName">
+        <el-card class="box-card" *ngFor="let notice of project_item.notices">
+          <div >{{notice.content}}</div>
+          <div style="text-align: right">{{notice.day+'    '+notice.time}}</div>
+        </el-card>
+        <div style="text-align: center">
+          <el-button icon="plus">添加通知</el-button>
+        </div>
+      </el-collapse-item>
+    </el-collapse>
+  </div>
+</div>
