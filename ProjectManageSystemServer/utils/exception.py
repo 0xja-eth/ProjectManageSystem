@@ -9,13 +9,14 @@ class ErrorType(Enum):
 	InvalidRoute		= 3  # 非法路由
 	InvalidEmit			= 4  # 非法返回
 	PermissionDenied	= 5  # 无权操作
-	RequestUpdate		= 6  # 版本不一致
-	ErrorVersion		= 7  # 错误的游戏版本
 
-	# LoginSystem
+	# UserModule Common
 	InvalidInfo			= 100 # 非法的信息填写
-	IncorrectCode		= 101 # 验证码错误
+	InvalidCode			= 101 # 验证码错误
 	EmailSendError		= 102 # 邮件发送错误
+
+	# AuthManager
+	InvalidToken		= 110 # 无效的令牌
 
 	# Register
 	UsernameExist		= 120 # 用户名已存在
@@ -39,6 +40,10 @@ class ErrorType(Enum):
 	IncorrectEmail		= 140 # 邮箱错误
 	IncorrectPhone		= 141 # 号码错误
 
+	# Friend
+	NotAFriend			= 150 # 对方不是好友
+	AlreadyAFriend		= 151 # 你们已经是好友
+
 class ErrorException(Exception):
 
 	error_dict = {
@@ -50,13 +55,14 @@ class ErrorException(Exception):
 		ErrorType.InvalidRoute:		"非法路由！",
 		ErrorType.InvalidEmit:		"非法返回！",
 		ErrorType.PermissionDenied:	"无权操作！",
-		ErrorType.RequestUpdate:	"版本不一致，请更新游戏！",
-		ErrorType.ErrorVersion:		"错误的游戏版本，请更新游戏！",
 
-		# LoginSystem
+		# UserModule Common
 		ErrorType.InvalidInfo:		"非法的信息填写！",
-		ErrorType.IncorrectCode:	"验证码过时或输入错误！",
+		ErrorType.InvalidCode:		"验证码过时或输入错误！",
 		ErrorType.EmailSendError:	"邮件发送错误！",
+
+		# AuthManager
+		ErrorType.InvalidToken:		"登陆超时或尚未登录！",
 
 		# Register
 		ErrorType.UsernameExist:	"用户名已存在！",
@@ -79,6 +85,10 @@ class ErrorException(Exception):
 		# Forget
 		ErrorType.IncorrectEmail:	"邮箱错误！",
 		ErrorType.IncorrectPhone:	"号码错误！",
+
+		# Friend
+		ErrorType.NotAFriend: 		"你与对方不是好友关系！",
+		ErrorType.AlreadyAFriend: 	"你们已经是好友关系！",
 
 	}
 

@@ -25,6 +25,7 @@ export class DataSystem {
   static CompletedStatusId = 3;
   static FailedStatusId = 4;
   static PausedStatusId = 5;
+  static CancelledStatusId = 6;
 
   constructor(private network: NetworkSystem){ }
 
@@ -35,7 +36,7 @@ export class DataSystem {
   }
 
   private saveData(data) {
-
+    console.info(data);
   }
 
   // 获取数据

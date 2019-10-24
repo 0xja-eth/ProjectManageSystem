@@ -1,26 +1,28 @@
 
-from django.contrib import admin
-from django.urls import path
-from .views import *
-from utils.view_func_utils import recieveRequest
+from .views import UserManager
+from utils.interface_manager import InterfaceManager
 
-ROUTE_SETTINGS = {
+Interfaces = {
 	'register' : {
 		# 接收POST数据（字段名，数据类型）
-		'POST': [['username', 'str'], ['password', 'str'],
+		'POST': [['un', 'str'], ['pw', 'str'],
 				['email', 'str'], ['code', 'str']],
 		# 逻辑处理函数
-		'func': register
+		'func': UserManager.register
 	},
 	'login': {
-		# 接收POST数据（字段名，数据类型）
-		'POST': [['username', 'str'], ['password', 'str']],
-		# 逻辑处理函数
-		'func': login
+		'POST': [['un', 'str'], ['pw', 'str']],
+		'func': UserManager.login
+	},
+	'forget': {
+		'POST': [['un', 'str'], ['pw', 'str'],
+				['email', 'str'], ['code', 'str']],
+		'func': UserManager.forget
+	},
+	'code': {
+		'POST': [['un', 'str'], ['email', 'str'], ['type', 'str']],
+		'func': UserManager.sendCode
 	},
 }
 
-urlpatterns = [
-	path('register', recieveRequest, ROUTE_SETTINGS['register']),
-	path('login', recieveRequest, ROUTE_SETTINGS['login'])
-]
+urlpatterns = InterfaceManager.generateUrlPatterns(Interfaces)

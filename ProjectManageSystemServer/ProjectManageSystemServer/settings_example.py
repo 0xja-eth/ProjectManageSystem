@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'project_module',
     'task_module',
     'chat_module',
-    'file_module',
+    'django_extensions',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +74,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ProjectManageSystemServer.wsgi.application'
+ASGI_APPLICATION = "ProjectManageSystemServer.routing.application"
 
+# Channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -147,10 +158,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SMS_API_KEY = ''
 SMS_SEND_URL = 'https://sms.yunpian.com/v2/sms/single_send.json'
 
-CODE_LENGTH = 6
-CODE_SECOND = 60
-
 CODE_TEXT = {
-    'register' : ('X管理系统','您的X管理系统注册验证码为 %s \n验证码将在 %d 秒后失效。\n若非本人操作请忽略。', DEFAULT_FROM_EMAIL),
-    'forget' : ('X管理系统','您的X管理系统重置密码验证码为 %s \n验证码将在 %d 秒后失效。\n若非本人操作请忽略。', DEFAULT_FROM_EMAIL)
+    'register': ('星云6项目管理系统', '您的星云6项目管理系统注册验证码为 %s \n验证码将在 %d 秒后失效。\n若非本人操作请忽略。', DEFAULT_FROM_EMAIL),
+    'forget': ('星云6项目管理系统', '您的星云6项目管理系统重置密码验证码为 %s \n验证码将在 %d 秒后失效。\n若非本人操作请忽略。', DEFAULT_FROM_EMAIL)
 }

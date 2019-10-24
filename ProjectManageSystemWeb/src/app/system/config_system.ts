@@ -2,8 +2,9 @@
 export class ConfigSystem {
   public static UnLength = 16;
   public static PwdLength = [8, 32];
-  public static MailReg = /^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+  public static EmailReg = /^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
   public static CodeLength = 6;
+  public static CodeSecond = 60;
 
   public static UnEmpty = "用户名未填写";
   public static UnLong = "用户名不得超过 16 位";

@@ -7,13 +7,12 @@ from enum import Enum
 #  任务状态枚举
 # ===================================================
 class TaskStatus(Enum):
-	Unstart = 0 # 未开始
-	Started = 1 # 进行中
-	Finished = 2 # 已完成
-	Failed = 3 # 未完成
-	Paused = 4 # 已暂停
-	Cancelled = 5 # 已取消
-	Other = 6 # 其他
+	Unstart = 1 # 未开始
+	Started = 2 # 进行中
+	Finished = 3 # 已完成
+	Failed = 4 # 未完成
+	Paused = 5 # 已暂停
+	Cancelled = 6 # 已取消
 
 # ===================================================
 #  任务层级枚举

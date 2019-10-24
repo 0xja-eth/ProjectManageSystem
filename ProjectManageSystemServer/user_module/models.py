@@ -1,4 +1,5 @@
 from django.db import models
+from utils.model_manager import ModelManager
 from enum import Enum
 
 # Create your models here.
@@ -25,6 +26,12 @@ class UserStatus(Enum):
 	Other = 2 # 其他
 
 class User(models.Model):
+
+	PASSWORD_SALT = 'd28cb767c4272d8ab91000283c67747cb2ef7cd1'
+
+	UN_LEN = 16
+	PWD_LEN = [8,32]
+	EMAIL_REG = r'^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/'
 
 	USER_EDUCATIONS = [
 		(UserEduaction.PrimarySchool.value, '小学'),
@@ -58,6 +65,65 @@ class User(models.Model):
 	status = models.PositiveSmallIntegerField(default=0, choices=USER_STATUSES)
 	is_deleted = models.BooleanField(default=False)
 
+	def convertToDict(self, type=None, params=None):
+
+		create_time = self.create_time.strftime('%Y-%m-%d %H:%M:%S')
+
+		# 获取陌生人的资料
+		if type == 'stranger':
+			return {
+				'id': self.id,
+				'username': self.username,
+				'gender': self.gender,
+				'avatar': self.avatar,
+				'description': self.description,
+				'status_id': self.status,
+			}
+
+		# 获取好友的资料
+		if type == 'friend':
+			return self.convertToDict()
+
+		# 获取好友列表
+		if type == 'friends':
+			return ModelManager.objectsToDict(self.getFriends())
+
+		# 个人详细资料
+		return {
+			'id': self.id,
+			'username': self.username,
+			'email': self.email,
+			'name': self.name,
+			'gender': self.gender,
+			'avatar': self.avatar,
+			'birth': self.birth,
+			'city': self.city,
+			'education_id': self.education,
+			'duty': self.duty,
+			'contact': self.contact,
+			'description': self.description,
+			'create_time': create_time,
+			'status_id': self.status,
+		}
+
+	def getFriends(self, accepted=True):
+		return Friend.objects.filter(subject_id=self.id, accepted=accepted)
+
+	# 登陆
+	def login(self):
+		self.status = UserStatus.Online.value
+		self.save()
+
+	# 登出
+	def logout(self):
+		self.status = UserStatus.Offline.value
+		self.save()
+
+	# 发送好友请求
+	# TODO(吴宁): 该函数为实际操作的函数，不需检查重复添加
+	def addFriend(self, fuid):
+		pass
+
 
 class Friend(models.Model):
 	subject = models.ForeignKey(to='User', related_name='subject', on_delete=models.CASCADE)
@@ -67,9 +133,16 @@ class Friend(models.Model):
 	# accepted 后才有 chat
 	chat = models.OneToOneField('chat_module.Chat', null=True, on_delete=models.CASCADE)
 
+	def convertToDict(self):
 
+		cid = 0
+		if self.chat: cid = self.chat_id
 
-
+		return {
+			'sid': self.subject_id,
+			'object': self.object.convertToDict('friend'),
+			'cid': cid
+		}
 
 
 

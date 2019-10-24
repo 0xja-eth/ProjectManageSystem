@@ -44,9 +44,17 @@ class Project(models.Model):
 
 
 class Role(models.Model):
+	ProjectManagerId = 1
+
 	name = models.CharField(max_length=8)
 	description = models.CharField(blank=True, max_length=48)
 
+	def convertToDict(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'description': self.description
+		}
 
 class Participation(models.Model):
 	user = models.ForeignKey(to='user_module.User', on_delete=models.CASCADE)

@@ -88,7 +88,7 @@ export class RegisterForm extends LoginForm {
 
   checkEmail(val:string) {
     if (!val) return { status: 'error', message: ConfigSystem.EmailEmpty };
-    if (!ConfigSystem.MailReg.test(val))
+    if (!ConfigSystem.EmailReg.test(val))
       return { status: 'error', message: ConfigSystem.EmailInvalid };
     return { status: 'success' };
   }
