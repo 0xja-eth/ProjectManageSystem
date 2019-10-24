@@ -3,7 +3,7 @@ from user_module.models import *
 from project_module.models import *
 from task_module.models import *
 from chat_module.models import *
-from user_module.views import CodeDatium
+from user_module.views import CodeDatum
 from utils.view_manager import ViewManager
 
 # Create your views here.
@@ -33,8 +33,8 @@ class DataManager:
 		data['UnLength'] = User.UN_LEN
 		data['PwdLength'] = User.PWD_LEN
 		data['EmailReg'] = User.EMAIL_REG
-		data['CodeLength'] = CodeDatium.CODE_LENGTH
-		data['CodeSecond'] = CodeDatium.CODE_SECOND
+		data['CodeLength'] = CodeDatum.CODE_LENGTH
+		data['CodeSecond'] = CodeDatum.CODE_SECOND
 
 		return data
 
