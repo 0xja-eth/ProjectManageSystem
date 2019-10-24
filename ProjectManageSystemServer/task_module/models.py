@@ -32,7 +32,6 @@ class Task(models.Model):
 		(TaskStatus.Failed.value, '未完成'),
 		(TaskStatus.Paused.value, '已暂停'),
 		(TaskStatus.Cancelled.value, '已取消'),
-		(TaskStatus.Other.value, '其他'),
 	]
 
 	TASK_LEVELS = [
