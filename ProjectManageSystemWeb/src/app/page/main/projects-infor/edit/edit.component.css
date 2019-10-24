@@ -1,0 +1,28 @@
+.project_edit {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  padding: 16px;
+  overflow-y: scroll;
+}
+h1 {
+  font-weight: bold;
+}
+
+.header {
+  border-bottom: #999 4px solid;
+}
+.center {
+  margin-top: 24px;
+  font-size: 15px;
+}
+.footer {
+  text-align: center;
+}
+
+/deep/ .submit_button {
+  width: 25%;
+  min-width: 128px;
+  margin-left: auto;
+  margin-right: auto;
+}

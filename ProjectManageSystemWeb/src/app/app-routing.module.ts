@@ -7,18 +7,15 @@ import { LoginComponent } from './page/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'main', component: MainComponent
-    //loadChildren: () => import('./page/main/main.module').then(mod => mod.MainModule),
+    path: 'main', component: MainComponent,
+    loadChildren: () => import('./page/main/main.module').then(mod => mod.MainModule),
   },
-  {
-    path: 'login/:type', component: LoginComponent,
-    //loadChildren: () => import('./page/login/login.module').then(mod => mod.LoginModule),
-    data: {type: 'Register'}
-  },
-  { path: '', redirectTo: '/login/login', pathMatch: 'full' },
-  { path: 'login', redirectTo: '/login/login', pathMatch: 'full' },
-  { path: 'register', redirectTo: '/login/register', pathMatch: 'full' },
-  { path: 'forget', redirectTo: '/login/forget', pathMatch: 'full' }
+  { path: 'welcome/:type', component: LoginComponent, },
+  { path: '', redirectTo: '/welcome/login', pathMatch: 'full' },
+  { path: 'welcome', redirectTo: '/welcome/login', pathMatch: 'full' },
+  { path: 'login', redirectTo: '/welcome/login', pathMatch: 'full' },
+  { path: 'register', redirectTo: '/welcome/register', pathMatch: 'full' },
+  { path: 'forget', redirectTo: '/welcome/forget', pathMatch: 'full' }
 ];
 
 @NgModule({

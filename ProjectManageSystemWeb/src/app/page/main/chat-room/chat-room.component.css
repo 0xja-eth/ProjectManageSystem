@@ -7,20 +7,18 @@ input {
 }
 
 .chat_box {
-  margin: auto;
-  height: 70%;
-  /*transform: translateY(-10%);*/
-  box-shadow: 0 0 0 1px gray;
-  display: flex;
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
 }
 
 .chat_left {
-  background-color: #ffffff;
-  width: 25%;
-  left: 0;
+  position: absolute;
+  left: 0; width: 256px;
   height: 100%;
+  background-color: #ffffff;
 }
-
+/*
 .chat_left .top {
   height: 10%;
   color: grey;
@@ -42,18 +40,20 @@ input {
 .search_btn:hover {
   cursor: pointer;
 }
-
+*/
 .chat_left .center {
   overflow-y: scroll;
-  height: 42em;
+  height: 100%;
 }
 
 .chat_left .center ul{
-  padding-left: 30px;
+  padding-left: 0;
 }
 
 .chat_left .center li{
-  padding: 30px 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 12px;
   margin: 2px 0 2px 0;
 }
 
@@ -76,26 +76,52 @@ input {
 }
 
 .chat_right {
+  position: absolute;
+  left: 256px; right: 0;
+  top: 0; bottom: 0;
   background-color: #ffffff;
-  width: 75%;
-  height: 100%;
 }
 
 .chat_right .top {
-  height: 10%;
+  position: absolute;
+  left: 0; right: 0;
+  height: 64px;
+  /*
   display: flex;
   align-items: center;
-  padding: 20px 0 20px 20px;
+  */
+  line-height: 64px;
+  padding-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  /*padding: 20px 0 20px 20px;*/
 }
 
 .chat_right .center {
+  position: absolute;
+  left: 0; right: 0;
+  top: 64px; bottom: 144px;
   background-color: #edf5f8;
-  height: 33em;
   overflow-y: scroll;
 }
 
 .chat_right .footer {
-  height: 25%;
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  height: 144px;
   background-color: #FBFCFC;
   text-align: right;
+  padding: 12px;
+}
+
+/deep/ .message{
+  float: left;
+  width: 100%;
+}
+
+/deep/ .send-btn{
+  margin-top: 8px;
+  float: right;
+  width: 15%;
 }

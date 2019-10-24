@@ -47,7 +47,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         {speaker: 'myself', content: '你现在怎么样？'},
         {speaker: 'friend', content: '拉黑了，拜拜'}]},
 
-    {id: 4, name: '项目管理系统', msg: [{speaker: 'LJA', content: '大家好，我是LJA。'},
+    {id: 5, name: '项目管理系统', msg: [{speaker: 'LJA', content: '大家好，我是LJA。'},
         {speaker: 'LJB', content: '大家好，我是LJB。'},
         {speaker: 'LJC', content: '大家好，我是LJC。'},
         {speaker: 'LJD', content: '大家好，我是LJD。'},
@@ -55,17 +55,18 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         {speaker: 'myself', content: '大家好，我是myself。'},
         {speaker: 'LJEF', content: '大家好，我是LJFFFFFF。'}], group: true }
   ];
-  selectedFriend: Chat; // 被选中好友的JSON
+  selectedFriend: number; // 被选中Chat的索引
   newMessage: string; // 文本框发送的消息
   splitMessage: string[];
 
   constructor() { }
 
   ngOnInit() {
+    this.onSelect(0);
   }
 
   ngAfterViewChecked() {
-    this.scrollToBottom();
+    if(this.myScrollContainer) this.scrollToBottom();
   }
 
   scrollToBottom() {
@@ -95,12 +96,15 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
 
   pushMessage(): void {
     this.pushNewMessage(this.newMessage);
-    console.log(this.newMessage);
     this.newMessage = '';
   }
 
   pushNewMessage(msg: string, speaker: string = 'myself'): void {
-    this.selectedFriend.msg.push({speaker, content: msg});
-    console.log(this.selectedFriend.msg[1]);
+    let chat = this.getChat(this.selectedFriend);
+    chat.msg.push({speaker, content: msg});
+  }
+
+  getChat(id: number) {
+    return this.friendsMsg[id]
   }
 }

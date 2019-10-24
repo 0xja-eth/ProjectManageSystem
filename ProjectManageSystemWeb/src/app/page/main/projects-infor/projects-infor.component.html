@@ -1,0 +1,27 @@
+<div class="project_left">
+  <el-select class="project_select"
+             [model]="selected_pid"
+             placeholder="请选择一个项目"
+             (modelChange)="onProjectSelect($event)">
+    <el-option *ngFor="let item of dropDownData()"
+               [label]="item[1]" [value]="item[0]">
+    </el-option>
+  </el-select>
+  <div class="project_menu" *ngIf="selected_pid>0">
+    <el-menu [model]=page class="project_el_menu">
+      <el-menu-item index="detail"
+                    [to]="self.getRoute('detail', selected_pid)">项目详情</el-menu-item>
+      <el-menu-item *ngIf="ProjectSystem.checkPrivilege()" index="edit"
+                    [to]="self.getRoute('edit', selected_pid)">修改项目</el-menu-item>
+      <el-menu-item index="members"
+                    [to]="self.getRoute('members', selected_pid)">成员视图</el-menu-item>
+      <el-menu-item index="tasks"
+                    [to]="self.getRoute('tasks', selected_pid)">任务视图</el-menu-item>
+      <el-menu-item index="gantt"
+                    [to]="self.getRoute('gantt', selected_pid)">时间视图</el-menu-item>
+    </el-menu>
+  </div>
+</div>
+<div class="project_right">
+  <router-outlet *ngIf="selected_pid>0"></router-outlet>
+</div>

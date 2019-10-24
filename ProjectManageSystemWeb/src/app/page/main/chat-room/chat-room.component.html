@@ -9,8 +9,8 @@
     <div class="center">
       <ul>
         <li *ngFor="let friend of friendsMsg"
-            [class.selected]="friend === selectedFriend"
-            (click)="onSelect(friend)">
+            [class.selected]="friend.id === selectedFriend"
+            (click)="onSelect(friend.id)">
           <span style="margin-left: 10px;">{{friend.name}}</span>
           <div class="setEllipsis" *ngIf="friend.msg.length > 0" style="margin-left: 10px;">
             {{displayLatest(friend)}}
@@ -20,20 +20,20 @@
     </div>
   </div>
 
-  <div class="chat_right" *ngIf="selectedFriend">
+  <div class="chat_right">
     <div class="top">
-      <span style="margin-left: 20px;">{{selectedFriend.name}}</span>
+      <span style="margin-left: 20px;">{{getChat(selectedFriend).name}}</span>
     </div>
 
     <div #scrollMe class="center">
-      <app-chat-detail [msgList]="selectedFriend"></app-chat-detail>
+      <app-chat-detail [msgList]="getChat(selectedFriend)"></app-chat-detail>
     </div>
 
     <div class="footer">
-      <el-input type="textarea" [autosize]="{ minRows: 5, maxRows: 8 }" resize="none"
-                placeholder="在此输入发送内容" [(ngModel)]="newMessage"
+      <el-input class="message" type="textarea" [autosize]="{ minRows: 3, maxRows: 3 }"
+                resize="none" placeholder="在此输入发送内容" [(ngModel)]="newMessage"
                 (keyup.enter)="onEnter()"></el-input>
-      <el-button type="primary" (click)="pushMessage()">发送</el-button>
+      <el-button class="send-btn" type="primary" (click)="pushMessage()">发送</el-button>
     </div>
   </div>
 </div>

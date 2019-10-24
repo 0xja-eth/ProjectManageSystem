@@ -4,22 +4,14 @@
 @import "./assets/light.css";
 
 /*theme R, G, B*/
-root{--themeColor: rgb(192, 192, 255);}
+root{--themeColor: rgb(192, 255, 192);}
 
 html {
   width: 100%; height: 100%;
 }
 body{
-  /*background-image: url("./assets/draksky.jpg");*/
   margin: 0;
   width: 100%; height: 100%;
-
-  background:  rgba(192,255,192,0.75);
-  background: -webkit-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
-  background: -moz-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
-  background: -ms-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
-  background: -o-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
-  background-image: linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
 }
 
 .el-menu--horizontal {
@@ -38,24 +30,26 @@ body{
     border-color: rgb(128,228,128);
   }
 
+a {
+  color: green;
+  text-decoration: underline;
+}
+a:hover {
+  color: limegreen;
+  text-decoration: underline;
+}
+
 .el-button--text {
-  color: rgb(0,128,0);
+  /*color: rgb(0,128,0);*/
+  color: green;
   text-decoration: underline;
 }
   .el-button--text:hover {
-    color: rgb(64,228,64);
+    /*color: rgb(64,228,64);*/
+    color: limegreen;
     text-decoration: underline;
   }
-
-
-/*.el-icon-plus {*/
-/*  display: inline-block;*/
-/*}*/
 
 .el-input{
   width: 20em;
 }
-
-/*.el-form-item{*/
-/*  display: inline-block;*/
-/*}*/

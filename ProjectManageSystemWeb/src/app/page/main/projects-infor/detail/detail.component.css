@@ -1,0 +1,75 @@
+.project_detail {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  padding: 16px;
+  overflow-y: scroll;
+}
+h1 {
+  font-weight: bold;
+}
+
+.header {
+  border-bottom: #999 4px solid;
+}
+.center {
+  margin-top: 24px;
+  font-size: 15px;
+}
+  .basic_info {
+    /*max-width: 680px;
+    min-width: 440px;*/
+    margin-bottom: 24px;
+  }
+  .member_info {
+    /*max-width: 680px;
+    min-width: 440px;*/
+    margin-bottom: 24px;
+  }
+    .content_header {
+      width: 100%;
+      padding: 12px;
+      font-weight: bold;
+      background-color: #eee;
+      border-left: #888 4px solid;
+      color: #333;
+    }
+      /deep/ .content_header > .el-button--text {
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 22px;
+        float: right;
+      }
+    .content_body {
+      padding-left: 12px;
+    }
+    .data_row {
+      width: 100%;
+      color: #444;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      border-bottom: #cccccc 1px solid;
+    }
+      .key {
+        color: #aaa;
+      }
+    .progress_row{
+      text-align: center;
+    }
+      .progress{
+        position: relative;
+        display: inline-block;
+        width: 26%; height: 126px;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: transparent;
+      }
+      .progress_label{
+        position: absolute;
+        bottom: 0; width: 100%; height: 80px;
+        text-align: center;
+        line-height: 64px;
+      }
+      /deep/ .el-progress--circle .el-progress__text i {
+        display: none;
+      }

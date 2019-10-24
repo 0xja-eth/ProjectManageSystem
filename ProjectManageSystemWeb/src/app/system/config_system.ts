@@ -20,5 +20,20 @@ export class ConfigSystem {
   public static CodeEmpty = "验证码未填写";
   public static CodeShort = "请正确填写 6 位验证码";
 
+  public static PnLength = 16;
+  public static PDescLength = 256;
+
+  public static PnEmpty = "项目名未填写";
+  public static PnLong = "项目名不得超过 16 位";
+
+  public static PTypeEmpty = "项目类型未选择";
+  public static PTypeError = "项目类型选择错误";
+
+  public static StartDateEmpty = "项目开始日期未选择";
+
+  public static PDescLong = "项目描述过长";
+
   public static UnknownType = "未知类型";
+
+  public static AddProjectText = "添加项目";
 }

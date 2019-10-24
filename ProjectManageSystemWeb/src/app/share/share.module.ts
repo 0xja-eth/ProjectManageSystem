@@ -11,7 +11,7 @@ import {ElModule} from 'element-angular/release/element-angular.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ElModule
+    ElModule,
   ],
   exports: [
     CommonModule,

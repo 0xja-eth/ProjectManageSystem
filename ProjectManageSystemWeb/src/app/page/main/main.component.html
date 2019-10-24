@@ -1,1 +1,28 @@
-<p>main works!</p>
+<div id="left_content">
+  <el-menu [model]=page (modelChange)="handle($event)"
+           class="el-menu-vertical-demo">
+    <el-menu-item index="projects" to="main/projects">
+      <img class="icon" alt="工程"
+           src="../../../assets/images/icons/icon_work_fill.png">
+    </el-menu-item>
+    <el-menu-item index="notices" to="main/notices">
+      <img class="icon" alt="通知"
+           src="../../../assets/images/icons/icon_inform_fill.png">
+    </el-menu-item>
+    <el-menu-item index="friends" to="main/friends">
+      <img class="icon" alt="好友"
+           src="../../../assets/images/icons/icon_meeting_fill.png">
+    </el-menu-item>
+    <el-menu-item index="chats" to="main/chats">
+      <img class="icon" alt="聊天"
+           src="../../../assets/images/icons/icon_replieslist.png">
+    </el-menu-item>
+    <el-menu-item index="personal" to="main/personal">
+      <img class="icon" alt="个人"
+           src="../../../assets/images/icons/icon_boss_fill.png">
+    </el-menu-item>
+  </el-menu>
+</div>
+<div id="right_content">
+  <router-outlet></router-outlet>
+</div>

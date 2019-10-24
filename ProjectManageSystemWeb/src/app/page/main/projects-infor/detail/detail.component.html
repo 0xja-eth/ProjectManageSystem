@@ -1,0 +1,89 @@
+<div class="project_detail" *ngIf="project_obj">
+  <div class="header">
+    <h1>{{project_obj.name}}</h1>
+  </div>
+  <div class="center">
+    <div class="basic_info">
+      <div class="content_header">基本信息
+        <el-button type="text" (click)="onLinkClick('edit')"
+           *ngIf="ProjectSystem.checkPrivilege()">修改</el-button>
+      </div>
+      <div class="content_body">
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">项目类型</div>
+          <div el-col class="val" [span]="18">{{project_obj.type()}}</div>
+        </div>
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">创建人</div>
+          <div el-col class="val" [span]="18">{{project_obj.members ?
+              project_obj.creator().name : "未知"}}</div>
+        </div>
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">创建时间</div>
+          <div el-col class="val" [span]="18">{{project_obj.create_time}}</div>
+        </div>
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">开始时间</div>
+          <div el-col class="val" [span]="18">{{project_obj.start_time}}</div>
+        </div>
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">结束时间</div>
+          <div el-col class="val" [span]="18">{{project_obj.end_time}}</div>
+        </div>
+        <div class="data_row" el-row gutter="20">
+          <div el-col class="key" [span]="6">项目描述</div>
+          <div el-col class="val" [span]="18">{{project_obj.description}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member_info">
+      <div class="content_header">成员信息
+        <el-button type="text" (click)="onLinkClick('members')">详情</el-button>
+      </div>
+      <div class="content_body">
+        <div class="data_row" el-row gutter="20" *ngIf="project_obj.members">
+          <div el-col class="key" [span]="6">团队成员</div>
+          <div el-col class="val" [span]="18">
+            <div class="member_row" el-row gutter="20" *ngFor="let member of project_obj.members">
+              <div el-col [span]="8"><a href="">{{member.name}}</a></div>
+              <div el-col [span]="8">{{member.role()}}</div>
+              <div el-col [span]="8">{{member.contact}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="task_info">
+      <div class="content_header">任务信息
+        <el-button type="text" (click)="onLinkClick('tasks')">详情</el-button>
+      </div>
+      <div class="content_body">
+        <div class="data_row" el-row gutter="20" *ngIf="project_obj.members">
+          <div el-col class="key" [span]="6">任务概况</div>
+          <div el-col class="val" [span]="18">共 {{project_obj.tasks.length}} 个，
+            已完成 {{project_obj.completedCount()}} 个，
+            正在进行 {{project_obj.startedCount()}} 个</div>
+        </div>
+        <div class="data_row progress_row" el-row gutter="20" *ngIf="project_obj.members">
+          <div class="progress">
+            <el-progress type="circle" stroke-width="12"
+                         [percentage]="progressRate()"></el-progress>
+            <div class="progress_label">项目完成进度</div>
+          </div>
+          <div class="progress">
+            <el-progress type="circle" stroke-width="12"
+                         [percentage]="timeRate()"></el-progress>
+            <div class="progress_label">项目时间进度</div>
+          </div>
+          <div class="progress">
+            <el-progress type="circle" stroke-width="12"
+                         [percentage]="completedRate()"></el-progress>
+            <div class="progress_label">任务完成率</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

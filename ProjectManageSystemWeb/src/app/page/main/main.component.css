@@ -1,0 +1,46 @@
+
+#left_content{
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 72px; height: 100%;
+}
+#right_content {
+  position: fixed;
+  left: 72px; right: 0;
+  top: 0; bottom: 0;
+  height: 100%;
+}
+
+/* 默认样式 */
+/deep/ .el-menu-vertical-demo {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-color: forestgreen;
+  border-right: darkgreen;
+}
+/deep/ .el-menu-item {
+  text-align: center;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.85;
+  filter:brightness(90%);
+}
+
+/* 选中样式 */
+/deep/ .is-active > .icon{
+  filter:brightness(200%) !important;
+}
+/deep/ .el-menu-item.is-active{
+  background-color: darkseagreen !important;
+}
+
+/* 悬浮样式 */
+/deep/ .el-menu-item:focus, /deep/ .el-menu-item:hover {
+  background-color: green;
+}
+/deep/ .el-menu-item:focus > .icon, /deep/ .el-menu-item:hover > .icon{
+  filter:brightness(75%);
+}

@@ -1,0 +1,64 @@
+.project_left {
+  background-color: rgb(242,242,242);
+  position: absolute;
+  width: 256px;
+  top: 0; bottom: 0;
+  left: 0;
+  border-right: #ccc 1px solid;
+}
+
+.project_right {
+  position: absolute;
+  left: 256px; right: 0;
+  top: 0; bottom: 0;
+}
+
+/deep/ .project_select{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+/deep/ .project_select >>> .el-select{
+  width: 240px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+/deep/ .project_select >>> .el-input{
+  width: 100%;
+}
+
+/deep/ .project_select >>> .el-input__inner {
+  border-radius: 24px;
+}
+
+/*/deep/ .project_select > .el-select{*/
+/*  position: absolute;*/
+/*  top: 0; left: 0; right: 64px;*/
+/*}*/
+
+.project_menu {
+  position: relative;
+  display: block;
+}
+
+/* 默认样式 */
+/deep/ .project_el_menu {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-color: rgba(0,0,0,0);
+  border-right: none;
+}
+/deep/ .project_el_menu >>> .el-menu-item{
+  font-size: 16px;
+}
+
+/* 选中样式 */
+/deep/ .project_el_menu >>> .el-menu-item.is-active{
+  color: green  !important;
+  background-color: white !important;
+}
+
+/* 悬浮样式 */
+/deep/ .project_el_menu >>> .el-menu-item:focus,
+/deep/ .project_el_menu >>> .el-menu-item:hover {
+  background-color: #ddd;
+}

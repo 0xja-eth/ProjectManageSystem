@@ -6,7 +6,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/*
+:host body {
+  background:  rgba(192,255,192,0.75);
+  background: -webkit-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -moz-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -ms-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background: -o-linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+  background-image: linear-gradient(to right, rgba(192,255,192,0.5) 25%, rgba(228,255,228,0.75));
+}
+*/
 /*云彩动画*/
 
 .sky {

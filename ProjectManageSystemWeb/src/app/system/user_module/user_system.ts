@@ -3,6 +3,7 @@ import {AbstractControl} from '@angular/forms';
 import {NetworkSystem, InterfaceSystem} from '../network_system';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {User} from './user';
 
 // 所有表单的父类
 export class Form {
@@ -44,6 +45,7 @@ export class Form {
 @Injectable()
 export class UserSystem {
   static Token: string = '';
+  static User: User;
 
   constructor(private network: NetworkSystem) {
 
@@ -60,6 +62,10 @@ export class UserSystem {
   }
   sendCode(un, email, type: 'register' | 'forget') : Observable<Object> {
     return this.network.send(InterfaceSystem.Interfaces.SendCodeRoute, {un, email, type});
+  }
+
+  setUser(user) {
+
   }
 
   checkLogin() {

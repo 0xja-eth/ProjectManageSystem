@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ComponentFactoryResolver} from '@angular/core';
+
+import {ViewSystem} from './system/view_system';
+import {DataSystem} from './system/data_system';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ProjectManageSystemWeb';
+  title = '*星云*6项目管理系统';
+
+  view = ViewSystem;
+
+  constructor(private data: DataSystem) {
+    data.initialize();
+  }
+
+  showAlert() {
+
+  }
 }

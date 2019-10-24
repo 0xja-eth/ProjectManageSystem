@@ -9,6 +9,9 @@ import {PageModule} from '../page/page.module';
 import {ShareModule} from '../share/share.module';
 import zh from '@angular/common/locales/zh';
 
+//这种模态框只需要导入下面这两个
+//import { ModalModule } from 'ngx-bootstrap/modal';
+
 registerLocaleData(zh);
 
 @NgModule({
