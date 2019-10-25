@@ -79,5 +79,8 @@ export class EditComponent implements OnInit {
   onEdit() {
     this.inputForm.do(this.project);
   }
+  onDelete() {
+
+  }
 
 }

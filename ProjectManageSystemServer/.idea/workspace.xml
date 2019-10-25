@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a4318e1-8c07-482c-9059-0c941c407d7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/proxy.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_module/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_module/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/system_module/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_module/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/detail/detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/detail/detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/projects-infor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/projects-infor.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/data_system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/data_system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/network_system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/network_system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/project_module/project.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/project_module/project.ts" afterDir="false" />
-    </list>
+    <list default="true" id="0a4318e1-8c07-482c-9059-0c941c407d7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +19,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/user_module/models.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="495">
-                    <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+                  <state relative-caret-position="120">
+                    <caret line="33" column="71" lean-forward="true" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
                     <folding>
                       <element signature="e#0#28#0" expanded="true" />
                     </folding>
@@ -212,7 +197,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -344,15 +329,15 @@
       <workItem from="1571053347772" duration="5757000" />
       <workItem from="1571374061913" duration="3387000" />
       <workItem from="1571876174552" duration="20240000" />
-      <workItem from="1571928427842" duration="6947000" />
+      <workItem from="1571928427842" duration="7557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54270000" />
+    <option name="totallyTimeSpent" value="54880000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3085339" />
@@ -629,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user_module/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+        <state relative-caret-position="120">
+          <caret line="33" column="71" lean-forward="true" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

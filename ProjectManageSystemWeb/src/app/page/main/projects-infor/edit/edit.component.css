@@ -13,10 +13,14 @@ h1 {
   border-bottom: #999 4px solid;
 }
 .center {
+  max-width: 720px;
+  min-width: 480px;
   margin-top: 24px;
   font-size: 15px;
 }
 .footer {
+  max-width: 720px;
+  min-width: 480px;
   text-align: center;
 }
 

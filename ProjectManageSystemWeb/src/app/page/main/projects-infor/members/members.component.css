@@ -1,0 +1,53 @@
+.project_detail {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  padding: 16px;
+  overflow-y: scroll;
+}
+h1 {
+  font-weight: bold;
+}
+
+.header {
+  min-width: 640px;
+  border-bottom: #999 4px solid;
+}
+.center {
+  min-width: 640px;
+  margin-top: 24px;
+  font-size: 15px;
+}
+  .members_card{
+   margin-bottom: 16px;
+  }
+    /deep/ .title{
+      font-size: 24px;
+      font-weight: bold;
+      color: #666;
+    }
+    .card_content{
+      text-align: center;
+    }
+      .card_item{
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        color: #888;
+        border-right: #bababa 1px solid;
+      }
+      .card_item.last{
+        border: none !important;
+      }
+        .card_item > span {
+          width: 100%;
+          font-size: 36px;
+          font-weight: bold;
+        }
+  .members_table{
+    margin-top: 8px;
+  }
+    /deep/ .el-table .total-row {
+      font-weight: bold;
+      background: rgb(228,255,228);
+    }
