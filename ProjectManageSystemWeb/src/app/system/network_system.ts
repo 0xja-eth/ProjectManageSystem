@@ -34,7 +34,7 @@ export class InterfaceSystem {
 
 @Injectable()
 export class NetworkSystem {
-  static HTTP_URL = 'http://127.0.0.1:8000/';
+  static HTTP_URL = '/api/';
   static WS_URL = '';
   //static WS_URL = 'ws://127.0.0.1:8000/ws/chat/123/';
 

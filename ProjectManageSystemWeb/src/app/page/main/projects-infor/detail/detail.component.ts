@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
   constructor(private project: ProjectSystem,
               private router_info: ActivatedRoute,
               private router:Router) {
+    // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     router.events.subscribe(this.updateProject.bind(this));
   }
 
@@ -27,7 +28,6 @@ export class DetailComponent implements OnInit {
   }
 
   updateProject() {
-    // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     this.project_obj = ProjectSystem.Project;
     let pid = this.router_info.snapshot.params['id'];
     if(this.project_obj && this.project_obj.id == pid) return;

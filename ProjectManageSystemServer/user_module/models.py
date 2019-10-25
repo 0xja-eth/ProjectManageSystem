@@ -8,22 +8,22 @@ from enum import Enum
 #  用户学历枚举
 # ===================================================
 class UserEduaction(Enum):
-	PrimarySchool = 0 # 小学
-	MiddleSchool = 1 # 初中
-	HighSchool = 2 # 高中
-	Specialty = 3 # 专科
-	Undergraduate = 4 # 本科
-	Master = 5 # 硕士
-	Doctor = 6 # 博士
-	Other = 7 # 其他
+	PrimarySchool = 1 # 小学
+	MiddleSchool = 2 # 初中
+	HighSchool = 3 # 高中
+	Specialty = 4 # 专科
+	Undergraduate = 5 # 本科
+	Master = 6 # 硕士
+	Doctor = 7 # 博士
+	Other = 8 # 其他
 
 # ===================================================
 #  用户状态枚举
 # ===================================================
 class UserStatus(Enum):
-	Offline = 0 # 离线
-	Online = 1 # 在线
-	Other = 2 # 其他
+	Offline = 1 # 离线
+	Online = 2 # 在线
+	Other = 3 # 其他
 
 class User(models.Model):
 

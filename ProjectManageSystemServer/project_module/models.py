@@ -7,16 +7,16 @@ from enum import Enum
 #  项目类型枚举
 # ===================================================
 class ProjectType(Enum):
-	Internet = 0 # 互联网
-	Finance = 1 # 金融
-	Commerce = 2 # 电商
-	Education = 3 # 教育
-	Game = 4 # 游戏
-	Science = 5 # 科学
-	Industry = 6 # 工业
-	Welfare = 7 # 公益
-	Government = 8 # 政府
-	Other = 9 # 其他
+	Internet = 1 # 互联网
+	Finance = 2 # 金融
+	Commerce = 3 # 电商
+	Education = 4 # 教育
+	Game = 5 # 游戏
+	Science = 6 # 科学
+	Industry = 7 # 工业
+	Welfare = 8 # 公益
+	Government = 9 # 政府
+	Other = 10 # 其他
 
 class Project(models.Model):
 	# 项目类型都有哪些

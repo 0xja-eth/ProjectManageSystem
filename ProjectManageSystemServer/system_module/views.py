@@ -14,11 +14,11 @@ class DataManager:
 
 		data = {}
 
-		data['Educations'] = cls.convertTupleToDict(User.USER_EDUCATIONS)
-		data['LoginStatuses'] = cls.convertTupleToDict(User.USER_STATUSES)
-		data['ProjectTypes'] = cls.convertTupleToDict(Project.PROJECT_TYPES)
-		data['TaskStatuses'] = cls.convertTupleToDict(Task.TASK_STATUSES)
-		data['TaskLevels'] = cls.convertTupleToDict(Task.TASK_LEVELS)
+		data['Educations'] = cls.convertTuplesToDict(User.USER_EDUCATIONS)
+		data['LoginStatuses'] = cls.convertTuplesToDict(User.USER_STATUSES)
+		data['ProjectTypes'] = cls.convertTuplesToDict(Project.PROJECT_TYPES)
+		data['TaskStatuses'] = cls.convertTuplesToDict(Task.TASK_STATUSES)
+		data['TaskLevels'] = cls.convertTuplesToDict(Task.TASK_LEVELS)
 
 		data['Roles'] = ViewManager.getObjects(Role, return_type='dict')
 
@@ -39,5 +39,8 @@ class DataManager:
 		return data
 
 	@classmethod
-	def convertTupleToDict(cls, data):
-		return {'id': data[0],'name': data[1]}
+	def convertTuplesToDict(cls, data):
+		res = []
+		for d in data:
+			res.append({'id': d[0],'name': d[1]})
+		return res

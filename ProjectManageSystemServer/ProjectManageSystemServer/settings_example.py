@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'project_module',
     'task_module',
     'chat_module',
+    'system_module',
     'django_extensions',
     'channels',
 ]

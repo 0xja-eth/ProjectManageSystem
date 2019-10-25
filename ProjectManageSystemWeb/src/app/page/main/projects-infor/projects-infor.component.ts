@@ -40,6 +40,7 @@ export class ProjectsInforComponent implements OnInit {
   constructor(private router: Router,
               private activate:ActivatedRoute,
               private project: ProjectSystem) {
+    // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     router.events.subscribe(this.updateProject.bind(this));
   }
 
@@ -54,6 +55,10 @@ export class ProjectsInforComponent implements OnInit {
     else this.locatePage();
   }
 
+  initProjectsData() {
+    this.project.getProjects().subscribe(data=>this.projects_data = data);
+  }
+
   locatePage() {
     let fc = this.activate.firstChild || this.activate;
     // @ts-ignore
@@ -61,10 +66,6 @@ export class ProjectsInforComponent implements OnInit {
     //this.selected_pid = Number(fc.params.value.id);
     // @ts-ignore
     this.selected_pid = Number(fc.params.value.id);
-  }
-
-  initProjectsData() {
-    this.project.getProjects().subscribe(data=>this.projects_data = data);
   }
 
   selectedProject() {
@@ -82,6 +83,7 @@ export class ProjectsInforComponent implements OnInit {
   }
 
   onProjectChange(pid) {
+    if(this.selected_pid == pid) return;
     this.selected_pid = pid;
     this.page = ProjectsInforComponent.DefaultPage;
     ProjectSystem.setProject(this.getProject(pid));

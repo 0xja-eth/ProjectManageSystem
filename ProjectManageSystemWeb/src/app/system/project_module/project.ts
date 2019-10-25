@@ -68,14 +68,17 @@ export class Project {
     return this.tasks.filter(t=>t.isCompleted()).length;
   }
   completedRate() {
+    if(this.tasks.length <= 0) return 0;
     return this.completedCount()/this.tasks.length*100;
   }
 
   progressRate() {
+    if(this.tasks.length <= 0) return 0;
     let rate = this.tasks.reduce((tot, t)=>tot+t.progress,0);
     return rate/this.tasks.length;
   }
   timeRate() {
+    if(this.deltaTime() <= 0) return 0;
     return this.passedTime()/this.deltaTime()*100;
   }
 

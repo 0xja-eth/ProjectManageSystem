@@ -1,6 +1,7 @@
 
 import {InterfaceSystem, NetworkSystem} from './network_system';
 import {Injectable} from '@angular/core';
+import {ConfigSystem} from './config_system';
 
 class Data {
   static EMPTY = new Data(-1,'未知数据');
@@ -32,11 +33,32 @@ export class DataSystem {
   // 初始化所有数据
   initialize() {
     this.network.send(InterfaceSystem.Interfaces.InitializeData)
-      .subscribe(this.saveData);
+      .subscribe(DataSystem.saveData);
   }
 
-  private saveData(data) {
-    console.info(data);
+  private static saveData(data) {
+    DataSystem.Educations = data.Educations;
+    DataSystem.LoginStatuses = data.LoginStatuses;
+    DataSystem.ProjectTypes = data.ProjectTypes;
+    DataSystem.TaskStatuses = data.TaskStatuses;
+    DataSystem.TaskLevels = data.TaskLevels;
+    DataSystem.Roles = data.Roles;
+
+    DataSystem.ProjectManagerRoleId = data.ProjectManagerRoleId;
+    DataSystem.BeforeStartStatusId = data.BeforeStartStatusId;
+    DataSystem.StartedStatusId = data.StartedStatusId;
+    DataSystem.CompletedStatusId = data.CompletedStatusId;
+    DataSystem.FailedStatusId = data.FailedStatusId;
+    DataSystem.PausedStatusId = data.PausedStatusId;
+    DataSystem.CancelledStatusId = data.CancelledStatusId;
+
+    ConfigSystem.UnLength = data.UnLength;
+    ConfigSystem.PwdLength = data.PwdLength;
+    ConfigSystem.EmailReg = data.EmailReg;
+    ConfigSystem.CodeLength = data.CodeLength;
+    ConfigSystem.CodeSecond = data.CodeSecond;
+
+    console.info("saveData", DataSystem, ConfigSystem);
   }
 
   // 获取数据

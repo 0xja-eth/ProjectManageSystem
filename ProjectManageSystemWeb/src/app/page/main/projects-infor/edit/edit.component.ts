@@ -6,6 +6,7 @@ import { ProjectSystem } from 'src/app/system/project_module/project_system';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 import {ProjectForm} from '../forms';
 import {ConfigSystem} from '../../../../system/config_system';
+import {DataSystem} from '../../../../system/data_system';
 
 @Component({
   selector: 'app-edit',
@@ -14,6 +15,7 @@ import {ConfigSystem} from '../../../../system/config_system';
 })
 export class EditComponent implements OnInit {
 
+  DataSystem = DataSystem;
   ConfigSystem = ConfigSystem;
   ProjectSystem = ProjectSystem;
   father = ProjectsInforComponent;
@@ -23,6 +25,7 @@ export class EditComponent implements OnInit {
               private router_info: ActivatedRoute,
               @Inject(forwardRef(() => FormBuilder))
                 private formBuilder: FormBuilder) {
+    // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     router.events.subscribe(this.updateProject.bind(this));
   }
 
@@ -39,15 +42,15 @@ export class EditComponent implements OnInit {
   }
 
   updateProject() {
-    // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     this.project_obj = ProjectSystem.Project;
     let pid = this.router_info.snapshot.params['id'];
-    if(this.project_obj && this.project_obj.id == pid) return;
+    if(this.project_obj && this.project_obj.id == pid)
+      return this.makeProjectEditForm();
     this.project.getProject(pid).subscribe(this.setProject.bind(this));
   }
 
   setProject(proj) {
-    this.project_obj=proj;
+    this.project_obj = proj;
     this.makeProjectEditForm();
   }
 
@@ -55,7 +58,6 @@ export class EditComponent implements OnInit {
     this.inputForm = new ProjectForm(EditComponent.FormName,
       this.project_obj.id, this.project_obj.name, this.project_obj.type_id,
       this.project_obj.start_time, this.project_obj.description);
-
     this.formGroup = this.formBuilder.group(this.inputForm);
   }
 
@@ -75,7 +77,7 @@ export class EditComponent implements OnInit {
   }
 
   onEdit() {
-
+    this.inputForm.do(this.project);
   }
 
 }

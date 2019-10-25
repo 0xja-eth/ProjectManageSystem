@@ -18,10 +18,10 @@ class TaskStatus(Enum):
 #  任务层级枚举
 # ===================================================
 class TaskLevel(Enum):
-	Step = 0 # 阶段
-	MainTask = 1 # 主任务
-	SubTask = 2 # 子任务
-	Todo = 3 # 清单
+	Step = 1 # 阶段
+	MainTask = 2 # 主任务
+	SubTask = 3 # 子任务
+	Todo = 4 # 清单
 
 class Task(models.Model):
 

@@ -11,16 +11,17 @@
       </el-form-item>
       <el-form-item label="项目类型" [required]="true"
                     [status]="statusCtrl('type_id')" [error]="messageCtrl('type_id')">
+        <el-select placeholder="请选择" formControlName="type_id" [clearable]="true">
+          <el-option *ngFor="let type of DataSystem.ProjectTypes" [value]=type.id [label]=type.name></el-option>
+        </el-select>
         <el-radio-group formControlName="type_id">
-          <el-radio label="1">互联网</el-radio>
-          <el-radio label="2">游戏</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="开始日期" [required]="true"
                     [status]="statusCtrl('start_date')" [error]="messageCtrl('start_date')">
         <el-date-picker formControlName="start_date" placeholder="请选择开始日期" [format]="'yyyy-MM-dd'"></el-date-picker>
       </el-form-item>
-      <el-form-item label="项目描述" [required]="true"
+      <el-form-item label="项目描述" [required]="false"
                     [status]="statusCtrl('description')" [error]="messageCtrl('description')">
         <el-input formControlName="description" placeholder="请输入项目描述（不超过256个字符）" resize="none"
                   type="textarea" [autosize]="{ minRows: 4, maxRows: 8}" [maxlength]="ConfigSystem.PDescLength"></el-input>

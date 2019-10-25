@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a4318e1-8c07-482c-9059-0c941c407d7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/proxy.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_module/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system_module/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/system_module/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_module/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/detail/detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/detail/detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/edit/edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/projects-infor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/page/main/projects-infor/projects-infor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/data_system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/data_system.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/network_system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/network_system.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/project_module/project.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectManageSystemWeb/src/app/system/project_module/project.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +34,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/user_module/models.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="652">
-                    <caret line="131" column="49" lean-forward="true" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
+                  <state relative-caret-position="495">
+                    <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
                     <folding>
                       <element signature="e#0#28#0" expanded="true" />
                     </folding>
@@ -67,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/system_module/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+            <state relative-caret-position="525">
+              <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding>
                 <element signature="e#1#33#0" expanded="true" />
               </folding>
@@ -92,18 +105,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chat_module/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/interface_manager.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
@@ -116,19 +117,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/model_manager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task_module/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+            <state relative-caret-position="332">
+              <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -139,8 +131,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="465">
+              <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="42" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project_module/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -180,9 +193,7 @@
         <option value="$PROJECT_DIR$/project_module/urls.py" />
         <option value="$PROJECT_DIR$/chat_module/urls.py" />
         <option value="$PROJECT_DIR$/chat_module/consumer.py" />
-        <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py" />
         <option value="$PROJECT_DIR$/chat_module/routing.py" />
-        <option value="$PROJECT_DIR$/project_module/models.py" />
         <option value="$PROJECT_DIR$/system_module/urls.py" />
         <option value="$PROJECT_DIR$/ProjectManageSystemServer/urls.py" />
         <option value="$PROJECT_DIR$/ProjectManageSystemServer/routing.py" />
@@ -190,12 +201,14 @@
         <option value="$PROJECT_DIR$/utils/interface_manager.py" />
         <option value="$PROJECT_DIR$/utils/model_manager.py" />
         <option value="$PROJECT_DIR$/chat_module/views.py" />
-        <option value="$PROJECT_DIR$/user_module/models.py" />
         <option value="$PROJECT_DIR$/utils/exception.py" />
         <option value="$PROJECT_DIR$/user_module/views.py" />
-        <option value="$PROJECT_DIR$/task_module/models.py" />
         <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings.py" />
         <option value="$PROJECT_DIR$/system_module/views.py" />
+        <option value="$PROJECT_DIR$/user_module/models.py" />
+        <option value="$PROJECT_DIR$/project_module/models.py" />
+        <option value="$PROJECT_DIR$/task_module/models.py" />
+        <option value="$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py" />
       </list>
     </option>
   </component>
@@ -331,12 +344,12 @@
       <workItem from="1571053347772" duration="5757000" />
       <workItem from="1571374061913" duration="3387000" />
       <workItem from="1571876174552" duration="20240000" />
-      <workItem from="1571928427842" duration="4298000" />
+      <workItem from="1571928427842" duration="6947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51621000" />
+    <option name="totallyTimeSpent" value="54270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -347,7 +360,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -356,7 +369,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32968238" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32968238" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -474,29 +487,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="159" selection-start-line="159" selection-end-line="159" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chat_module/routing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           <folding>
             <element signature="e#1#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project_module/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -591,26 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="131" column="49" lean-forward="true" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_module/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/interface_manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -621,20 +597,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
+    <entry file="file://$PROJECT_DIR$/task_module/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        <state relative-caret-position="332">
+          <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project_module/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/system_module/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+        <state relative-caret-position="525">
+          <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding>
             <element signature="e#1#33#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="42" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectManageSystemServer/settings_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
         </state>
       </provider>
     </entry>
