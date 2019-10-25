@@ -71,7 +71,7 @@ class User(models.Model):
 
 	# 头像
 	avatar = models.ImageField(null=True, blank=True, verbose_name="头像",
-							   upload_to=ModelManager.PictureUpload('players'))
+							   upload_to=ModelManager.PictureUpload('avatars'))
 
 	# 生日
 	birth = models.DateField(null=True, blank=True, verbose_name="生日")
