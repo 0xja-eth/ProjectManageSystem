@@ -1,4 +1,4 @@
-<div class="project_detail" *ngIf="project_obj">
+<div class="project_members" *ngIf="project_obj">
   <div class="header">
     <h1>{{project_obj.name}}</h1>
   </div>
@@ -13,46 +13,94 @@
           </div>
         </ng-template>
         <div class="card_content">
-          <div class="card_item">成员数量<br><span>{{member_data.length-1}}</span></div>
+          <div class="card_item">成员数量<br><span>{{member_tasks.length-1}}</span></div>
           <div class="card_item">角色数量<br><span><a href="">3</a></span></div>
           <div class="card_item">闲置成员<br><span><a href="">1</a></span></div>
           <div class="card_item last">进度请求<br><span><a href="">6</a></span></div>
         </div>
       </el-card>
     </div>
-    <div class="members_table">
-      <el-table [model]="member_data" [scroll-x]="true" [stripe]="true" [border]="true"
-                center="all" [row-class-name]="rowClassNameFilter">
-        <el-table-column model-key="name" label="姓名">
-        </el-table-column>
-        <el-table-column model-key="role" label="角色">
-        </el-table-column>
-        <el-table-column model-key="sum_tasks" label="总任务" width="64">
-        </el-table-column>
-        <el-table-column model-key="unstart_tasks" label="未开始" width="64">
-        </el-table-column>
-        <el-table-column model-key="started_tasks" label="进行中" width="64">
-        </el-table-column>
-        <el-table-column model-key="finished_tasks" label="已完成" width="64">
-        </el-table-column>
-        <el-table-column model-key="progress" label="进度" >
-          <ng-template #slot let-scope="scope">
-            <el-progress text-inside="true" status="success" stroke-width="18"
-                         [percentage]=scope.rowData.progress ></el-progress>
-          </ng-template>
-        </el-table-column>
-        <el-table-column label="操作">
-          <ng-template #slot let-scope="scope">
-            <ng-container *ngIf="!scope.rowData.total">
-              <el-button type="text" size="small" (click)="onDetail(scope)">查看</el-button>
-              <el-button type="text" size="small" (click)="onDelete(scope)"
-                         *ngIf="ProjectSystem.checkPrivilege()">删除</el-button>
-            </ng-container>
-          </ng-template>
-        </el-table-column>
-      </el-table>
+    <div class="members_table info">
+      <el-card class="box-card">
+        <ng-template #header>
+          <div class="clearfix">
+            <span class="title">成员资料</span>
+          </div>
+        </ng-template>
+        <div class="card_content">
+          <el-table [model]="member_infos" [scroll-x]="true"
+                    center="all" [row-class-name]="infoClassNameFilter">
+            <el-table-column model-key="name" label="姓名">
+            </el-table-column>
+            <el-table-column model-key="gender" label="性别">
+            </el-table-column>
+            <el-table-column model-key="role" label="角色">
+            </el-table-column>
+            <el-table-column model-key="email" label="邮箱地址">
+            </el-table-column>
+            <el-table-column model-key="contact" label="联系方式">
+            </el-table-column>
+            <el-table-column model-key="status" label="状态" width="54">
+            </el-table-column>
+            <el-table-column model-key="free" label="闲置" width="48">
+            </el-table-column>
+            <el-table-column label="操作">
+              <ng-template #slot let-scope="scope">
+                <ng-container *ngIf="!scope.rowData.total">
+                  <el-button type="text" size="small" (click)="onInfoDetail(scope)">详情</el-button>
+                  <el-button type="text" size="small" (click)="onDelete(scope)"
+                             *ngIf="ProjectSystem.checkPrivilege()">删除</el-button>
+                </ng-container>
+              </ng-template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-card>
+    </div>
+    <div class="members_table task">
+      <el-card class="box-card">
+        <ng-template #header>
+          <div class="clearfix">
+            <span class="title">任务情况</span>
+          </div>
+        </ng-template>
+        <div class="card_content">
+          <el-table [model]="member_tasks" [scroll-x]="true"
+                    center="all" [row-class-name]="taskClassNameFilter">
+            <el-table-column model-key="name" label="姓名">
+            </el-table-column>
+            <el-table-column model-key="role" label="角色">
+            </el-table-column>
+            <el-table-column model-key="sum_tasks" label="总任务" width="64">
+            </el-table-column>
+            <el-table-column model-key="unstart_tasks" label="未开始" width="64">
+            </el-table-column>
+            <el-table-column model-key="started_tasks" label="进行中" width="64">
+            </el-table-column>
+            <el-table-column model-key="finished_tasks" label="已完成" width="64">
+            </el-table-column>
+            <el-table-column model-key="progress" label="进度" >
+              <ng-template #slot let-scope="scope">
+                <el-progress text-inside="true" status="success" stroke-width="18"
+                             [percentage]=scope.rowData.progress ></el-progress>
+              </ng-template>
+            </el-table-column>
+            <el-table-column label="操作">
+              <ng-template #slot let-scope="scope">
+                <ng-container *ngIf="!scope.rowData.total">
+                  <el-button type="text" size="small" (click)="onTaskDetail(scope)">查看</el-button>
+                  <el-button type="text" size="small" (click)="onAssign(scope)"
+                             *ngIf="ProjectSystem.checkPrivilege()">分配</el-button>
+                </ng-container>
+              </ng-template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-card>
+
     </div>
   </div>
   <div class="footer">
   </div>
 </div>
+

@@ -11,7 +11,7 @@ import {DataSystem} from './system/data_system';
 export class AppComponent {
   title = '*星云*6项目管理系统';
 
-  view = ViewSystem;
+  ViewSystem = ViewSystem;
 
   constructor(private data: DataSystem) {
     data.initialize();

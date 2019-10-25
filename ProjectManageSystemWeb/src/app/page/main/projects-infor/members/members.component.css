@@ -1,4 +1,4 @@
-.project_detail {
+.project_members {
   position: absolute;
   left: 0; right: 0;
   top: 0; bottom: 0;
@@ -29,6 +29,9 @@ h1 {
     .card_content{
       text-align: center;
     }
+    /deep/ .members_table >>> .el-card__body{
+      padding-top: 0;
+    }
       .card_item{
         display: inline-block;
         width: 25%;
@@ -44,10 +47,17 @@ h1 {
           font-size: 36px;
           font-weight: bold;
         }
-  .members_table{
+  .members_table.info{
     margin-top: 8px;
+    margin-bottom: 16px;
   }
-    /deep/ .el-table .total-row {
-      font-weight: bold;
+  .members_table.task{
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+    /deep/ .el-table .green_row {
       background: rgb(228,255,228);
+    }
+    /deep/ .el-table .bold_row {
+      font-weight: bold;
     }

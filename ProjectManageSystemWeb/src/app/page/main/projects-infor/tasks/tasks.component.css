@@ -1,0 +1,274 @@
+.project_tasks {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  padding: 16px;
+  overflow-y: scroll;
+}
+h1 {
+  font-weight: bold;
+}
+
+.header {
+  min-width: 640px;
+  border-bottom: #999 4px solid;
+}
+.center {
+  min-width: 640px;
+  margin-top: 24px;
+  font-size: 15px;
+}
+  .tasks_card{
+    margin-bottom: 16px;
+  }
+  /deep/ .title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+  }
+  .card_content{
+    text-align: center;
+  }
+    .card_item{
+      display: inline-block;
+      width: 25%;
+      text-align: center;
+      color: #888;
+      border-right: #bababa 1px solid;
+    }
+      .card_item.last{
+        border: none !important;
+      }
+        .card_item > span {
+          width: 100%;
+          font-size: 36px;
+          font-weight: bold;
+        }
+        /deep/ .el-progress-circle.ng-star-inserted {
+          height: 100% !important; width: 100% !important;
+        }
+        /deep/ .el-progress--circle{
+          width: 72px;
+          position: relative;
+          top: 10px;
+        }
+
+  .tasks_view{
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+    .data_row {
+      width: 100%;
+      color: #444;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+      .key {
+        color: #aaa;
+      }
+
+    /deep/ .el-collapse{
+      border: none;
+    }
+    /deep/ .task_step >>> .el-collapse-item {
+      margin-bottom: 16px !important;
+    }
+
+    /deep/ .task_step >>> .el-collapse-item__header{
+      background: rgb(192,192,192);
+      color: rgb(64,64,64);
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      padding: 2px;
+      height: auto;
+      border: none;
+      border-radius: 8px;
+    }
+    /deep/ .task_step.started >>> .el-collapse-item__header{
+      background: rgb(255,255,192);
+      color: rgb(128,128,0);
+    }
+    /deep/ .task_step.finished >>> .el-collapse-item__header{
+      background: rgb(192,255,192);
+      color: rgb(0,128,0);
+    }
+    /deep/ .task_step.failed >>> .el-collapse-item__header{
+      background: rgb(255,192,192);
+      color: rgb(128,0,0);
+    }
+    /deep/ .el-collapse-item__wrap {
+      border: none;
+    }
+    /deep/ .el-collapse-item__content {
+      padding: 12px;
+    }
+      .task_time{
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+      }
+        .task_time > div {
+          display: inline-block;
+          width: 32%;
+        }
+
+      .main_tasks_view{
+
+      }
+        .main_task{
+          position: relative;
+          border-left: 4px solid;
+          border-left-color: rgb(64,64,64);
+          background-color: rgb(192,192,192);
+          margin-top: 12px;
+          margin-bottom: 12px;
+          overflow-x: hidden;
+        }
+        .main_task.started{
+          border-left-color: rgb(128,128,0);
+          background-color: rgb(255,255,192);
+        }
+        .main_task.finished{
+          border-left-color: rgb(0,128,0);
+          background-color: rgb(192,255,192);
+        }
+        .main_task.failed{
+          border-left-color: rgb(128,0,0);
+          background-color: rgb(255,192,192);
+        }
+          .main_task_detail {
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 232px;
+          }
+
+          /deep/ .main_task_detail >>> .el-card{
+            height: 100%;
+            background-color: white;
+          }
+          /deep/ .main_task_detail >>> .el-card__body{
+             padding: 2px 8px 8px;
+          }
+            .main_task_title{
+              font-size: 20px;
+              font-weight: bold;
+              text-align: center;
+              text-decoration: underline;
+              color: rgb(64,64,64);
+              overflow-x: hidden;
+              white-space: nowrap;
+            }
+            .main_task_title.started{
+              color: rgb(128,128,0);
+            }
+            .main_task_title.finished{
+              color: rgb(0,128,0);
+            }
+            .main_task_title.failed{
+              color: rgb(128,0,0);
+            }
+
+            .short_cut{
+              display: none; float: right;
+            }
+            .main_task_detail:hover >>> .short_cut{
+              display: block;
+            }
+            .sub_task_detail:hover >>> .short_cut{
+              display: block;
+            }
+
+          .sub_task_container{
+            position: relative;
+            overflow-x: scroll;
+            margin-left: 232px;
+          }
+          .sub_task_container_inner{
+            width: max-content;
+          }
+            .sub_task_detail {
+              display: inline-block;
+              margin-top: 6px;
+              margin-left: 6px;
+              margin-right: 6px;
+            }
+
+            /deep/ .sub_task_detail >>> .el-card{
+              width: 228px;
+              border-radius: 16px;
+              background-color: white;
+            }
+            /deep/ .sub_task_detail >>> .el-card__body{
+              padding: 2px 8px 8px;
+            }
+              .sub_task_title{
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: underline;
+                color: rgb(64,64,64);
+                overflow-x: hidden;
+              }
+              .sub_task_title.started{
+                color: rgb(128,128,0);
+              }
+              .sub_task_title.finished{
+                color: rgb(0,128,0);
+              }
+              .sub_task_title.failed{
+                color: rgb(128,0,0);
+              }
+
+              .todo_list {
+                max-height: 128px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+              }
+              .todo {
+                color: rgb(64,64,64);
+              }
+              .todo:hover {
+                background-color: lightgreen;
+              }
+              .todo.finished {
+                color: rgb(0,128,0);
+              }
+              .todo.started {
+                color: rgb(128,128,0);
+              }
+              .todo.failed {
+                color: rgb(128,0,0);
+              }
+
+            .sub_task_add {
+              width: 64px;
+              height: 64px;
+
+              border: #bababa 4px dashed;
+              border-radius: 16px;
+
+              text-align: center;
+              line-height: 20px;
+
+              padding-top: 2px;
+
+              color: #bababa;
+
+              float: right;
+            }
+              /deep/ .el-icon-plus{
+                font-size: 32px;
+              }
+
+            .main_task_add{
+              width: 100%;
+              border: #bababa 4px dashed;
+              border-radius: 16px;
+              margin-top: 12px;
+              text-align: center;
+              padding: 8px;
+              color: #bababa;
+              display: block;
+            }

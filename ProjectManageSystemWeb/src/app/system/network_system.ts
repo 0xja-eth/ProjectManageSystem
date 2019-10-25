@@ -66,9 +66,9 @@ export class NetworkSystem {
   send(interface_:Interface, data?, auth:boolean=false, headers?):Observable<Object> {
     let do_: Observable<Object>;
     let show:Observable<Object> = new Observable(
-      (obs)=>{ViewSystem.ShowLoading = true; obs.complete();});
+      (obs)=>{ViewSystem.ShowLoading(); obs.complete();});
     let hide:Observable<Object> = new Observable(
-      (obs)=>{ViewSystem.ShowLoading = false; obs.complete();});
+      (obs)=>{ViewSystem.HideLoading(); obs.complete();});
     if(auth) data = NetworkSystem.getAuthedData(data);
     if(interface_.method == 'WS') do_ = this.sendWS(interface_.route, data);
     else do_ = this.sendHTTP(interface_.method, interface_.route, data, headers);

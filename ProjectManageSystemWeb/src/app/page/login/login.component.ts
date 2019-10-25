@@ -60,20 +60,8 @@ export class LoginComponent implements OnInit {
   }
 
   onError(title, err) {
-    //ViewSystem.ShowLoading = false;
-    console.error(err); this.showAlert(title, err.message);
-  }
-
-  // Alert
-
-  alert_shown = false;
-  alert_title = '';
-  alert_content = '';
-
-  showAlert(title: string, content:string) {
-    this.alert_title = title;
-    this.alert_content = content;
-    this.alert_shown = true;
+    console.error(err);
+    ViewSystem.ShowAlert(title, err.message);
   }
 
 }

@@ -8,9 +8,10 @@ import {ProjectSystem} from '../../../system/project_module/project_system';
 import { EditComponent } from './edit/edit.component';
 import { MembersComponent } from './members/members.component';
 import {DayPilotModule} from 'daypilot-pro-angular';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
-  declarations: [ProjectsInforComponent, DetailComponent, EditComponent, MembersComponent],
+  declarations: [ProjectsInforComponent, DetailComponent, EditComponent, MembersComponent, TasksComponent],
   imports: [
     ShareModule,
     ProjectsInforRoutingModule,

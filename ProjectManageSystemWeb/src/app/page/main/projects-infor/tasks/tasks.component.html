@@ -1,0 +1,813 @@
+<div class="project_tasks" *ngIf="project_obj" >
+  <div class="header">
+    <h1>{{project_obj.name}}</h1>
+  </div>
+  <div class="center">
+    <div class="tasks_card">
+      <el-card class="box-card">
+        <ng-template #header>
+          <div class="clearfix">
+            <span class="title">任务概况</span>
+            <el-button style="float: right;" type="success">新增任务</el-button>
+            <el-button style="float: right; margin-right: 16px;" type="success">分配任务</el-button>
+          </div>
+        </ng-template>
+        <div class="card_content">
+          <div class="card_item">任务总数<br><span>100</span></div>
+          <div class="card_item">完成个数<br><span>52</span></div>
+          <div class="card_item">正在进行<br><span>6</span></div>
+          <div class="card_item last"><span>
+            <el-progress type="circle" stroke-width="12"
+                         [percentage]="progressRate()"></el-progress>
+          </span></div>
+        </div>
+      </el-card>
+    </div>
+    <div class="tasks_view">
+      <el-card class="box-card">
+        <el-collapse [model]="[1]">
+          <el-collapse-item class="task_step finished" label="启动阶段（已完成）" value="1">
+            星云6项目管理系统项目的启动阶段。需要进行组建团队，开展启动会议，制定项目章程等工作。
+            示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述……
+            <div class="task_time data_row">
+              <div>开始时间：2019年9月9日</div>
+              <div>结束时间：2019年9月9日</div>
+              <div>创建时间：2019年9月9日</div>
+            </div>
+            <div class="main_tasks_view">
+              <div class="main_task finished">
+                <el-card class="main_task_detail finished">
+                  <div class="main_task_title finished">组建团队（已完成）</div>
+                  组建一个团队
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">寻找好友（已完成）</div>
+                      寻找5个好友
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">寻找邹博韬（完成）</li>
+                        <li class="todo finished">寻找张景维（完成）</li>
+                        <li class="todo finished">寻找李光耀（完成）</li>
+                        <li class="todo finished">寻找曾声云（完成）</li>
+                        <li class="todo finished">寻找吴宁（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">寻找好友（已完成）</div>
+                      寻找5个好友
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">寻找邹博韬（完成）</li>
+                        <li class="todo finished">寻找张景维（完成）</li>
+                        <li class="todo finished">寻找李光耀（完成）</li>
+                        <li class="todo finished">寻找曾声云（完成）</li>
+                        <li class="todo finished">寻找吴宁（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">寻找好友（已完成）</div>
+                      寻找5个好友
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">寻找邹博韬（完成）</li>
+                        <li class="todo finished">寻找张景维（完成）</li>
+                        <li class="todo finished">寻找李光耀（完成）</li>
+                        <li class="todo finished">寻找曾声云（完成）</li>
+                        <li class="todo finished">寻找吴宁（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="main_task finished">
+                <el-card class="main_task_detail finished">
+                  <div class="main_task_title finished">开展启动会议（已完成）</div>
+                  测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">寻找好友（已完成）</div>
+                      寻找5个好友
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">寻找邹博韬（完成）</li>
+                        <li class="todo finished">寻找张景维（完成）</li>
+                        <li class="todo finished">寻找李光耀（完成）</li>
+                        <li class="todo finished">寻找曾声云（完成）</li>
+                        <li class="todo finished">寻找吴宁（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <span class="main_task_add">
+                <i class="el-icon-plus"></i><br/>
+              </span>
+
+            </div>
+
+          </el-collapse-item>
+          <el-collapse-item class="task_step finished" label="计划阶段（已完成）" value="2">
+            星云6项目管理系统项目的启动阶段。需要进行组建团队，开展启动会议，制定项目章程等工作。
+            示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述……
+            <div class="task_time data_row">
+              <div>开始时间：2019年9月9日</div>
+              <div>结束时间：2019年9月9日</div>
+              <div>创建时间：2019年9月9日</div>
+            </div>
+            <div class="main_tasks_view">
+              <span class="main_task_add">
+                <i class="el-icon-plus"></i><br/>
+              </span>
+            </div>
+          </el-collapse-item>
+
+          <el-collapse-item class="task_step started" label="执行阶段（25%）" value="3">
+            星云6项目管理系统项目的启动阶段。需要进行组建团队，开展启动会议，制定项目章程等工作。
+            示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述示例描述……
+            <div class="task_time data_row">
+              <div>开始时间：2019年9月9日</div>
+              <div>结束时间：2019年9月9日</div>
+              <div>创建时间：2019年9月9日</div>
+            </div>
+            <div class="main_tasks_view">
+
+              <div class="main_task started">
+                <el-card class="main_task_detail started">
+                  <div class="main_task_title started">前端编码（25%）</div>
+                  写前端
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">用户模块（已完成）</div>
+                      登陆、注册等
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">测试1（完成）</li>
+                        <li class="todo finished">测试2（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main_task started">
+                <el-card class="main_task_detail started">
+                  <div class="main_task_title started">后台编码（25%）</div>
+                  写前端
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">用户模块（已完成）</div>
+                      登陆、注册等
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">测试1（完成）</li>
+                        <li class="todo finished">测试2（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main_task started">
+                <el-card class="main_task_detail started">
+                  <div class="main_task_title started">后台编码（25%）</div>
+                  写前端
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">用户模块（已完成）</div>
+                      登陆、注册等
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">测试1（完成）</li>
+                        <li class="todo finished">测试2（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main_task started">
+                <el-card class="main_task_detail started">
+                  <div class="main_task_title started">后台编码（25%）</div>
+                  写前端
+
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">参与人</div>
+                    <div el-col class="val" [span]="14">利俊安</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">开始时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+                  <div class="data_row" el-row gutter="20">
+                    <div el-col class="key" [span]="10">结束时间</div>
+                    <div el-col class="val" [span]="14">2019/9/9</div>
+                  </div>
+
+                  <div class="short_cut">
+                    <el-button type="text">完成</el-button>
+                    <el-button type="text">修改</el-button>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </el-card>
+                <div class="sub_task_container">
+                  <div class="sub_task_container_inner">
+                    <el-card class="sub_task_detail finished">
+                      <div class="sub_task_title finished">用户模块（已完成）</div>
+                      登陆、注册等
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">测试1（完成）</li>
+                        <li class="todo finished">测试2（完成）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <el-card class="sub_task_detail started">
+                      <div class="sub_task_title started">项目模块（75%）</div>
+                      测试测试测试测试测试测试测试测试测试
+
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">参与人</div>
+                        <div el-col class="val" [span]="14">利俊安</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">开始时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+                      <div class="data_row" el-row gutter="20">
+                        <div el-col class="key" [span]="10">结束时间</div>
+                        <div el-col class="val" [span]="14">2019/9/9</div>
+                      </div>
+
+                      <ul class="todo_list">
+                        <li class="todo finished">添加项目（完成）</li>
+                        <li class="todo finished">查找项目（完成）</li>
+                        <li class="todo finished">修改项目（25%）</li>
+                        <li class="todo finished">成员视图（65%）</li>
+                        <li class="todo finished">任务视图（0%）</li>
+                      </ul>
+
+                      <div class="short_cut">
+                        <el-button type="text">完成</el-button>
+                        <el-button type="text">修改</el-button>
+                        <el-button type="text">删除</el-button>
+                      </div>
+                    </el-card>
+                    <span class="sub_task_detail sub_task_add">
+                      <i class="el-icon-plus"></i><br/>添加
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <span class="main_task_add">
+                <i class="el-icon-plus"></i><br/>
+              </span>
+
+            </div>
+
+          </el-collapse-item>
+          <el-collapse-item class="task_step failed" label="失败阶段（已失败）" value="4">
+
+              <span class="main_task_add">
+                <i class="el-icon-plus"></i><br/>
+              </span>
+
+          </el-collapse-item>
+          <el-collapse-item class="task_step" label="收尾阶段（未开始）" value="5">
+
+              <span class="main_task_add">
+                <i class="el-icon-plus"></i><br/>
+              </span>
+
+          </el-collapse-item>
+        </el-collapse>
+      </el-card>
+    </div>
+  </div>
+  <div class="footer">
+  </div>
+</div>

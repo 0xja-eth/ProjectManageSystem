@@ -14,11 +14,3 @@
     <app-login-window [type]=type (onSubmit)="onDo($event)"></app-login-window>
   </div>
 </div>
-
-<el-dialog [(visible)]="alert_shown">
-  <ng-template #title>
-    <span class="el-icon-warning"></span>
-    <span>{{alert_title}}</span>
-  </ng-template>
-  <span>{{alert_content}}。</span>
-</el-dialog>

@@ -8,7 +8,7 @@ import {User} from './user';
 // 所有表单的父类
 export class Form {
 
-  constructor(public name:string){
+  constructor(public from_name:string){
 
   }
 

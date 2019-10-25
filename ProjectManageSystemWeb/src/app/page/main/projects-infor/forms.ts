@@ -5,14 +5,14 @@ import {ProjectSystem} from '../../../system/project_module/project_system';
 import {DataSystem} from '../../../system/data_system';
 
 export class ProjectForm extends Form{
-  constructor(name:string,
+  constructor(form_name:string,
               public pid: number=-1,
-              public pname: string='',
+              public name: string='',
               public type_id: number=1,
               public start_date: string='',
               public description: string='',
   ){
-    super(name);
+    super(form_name);
   }
 
   do(service:ProjectSystem, type?) : Observable<Object> {
@@ -29,7 +29,7 @@ export class ProjectForm extends Form{
 
   checkAll(type?): { message?: string; status: string }  {
     let res: { message?: string; status: string } = {status: 'success'};
-    if(res.status=='success') res = this.checkSingle('pname', this.pname);
+    if(res.status=='success') res = this.checkSingle('pname', this.name);
     if(res.status=='success') res = this.checkSingle('type_id', this.type_id);
     if(res.status=='success') res = this.checkSingle('description', this.description);
     if(res.status=='success') res = this.checkSingle('start_date', this.start_date);
