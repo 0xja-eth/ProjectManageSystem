@@ -23,6 +23,21 @@ Interfaces = {
 		'POST': [['un', 'str'], ['email', 'str'], ['type', 'str']],
 		'func': UserManager.sendCode
 	},
+	'reset_pwd': {
+		'POST': [['auth', 'str'], ['old', 'str'], ['new', 'str']],
+		'func': UserManager.resetPwd
+	},
+	'edit_info': {
+		'POST': [['auth', 'str'], ['name', 'str'], ['gender', 'int'],
+				['birth','str'], ['city','str'], ['edu_id','int'],
+				['duty','str'], ['contact','str'], ['desc','str']],
+		'func': UserManager.editInfo
+	},
+	'upload_avatar': {
+		'POST': [['auth', 'str']], 'FILES': ['avatar'],
+		'func': UserManager.uploadAvatar
+	},
+
 }
 
 urlpatterns = InterfaceManager.generateUrlPatterns(Interfaces)
