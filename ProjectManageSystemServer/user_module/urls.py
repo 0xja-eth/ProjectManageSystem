@@ -37,7 +37,26 @@ Interfaces = {
 		'POST': [['auth', 'str']], 'FILES': ['avatar'],
 		'func': UserManager.uploadAvatar
 	},
-
+	'get_friends': {
+		'POST': [['auth', 'str']],
+		'func': UserManager.getFriends
+	},
+	'get_reqs': {
+		'POST': [['auth', 'str'],['type', 'str']],
+		'func': UserManager.getFriendReqs
+	},
+	'search': {
+		'POST': [['auth', 'str'], ['un','str']],
+		'func': UserManager.searchUser
+	},
+	'add_friend': {
+		'POST': [['auth', 'str'], ['fuid','int']],
+		'func': UserManager.addFriend
+	},
+	'del_friend': {
+		'POST': [['auth', 'str'], ['fid','int']],
+		'func': UserManager.deleteFriend
+	},
 }
 
 urlpatterns = InterfaceManager.generateUrlPatterns(Interfaces)

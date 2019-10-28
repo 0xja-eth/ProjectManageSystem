@@ -30,11 +30,11 @@
         <div class="card_content">
           <el-table [model]="member_infos" [scroll-x]="true"
                     center="all" [row-class-name]="infoClassNameFilter">
-            <el-table-column model-key="name" label="姓名">
+            <el-table-column model-key="name" label="姓名" width="96">
             </el-table-column>
-            <el-table-column model-key="gender" label="性别">
+            <el-table-column model-key="gender" label="性别" width="64">
             </el-table-column>
-            <el-table-column model-key="role" label="角色">
+            <el-table-column model-key="roles" label="担任角色">
             </el-table-column>
             <el-table-column model-key="email" label="邮箱地址">
             </el-table-column>
@@ -67,9 +67,9 @@
         <div class="card_content">
           <el-table [model]="member_tasks" [scroll-x]="true"
                     center="all" [row-class-name]="taskClassNameFilter">
-            <el-table-column model-key="name" label="姓名">
+            <el-table-column model-key="name" label="姓名" width="96">
             </el-table-column>
-            <el-table-column model-key="role" label="角色">
+            <el-table-column model-key="roles" label="担任角色">
             </el-table-column>
             <el-table-column model-key="sum_tasks" label="总任务" width="64">
             </el-table-column>

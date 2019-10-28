@@ -1,10 +1,17 @@
 
 from utils.exception import ErrorType, ErrorException
+from enum import Enum
 
 # ===============================
 # 视图管理器：处理视图函数中的共有业务逻辑
 # ===============================
 class ViewManager:
+
+    # 确保某ID存在于枚举数据中
+    @classmethod
+    def ensureEnumData(cls, id, enum_type, error):
+        try: enum_type(id)
+        except: raise ErrorException(error)
 
     # 确保某模型数据对象存在
     @classmethod

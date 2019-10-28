@@ -264,6 +264,14 @@ class UserManager:
 	def getFriends(cls, user: User):
 		return user.convertToDict('friends')
 
+	# 获取好友列表
+	@classmethod
+	def getFriendReqs(cls, user: User, type):
+		# 限制 type 取值
+		if type != 'send' and type != 'received':
+			raise ErrorException(ErrorType.ParameterError)
+		return user.convertToDict(type+'_reqs')
+
 	# 搜索用户信息（un 为关键字，必须精确匹配 username 才能搜索出来）
 	# TODO(吴宁): 搜索，注意要过滤掉已添加的好友
 	@classmethod
@@ -344,7 +352,7 @@ class UserManager:
 
 		# 校验性别格式
 		@classmethod
-		def ensureGenderFormat(cls, val: str):
+		def ensureGenderFormat(cls, val: int):
 			pass
 
 		# 校验生日格式
@@ -359,7 +367,7 @@ class UserManager:
 
 		# 校验学历ID格式
 		@classmethod
-		def ensureEduIdFormat(cls, val: str):
+		def ensureEduIdFormat(cls, val: int):
 			pass
 
 		# 校验职位格式
@@ -399,17 +407,24 @@ class UserManager:
 			return ViewManager.getObject(Friend, ErrorType.NotAFriend, return_type=return_type,
 										 subject=uid, object=fuid, accepted=accepted)
 
+		# 确保密码正确
+		@classmethod
+		def ensurePasswordCorrect(cls, user, pw):
+			pw = UserManager.cryptoPassword(pw)
+			if user.password != pw:
+				raise ErrorException(ErrorType.IncorrectPassword)
+
 		# 确保用户存在
 		@classmethod
 		def ensureUserExist(cls, **args):
 			return ViewManager.ensureObjectExist(
-				User, ErrorType.UsernameExist, **args)
+				User, ErrorType.UsernameNotExist, **args)
 
 		# 确保用户不存在
 		@classmethod
 		def ensureUserNotExist(cls, **args):
 			return ViewManager.ensureObjectNotExist(
-				User, ErrorType.UsernameNotExist, **args)
+				User, ErrorType.UsernameExist, **args)
 
 		# 确保好友关系存在
 		@classmethod

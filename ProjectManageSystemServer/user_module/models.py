@@ -1,5 +1,6 @@
 from django.db import models
-from utils.model_manager import ModelManager
+from django.db.models import Q
+from utils.model_manager import ModelManager, PictureUpload
 from enum import Enum
 import datetime
 
@@ -26,6 +27,9 @@ class UserStatus(Enum):
 	Online = 2 # 在线
 	Other = 3 # 其他
 
+# ===================================================
+#  用户表
+# ===================================================
 class User(models.Model):
 
 	class Meta:
@@ -66,12 +70,12 @@ class User(models.Model):
 	# 姓名
 	name = models.CharField(blank=True, max_length=12, verbose_name="姓名")
 
-	# 性别
+	# 性别（False 为男，True 为女）
 	gender = models.BooleanField(null=True, blank=True, verbose_name="性别")
 
 	# 头像
 	avatar = models.ImageField(null=True, blank=True, verbose_name="头像",
-							   upload_to=ModelManager.PictureUpload('avatars'))
+							   upload_to=PictureUpload('avatars'))
 
 	# 生日
 	birth = models.DateField(null=True, blank=True, verbose_name="生日")
@@ -103,9 +107,11 @@ class User(models.Model):
 	def __str__(self):
 		return "%d.%s(%s)" % (self.id, self.name, self.username)
 
-	def convertToDict(self, type=None, params=None):
+	def convertToDict(self, type=None, **args):
 
-		create_time = self.create_time.strftime('%Y-%m-%d %H:%M:%S')
+		create_time = ModelManager.timeToStr(self.create_time)
+
+		from project_module.models import Project
 
 		# 获取陌生人的资料
 		if type == 'stranger':
@@ -118,14 +124,65 @@ class User(models.Model):
 				'status_id': self.status,
 			}
 
+		# 获取队伍成员资料
+		if type == 'member' and 'proj' in args:
+			proj: Project = args['proj']
+			return {
+				'id': self.id,
+				'name': self.name,
+				'contact': self.contact,
+				'rids': proj.getRoleIds(self),
+			}
+
+		if type == 'member_info' and 'proj' in args:
+			proj: Project = args['proj']
+			return {
+				'id': self.id,
+				'name': self.name,
+				'gender': self.gender,
+				'rids': proj.getRoleIds(self),
+				'email': self.email,
+				'contact': self.contact,
+				'status_id': self.status
+			}
+
+		if type == 'member_task' and 'proj' in args:
+			proj: Project = args['proj']
+
+			member_tasks = proj.getMemberTasks(self)
+			sum_tasks, unstart_tasks, started_tasks, finished_tasks, \
+				progress = proj.analayTasks(member_tasks)
+
+			return {
+				'id': self.id,
+				'name': self.name,
+				'sum_tasks': sum_tasks,
+				'unstart_tasks': unstart_tasks,
+				'started_tasks': started_tasks,
+				'finished_tasks': finished_tasks,
+				'progress': progress/sum_tasks
+			}
+
 		# 获取好友的资料
 		if type == 'friend':
 			return self.convertToDict()
 
-		# 获取好友列表
+		# 获取好友列表（已接受的）
 		if type == 'friends':
-			return ModelManager.objectsToDict(self.getFriends())
+			return {
+				'friends': ModelManager.objectsToDict(self.getFriends(), uid=self.id)
+			}
 
+		# 获取发起好友请求列表
+		if type == 'send_reqs':
+			return {
+				'reqs': ModelManager.objectsToDict(self.getSendFriendReqs(), type='send')
+			}
+		# 获取发起好友请求列表
+		if type == 'received_reqs':
+			return {
+				'reqs': ModelManager.objectsToDict(self.getReceivedFriendReqs(), type='received')
+			}
 		# 个人详细资料
 		return {
 			'id': self.id,
@@ -144,8 +201,19 @@ class User(models.Model):
 			'status_id': self.status,
 		}
 
-	def getFriends(self, accepted=True):
-		return Friend.objects.filter(subject_id=self.id, accepted=accepted)
+	def getFriends(self):
+		# 找到 subject_id 或 object_id 为自己 id（accepted 为 True）的所有好友关系
+		return Friend.objects.filter(Q(subject_id=self.id) | Q(object_id=self.id), accepted=True)
+
+	def getSendFriendReqs(self):
+		# 找到 subject_id 为自己 id（accepted 为 False）的所有好友关系
+		# 即返回用户发起的好友请求
+		return Friend.objects.filter(subject_id=self.id, accepted=False)
+
+	def getReceivedFriendReqs(self):
+		# 找到 object_id 为自己 id（accepted 为 False）的所有好友关系
+		# 即返回用户接收的好友请求
+		return Friend.objects.filter(object_id=self.id, accepted=False)
 
 	# 登陆
 	def login(self):
@@ -162,7 +230,9 @@ class User(models.Model):
 	def addFriend(self, fuid):
 		pass
 
-
+# ===================================================
+#  好友关系表
+# ===================================================
 class Friend(models.Model):
 
 	class Meta:
@@ -188,16 +258,64 @@ class Friend(models.Model):
 	def __str__(self):
 		return "%s-%s" % (str(self.subject), str(self.object))
 
-	def convertToDict(self):
+	def convertToDict(self, type=None, uid=None):
 
-		cid = 0
-		if self.chat: cid = self.chat_id
+		chat_id = ModelManager.objectToId(self.chat)
+		send_time = ModelManager.timeToStr(self.send_time)
 
-		return {
-			'sid': self.subject_id,
-			'object': self.object.convertToDict('friend'),
-			'cid': cid
-		}
+		# received: Object用户查询好友请求时返回的数据（accepted 为 False）
+		if type == "received":
+			return {
+				'fid': self.id,
+				'friend': self.subject.convertToDict('stranger'),
+				'send_time': self.send_time
+			}
+
+		# send: Subject用户查询好友请求时返回的数据（accepted 为 False）
+		if type == "send":
+			return {
+				'fid': self.id,
+				'friend': self.object.convertToDict('stranger'),
+				'send_time': self.send_time
+			}
+
+		# 已成为好友，获取好友的信息（accepted 为 True）
+		if self.accepted:
+			# 如果传入参数（查询玩家的uid）为发起方ID
+			if uid == self.subject_id:
+				return {
+					'fid': self.id,
+					# 则返回的 friend 字段为目标用户的数据
+					'friend': self.object.convertToDict('friend'),
+					'send_time': send_time,
+					'chat_id': chat_id
+				}
+			# 如果传入参数（查询玩家的uid）为目标方ID
+			elif uid == self.object_id:
+				return {
+					'fid': self.id,
+					# 则返回的 friend 字段为发起用户的数据
+					'friend': self.subject.convertToDict('friend'),
+					'send_time': send_time,
+					'chat_id': chat_id
+				}
+			# 如果都不是
+			else:
+				return {
+					'fid': self.id,
+					'subject': self.subject.convertToDict('friend'),
+					'object': self.object.convertToDict('friend'),
+					'send_time': send_time,
+					'chat_id': chat_id
+				}
+		# 未成为好友，获取好友的信息（accepted 为 False）
+		else:
+			return {
+				'fid': self.id,
+				'sid': self.subject_id,
+				'oid': self.object_id,
+				'send_time': send_time
+			}
 
 	# 操作
 	def oper(self, accepted):

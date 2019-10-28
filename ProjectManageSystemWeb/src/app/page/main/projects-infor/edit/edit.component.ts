@@ -57,7 +57,7 @@ export class EditComponent implements OnInit {
   makeProjectEditForm() {
     this.inputForm = new ProjectForm(EditComponent.FormName,
       this.project_obj.id, this.project_obj.name, this.project_obj.type_id,
-      this.project_obj.start_time, this.project_obj.description);
+      this.project_obj.start_date, this.project_obj.description);
     this.formGroup = this.formBuilder.group(this.inputForm);
   }
 

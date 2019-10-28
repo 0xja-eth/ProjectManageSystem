@@ -3,30 +3,41 @@ import {ProjectsInforComponent} from '../projects-infor.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Project} from '../../../../system/project_module/project';
 import {ProjectSystem} from '../../../../system/project_module/project_system';
+import {DataSystem} from '../../../../system/data_system';
 
 class MemberInfo {
+  roles: string; status: string; free: string;
   constructor(public id: number,
               public name: string,
-              public gender: string,
-              public role: string,
+              public gender: string | number,
+              public rids: number[],
               public email: string,
               public contact: string,
-              public status: string,
-              public free: string,
-  ) {}
+              public status_id: number,
+              public is_free: boolean,
+  ) {
+    this.gender = DataSystem.get('Genders', gender as number).name;
+    this.roles = rids.map(id=>DataSystem.get('Roles', id).name).join('、');
+    this.status = DataSystem.get('LoginStatuses', status_id).name;
+    this.free = is_free ? '是' : '否'
+  }
 }
 
 class MemberTask {
+  roles: string;
   constructor(public id: number,
               public name: string,
-              public role: string,
+              public rids: number[],
               public sum_tasks: number,
               public unstart_tasks: number,
               public started_tasks: number,
               public finished_tasks: number,
               public progress: number,
               public total: boolean = false,
-  ) {}
+  ) {
+    let tmp = rids.map(id=>DataSystem.get('Roles', id).name);
+    this.roles = tmp.join('、');
+  }
 }
 
 @Component({
@@ -49,34 +60,34 @@ export class MembersComponent implements OnInit {
   project_obj: Project;
 
   member_infos: MemberInfo[] = [
-    new MemberInfo(1,"利俊安","男", '项目经理 前端人员 后端人员',
-      "804173948@qq.com","QQ 804173948", "在线", "否"),
-    new MemberInfo(2,"李光耀","男", '后端人员',
-      "123456789@qq.com","QQ 1169969860", "离线", "否"),
-    new MemberInfo(6,"吴宁","男", '测试经理 后端人员',
-      "1010101010@qq.com","", "在线", "是"),
-    new MemberInfo(3,"张景维","男", '前端人员',
-      "4645678678@qq.com","", "在线", "否"),
-    new MemberInfo(4,"邹博韬","男", '前端人员',
-      "boruto@scut.edu","17701941369", "离线", "否"),
-    new MemberInfo(5,"曾声云","男", '测试人员',
-      "xingyun6@xingyun6.com","", "离线", "否")
+    new MemberInfo(1,"利俊安",0, [1,2,3,4,5],
+      "804173948@qq.com","QQ 804173948", 2, false),
+    new MemberInfo(2,"李光耀",0, [2,3,5],
+      "123456789@qq.com","QQ 1169969860", 1, false),
+    new MemberInfo(6,"吴宁",0, [3,5,6],
+      "1010101010@qq.com","", 2, true),
+    new MemberInfo(3,"张景维",0, [3,4],
+      "4645678678@qq.com","", 2, false),
+    new MemberInfo(4,"邹博韬",0, [3,4],
+      "boruto@scut.edu","17701941369", 1, false),
+    new MemberInfo(5,"曾声云",1, [6,7],
+      "xingyun6@xingyun6.com","", 1, false)
   ];
 
   member_tasks: MemberTask[] = [
-    new MemberTask(1,'利俊安','项目经理 前端人员 后端人员',50,
+    new MemberTask(1,'利俊安',[1,2,3,4,5],50,
       5,25,20,40),
-    new MemberTask(2,'李光耀','后端人员',8,
+    new MemberTask(2,'李光耀',[2,3,5],8,
       1,2,5,62.5),
-    new MemberTask(6,'吴宁','测试经理 后端人员',33,
+    new MemberTask(6,'吴宁',[3,5,6],33,
       11,0,22,66.67),
-    new MemberTask(3,'邹博韬','前端人员',24,
+    new MemberTask(3,'邹博韬',[3,4],24,
       9,3,12,50),
-    new MemberTask(4,'张景维','前端人员',40,
+    new MemberTask(4,'张景维',[3,4],40,
       2,2,36,90),
-    new MemberTask(5,'曾声云','测试人员',16,
+    new MemberTask(5,'曾声云',[6,7],16,
       10,4,2,12.5),
-    new MemberTask(0,'总计','-',100, 20,
+    new MemberTask(0,'总计',[],100, 20,
       28,52,52, true),
   ];
 
@@ -95,19 +106,11 @@ export class MembersComponent implements OnInit {
     this.project_obj=proj;
   }
 
-  generateMemberData() {
-
-  }
-
-  format(x: number) {
-    return Math.max(Math.min(Math.round(x*100)/100, 100),0);
-  }
-
-  taskClassNameFilter(row: any, index: number): string {
+  taskClassNameFilter(row: MemberTask, index: number): string {
     return row.total ? 'green_row bold_row' : '';
   }
-  infoClassNameFilter(row: any, index: number): string {
-    return row.status=='在线' ? 'green_row' : '';
+  infoClassNameFilter(row: MemberInfo, index: number): string {
+    return row.status_id==DataSystem.OnlineStatusID ? 'green_row' : '';
   }
 
   onInfoDetail(scope) {

@@ -41,20 +41,23 @@ class InterfaceManager:
 	# 获取请求参数字典
 	@classmethod
 	def getRequestDict(cls, request, POST=[], GET=[], FILES=[]):
+
+		print(request.GET.get('a'))
+
 		data = dict()
 
 		for item in POST:
 			value = request.POST.get(item[0])
 			if value:
 				data[item[0]] = cls.convertDataType(value, item[1])
-			else:
+			elif item[1] != 'var': # 如果该参数是必选的
 				raise ErrorException(ErrorType.ParameterError)
 
 		for item in GET:
 			value = request.GET.get(item[0])
 			if value:
 				data[item[0]] = cls.convertDataType(value, item[1])
-			else:
+			elif item[1] != 'var':  # 如果该参数是必选的
 				raise ErrorException(ErrorType.ParameterError)
 
 		for key in FILES:
@@ -110,6 +113,9 @@ class InterfaceManager:
 				for i in range(len(value)):
 					for j in range(len(value[i])):
 						value[i][j] = int(value[i][j])
+
+			elif type == 'bool':
+				value = bool(value)
 
 			elif type == 'date':
 				value = datetime.datetime.strptime(value, '%Y-%m-%d')

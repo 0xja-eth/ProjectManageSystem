@@ -11,13 +11,16 @@ class Data {
 
 @Injectable()
 export class DataSystem {
-  static Genders = ['男','女'];
+  static Genders = [new Data(0,'男'), new Data(1,'女')];
   static Educations : Data[];
   static LoginStatuses : Data[];
   static ProjectTypes : Data[];
   static TaskStatuses : Data[];
   static TaskLevels : Data[];
   static Roles : Data[];
+
+  static OfflineStatusID = 1;
+  static OnlineStatusID = 2;
 
   static ProjectManagerRoleId = 1;
 
@@ -44,7 +47,11 @@ export class DataSystem {
     DataSystem.TaskLevels = data.TaskLevels;
     DataSystem.Roles = data.Roles;
 
+    DataSystem.OfflineStatusID = data.OfflineStatusID;
+    DataSystem.OnlineStatusID = data.OnlineStatusID;
+
     DataSystem.ProjectManagerRoleId = data.ProjectManagerRoleId;
+
     DataSystem.BeforeStartStatusId = data.BeforeStartStatusId;
     DataSystem.StartedStatusId = data.StartedStatusId;
     DataSystem.CompletedStatusId = data.CompletedStatusId;

@@ -23,6 +23,10 @@ class DataManager:
 		data['Roles'] = ViewManager.getObjects(Role, return_type='dict')
 
 		data['ProjectManagerRoleId'] = Role.ProjectManagerId
+
+		data['OfflineStatusID'] = UserStatus.Offline.value
+		data['OnlineStatusID'] = UserStatus.Online.value
+
 		data['BeforeStartStatusId'] = TaskStatus.Unstart.value
 		data['StartedStatusId'] = TaskStatus.Started.value
 		data['CompletedStatusId'] = TaskStatus.Finished.value

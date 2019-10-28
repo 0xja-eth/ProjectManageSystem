@@ -18,8 +18,8 @@ export class ProjectTask {
               public progress: number,
               public level: number,
               public status_id: number,
-              public start_time: string,
-              public end_time: string
+              public start_date: string,
+              public end_date: string
   ) {}
 
   status():string {
@@ -44,8 +44,8 @@ export class Project {
   constructor(public id: number,
               public name: string,
               public type_id?: number,
-              public start_time?: string,
-              public end_time?: string,
+              public start_date?: string,
+              public end_date?: string,
               public create_time?: string,
               public description?: string,
               public members: ProjectMember[] = [],
@@ -83,10 +83,10 @@ export class Project {
   }
 
   startTime():Date {
-    return new Date(this.start_time);
+    return new Date(this.start_date);
   }
   endTime():Date {
-    return new Date(this.end_time);
+    return new Date(this.end_date);
   }
   deltaTime() {
     // @ts-ignore
