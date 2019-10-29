@@ -222,7 +222,7 @@ class UserManager:
 			from django.core.mail import send_mail
 
 			send_mail(conf[0], conf[1] % (
-					un, code, CodeDatum.CODE_SECOND
+					code, CodeDatum.CODE_SECOND
 				), conf[2], [email])
 
 		except smtplib.SMTPException as exception:

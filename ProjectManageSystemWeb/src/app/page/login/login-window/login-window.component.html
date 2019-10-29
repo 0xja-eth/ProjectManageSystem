@@ -22,12 +22,16 @@
     <el-form-item *ngIf="type=='register'" label="邮箱" [required]="true"
                   [status]="statusCtrl('email')" [error]="messageCtrl('email')">
       <el-input formControlName="email" class="email-input" placeholder="请输入邮箱地址"></el-input>
-      <el-button type="text" class="send-button" (click)="onClick('register_code')">发送验证码</el-button>
+      <el-button [elDisabled]="!!registerForm.code_time" type="text" class="send-button"
+                 (click)="onClick('register_code')">{{"发送验证码"+
+      (registerForm.code_time ? "("+registerForm.delta_second+")" : "")}}</el-button>
     </el-form-item>
     <el-form-item *ngIf="type=='forget'" label="邮箱" [required]="true"
                   [status]="statusCtrl('email')" [error]="messageCtrl('email')">
       <el-input formControlName="email" class="email-input" placeholder="请输入邮箱地址"></el-input>
-      <el-button type="text" class="send-button" (click)="onClick('forget_code')">发送验证码</el-button>
+      <el-button [elDisabled]="!!forgetForm.code_time" type="text" class="send-button"
+                 (click)="onClick('forget_code')">{{"发送验证码"+
+      (forgetForm.code_time ? "("+forgetForm.delta_second+")" : "")}}</el-button>
     </el-form-item>
 
     <el-form-item *ngIf="type=='register'||type=='forget'" label="验证码" [required]="true"

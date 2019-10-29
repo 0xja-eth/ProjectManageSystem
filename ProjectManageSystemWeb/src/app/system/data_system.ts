@@ -61,7 +61,10 @@ export class DataSystem {
 
     ConfigSystem.UnLength = data.UnLength;
     ConfigSystem.PwdLength = data.PwdLength;
-    ConfigSystem.EmailReg = data.EmailReg;
+    console.info("ConfigSystem.EmailReg", ConfigSystem.EmailReg)
+    console.info("data.EmailReg", data.EmailReg)
+    ConfigSystem.EmailReg = RegExp(data.EmailReg);
+    console.info("ConfigSystem.EmailReg", ConfigSystem.EmailReg)
     ConfigSystem.CodeLength = data.CodeLength;
     ConfigSystem.CodeSecond = data.CodeSecond;
 

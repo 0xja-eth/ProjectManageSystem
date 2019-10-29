@@ -40,7 +40,7 @@ class User(models.Model):
 
 	UN_LEN = 16
 	PWD_LEN = [8,32]
-	EMAIL_REG = r'^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/'
+	EMAIL_REG = r'^[A-Za-z0-9一-龥]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$'
 
 	USER_EDUCATIONS = [
 		(UserEduaction.PrimarySchool.value, '小学'),
@@ -71,7 +71,7 @@ class User(models.Model):
 	name = models.CharField(blank=True, max_length=12, verbose_name="姓名")
 
 	# 性别（False 为男，True 为女）
-	gender = models.BooleanField(null=True, blank=True, verbose_name="性别")
+	gender = models.BooleanField(default=False, verbose_name="性别")
 
 	# 头像
 	avatar = models.ImageField(null=True, blank=True, verbose_name="头像",
@@ -118,8 +118,8 @@ class User(models.Model):
 			return {
 				'id': self.id,
 				'username': self.username,
-				'gender': self.gender,
-				'avatar': self.avatar,
+				'gender': int(self.gender),
+				'avatar': self.avatar.name,
 				'description': self.description,
 				'status_id': self.status,
 			}
@@ -139,7 +139,7 @@ class User(models.Model):
 			return {
 				'id': self.id,
 				'name': self.name,
-				'gender': self.gender,
+				'gender': int(self.gender),
 				'rids': proj.getRoleIds(self),
 				'email': self.email,
 				'contact': self.contact,
@@ -190,7 +190,7 @@ class User(models.Model):
 			'email': self.email,
 			'name': self.name,
 			'gender': int(self.gender),
-			'avatar': self.avatar,
+			'avatar': self.avatar.name,
 			'birth': self.birth,
 			'city': self.city,
 			'education_id': self.education,

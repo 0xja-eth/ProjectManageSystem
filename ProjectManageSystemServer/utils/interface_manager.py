@@ -21,17 +21,17 @@ class InterfaceManager:
 
 	# 接收请求
 	@classmethod
-	def recieveRequest(cls, request, func, POST=[], GET=[], FILES=[]):
+	def recieveRequest(cls, request, func, method='POST', params=[], files=[]):
 		try:
 			# 获取数据
-			data = cls.getRequestDict(request, POST=POST, GET=GET, FILES=FILES)
+			data = cls.getRequestDict(request, method=method, params=params, files=files)
 
 			# 如果传输包含 auth 数据，获取其用户
 			if 'auth' in data:
 				data['user'] = AuthorizationManager.getUser(data['auth'])
 				del data['auth']
 
-			res = func(**data)
+			res = {'data': func(**data)}
 
 		except ErrorException as exception:
 			return cls.getErrorResponse(exception)
@@ -40,27 +40,24 @@ class InterfaceManager:
 
 	# 获取请求参数字典
 	@classmethod
-	def getRequestDict(cls, request, POST=[], GET=[], FILES=[]):
-
-		print(request.GET.get('a'))
+	def getRequestDict(cls, request, method='GET', params=[], files=[]):
 
 		data = dict()
 
-		for item in POST:
-			value = request.POST.get(item[0])
-			if value:
-				data[item[0]] = cls.convertDataType(value, item[1])
+		if method.upper() != request.META['REQUEST_METHOD']:
+			raise ErrorException(ErrorType.InvalidRequest)
+
+		body = request.body.decode()
+		if body: raw = json.loads(body)
+		else: raw = {}
+
+		for item in params:
+			if item[0] in raw:
+				data[item[0]] = cls.convertDataType(raw[item[0]], item[1])
 			elif item[1] != 'var': # 如果该参数是必选的
 				raise ErrorException(ErrorType.ParameterError)
 
-		for item in GET:
-			value = request.GET.get(item[0])
-			if value:
-				data[item[0]] = cls.convertDataType(value, item[1])
-			elif item[1] != 'var':  # 如果该参数是必选的
-				raise ErrorException(ErrorType.ParameterError)
-
-		for key in FILES:
+		for key in files:
 			value = request.FILES.get(key)
 			if value:
 				data[key] = value
@@ -144,7 +141,9 @@ class InterfaceManager:
 
 	# 封装成功响应数据字典
 	@classmethod
-	def getSuccessResponseDict(cls, dict={}):
+	def getSuccessResponseDict(cls, dict=None):
+
+		if dict is None: dict = {}
 		dict['status'] = ErrorType.Success.value
 
 		return dict
@@ -176,7 +175,7 @@ class InterfaceManager:
 
 	# 获取成功响应对象
 	@classmethod
-	def getSuccessResponse(cls, dict={}):
+	def getSuccessResponse(cls, dict=None):
 		dict = cls.getSuccessResponseDict(dict)
 
 		if settings.HTML_TEST:

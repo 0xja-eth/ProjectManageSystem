@@ -30,9 +30,9 @@
 <el-dialog [(visible)]="ViewSystem.AlertShown">
   <ng-template #title>
     <span [class]="ViewSystem.AlertIconClass"></span>
-    <span>{{ViewSystem.AlertTitle}}</span>
+    <span style="margin-left: 12px">{{ViewSystem.AlertTitle}}</span>
   </ng-template>
-  <span>{{ViewSystem.AlertContent}}。</span>
+  <span>{{ViewSystem.AlertContent}}</span>
 </el-dialog>
 
 <div id="loading" [el-loading]="ViewSystem.LoadingShown" [full-screen]="true"></div>

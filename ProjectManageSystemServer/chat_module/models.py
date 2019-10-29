@@ -14,4 +14,3 @@ class Message(models.Model):
 	chat = models.ForeignKey(to='Chat', on_delete=models.CASCADE)
 	message = models.CharField(max_length=128)
 	create_time = models.DateTimeField(auto_now_add=True)
-

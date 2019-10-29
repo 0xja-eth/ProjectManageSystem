@@ -1,4 +1,4 @@
-import { UserSystem, Form } from '../../system/user_module/user_system';
+import {UserSystem, Form, LoginResult} from '../../system/user_module/user_system';
 import {ConfigSystem} from '../../system/config_system';
 import {Observable} from 'rxjs';
 
@@ -7,7 +7,7 @@ export class LoginForm extends Form{
     super(name);
   }
 
-  do(service:UserSystem, type?) : Observable<Object> {
+  do(service:UserSystem, type?) : Observable<LoginResult> {
     if(!this.checkDo(type)) return;
     return service.login(this.username, this.password);
   }
@@ -44,13 +44,39 @@ export class LoginForm extends Form{
 }
 
 export class RegisterForm extends LoginForm {
+  code_time: Date = undefined;
+  code_interval: number = undefined;
+  delta_second: number = 0;
+
   constructor(name:string='注册', username: string='', password: string='',
               public repassword: string='', public email: string='', public code: string=''){
     super(name, username, password);
   }
 
-  do(service:UserSystem, type: 'code' | 'do') : Observable<Object> {
+  updateCodeTime() {
+    let now: Date = new Date();
+    if (this.code_time && now<=this.code_time)
+      // @ts-ignore
+      this.delta_second = Math.round((this.code_time-now)/1000);
+    else {
+      clearInterval(this.code_interval);
+      this.code_interval = undefined;
+      this.code_time = undefined;
+      this.delta_second = 0;
+    }
+  }
+
+  setCode() {
+    this.code_time = new Date();
+    this.code_time.setTime(this.code_time
+      .getTime() + ConfigSystem.CodeSecond*1000);
+    this.delta_second = ConfigSystem.CodeSecond;
+    this.code_interval = setInterval(this.updateCodeTime.bind(this), 500);
+  }
+
+  do(service:UserSystem, type: 'code' | 'do') : Observable<any> {
     if(!this.checkDo(type)) return;
+    console.info("after check");
     switch (type) {
       case 'code': return service.sendCode(this.username, this.email, 'register');
       case 'do': return service.register(this.username, this.password, this.email, this.code);
@@ -114,7 +140,7 @@ export class ForgetForm extends RegisterForm {
     super(name, username, password, repassword, email, code);
   }
 
-  do(service:UserSystem, type: 'code' | 'do') : Observable<Object> {
+  do(service:UserSystem, type: 'code' | 'do') : Observable<any> {
     if(!this.checkDo(type)) return;
     switch (type) {
       case 'code': return service.sendCode(this.username, this.email, 'forget');

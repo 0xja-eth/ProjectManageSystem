@@ -1,5 +1,12 @@
 import {DataSystem} from '../data_system';
 
+export class Authorization {
+  constructor(public uid: number,
+              public token: string,
+              public out_time: string
+  ) {}
+}
+
 export class Stranger {
   constructor(public id: number,
               public username: string,

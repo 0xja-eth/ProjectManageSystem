@@ -24,6 +24,7 @@ SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+HTML_TEST = True
 
 ALLOWED_HOSTS = ['*',]
 
@@ -36,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'task_module',
+    'user_module',
     'project_module',
     'task_module',
     'chat_module',

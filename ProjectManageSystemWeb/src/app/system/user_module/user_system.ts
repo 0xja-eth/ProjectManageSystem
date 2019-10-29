@@ -3,7 +3,8 @@ import {AbstractControl} from '@angular/forms';
 import {NetworkSystem, InterfaceSystem} from '../network_system';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {User} from './user';
+import {map} from 'rxjs/operators';
+import {Authorization, User} from './user';
 
 // 所有表单的父类
 export class Form {
@@ -42,26 +43,39 @@ export class Form {
 
 }
 
+export type LoginResult = {
+  auth: Authorization,
+  user: User
+}
+
 @Injectable()
 export class UserSystem {
-  static Token: string = '';
+  static Auth: Authorization;
   static User: User;
 
   constructor(private network: NetworkSystem) {
 
   }
 
-  register(un, pw, email, code) : Observable<Object> {
+  register(un, pw, email, code) : Observable<void> {
     return this.network.send(InterfaceSystem.Interfaces.RegisterRoute, {un, pw, email, code});
   }
-  login(un, pw) : Observable<Object> {
-    return this.network.send(InterfaceSystem.Interfaces.LoginRoute, {un, pw});
+  login(un, pw) : Observable<LoginResult> {
+    return this.network.send(InterfaceSystem.Interfaces.LoginRoute, {un, pw})
+      .pipe(map(UserSystem.onLoginSuccess));
   }
-  forget(un, pw, email, code) : Observable<Object> {
+  forget(un, pw, email, code) : Observable<void> {
     return this.network.send(InterfaceSystem.Interfaces.ForgetRoute, {un, pw, email, code});
   }
-  sendCode(un, email, type: 'register' | 'forget') : Observable<Object> {
+  sendCode(un, email, type: 'register' | 'forget') : Observable<void> {
     return this.network.send(InterfaceSystem.Interfaces.SendCodeRoute, {un, email, type});
+  }
+
+  // 登陆成功回调
+  private static onLoginSuccess(result: LoginResult): LoginResult{
+    UserSystem.Auth = result.auth;
+    UserSystem.User = result.user;
+    return result;
   }
 
   setUser(user) {

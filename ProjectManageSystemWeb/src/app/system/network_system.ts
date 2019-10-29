@@ -1,9 +1,14 @@
 import {UserSystem} from './user_module/user_system';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, EMPTY, concat, of, interval} from 'rxjs';
+import {Observable, EMPTY, concat} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {ViewSystem} from './view_system';
 import {take} from 'rxjs/operators';
+
+type HTTPResult<T> = {
+  status: number, data?: T, errmsg?: string
+}
 
 export class Interface {
   constructor(public route:string, public method:'GET'|'POST'|'WS'='GET'){
@@ -17,10 +22,10 @@ export class InterfaceSystem {
     InitializeData: new Interface('system/data'),
 
     // UserSystem
-    LoginRoute: new Interface('', 'POST'),
-    RegisterRoute: new Interface('', 'POST'),
-    ForgetRoute: new Interface('', 'POST'),
-    SendCodeRoute: new Interface('', 'POST'),
+    LoginRoute: new Interface('user/login', 'POST'),
+    RegisterRoute: new Interface('user/register', 'POST'),
+    ForgetRoute: new Interface('user/forget', 'POST'),
+    SendCodeRoute: new Interface('user/code', 'POST'),
 
     // ProjectSystem
     GetProjects: new Interface(''),
@@ -59,20 +64,25 @@ export class NetworkSystem {
 
   private static getAuthedData(data?) {
     data = data || {};
-    data.auth = UserSystem.Token;
+    data.auth = UserSystem.Auth.token;
     return data;
   }
 
-  send(interface_:Interface, data?, auth:boolean=false, headers?):Observable<Object> {
-    let do_: Observable<Object>;
-    let show:Observable<Object> = new Observable(
+  send<T>(interface_:Interface, data?, auth:boolean=false, headers?):Observable<T> {
+    console.info("send", interface_, data);
+    // 显示 Loading
+    let show:Observable<T> = new Observable(
       (obs)=>{ViewSystem.ShowLoading(); obs.complete();});
-    let hide:Observable<Object> = new Observable(
+    // 隐藏 Loading
+    let hide:Observable<T> = new Observable(
       (obs)=>{ViewSystem.HideLoading(); obs.complete();});
+    // 授权
     if(auth) data = NetworkSystem.getAuthedData(data);
-    if(interface_.method == 'WS') do_ = this.sendWS(interface_.route, data);
-    else do_ = this.sendHTTP(interface_.method, interface_.route, data, headers);
-    return concat(show, hide, do_);
+    // 执行
+    let do_: Observable<T>;
+    if(interface_.method == 'WS') do_ = this.sendWS<T>(interface_.route, data);
+    else do_ = this.sendHTTP<T>(interface_.method, interface_.route, data, headers);
+    return concat(show, do_, hide);
   }
 /*
   config(method, data, headers) {
@@ -84,12 +94,21 @@ export class NetworkSystem {
   };
 */
 
-  sendHTTP(method: 'GET'|'POST', route:string, data?, headers?): Observable<Object> {
+  sendHTTP<T>(method: 'GET'|'POST', route:string, data?, headers?): Observable<T> {
     //let res = await fetch(NetworkSystem.HTTP_URL+route, this.config(method, data, headers));
+    // 804173948@qq.com
+
+    //headers = headers || {};
+    //headers['Content-Type'] = "application/x-www-form-urlencoded;charset=utf-8";//"application/json";
+
     let url = NetworkSystem.HTTP_URL+route;
-    return this.http[method.toLowerCase()](url, data, {headers});
+    let http: Observable<HTTPResult<T>> = this.http[method.toLowerCase()](url, data, {headers});
+    return http.pipe(map(result => {
+      if(result.status==0) return result.data; throw result.errmsg;
+    }));
   }
-  sendWS(route:string, data?): Observable<Object> {
+
+  sendWS<T>(route:string, data?): Observable<T> {
     data = {route, data};
     this.WSObject.send(JSON.stringify(data));
     return EMPTY;

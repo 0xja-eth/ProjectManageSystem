@@ -62,6 +62,8 @@ class ProjectManager():
 		cls.Check.ensureTypeFormat(type_id)
 		cls.Check.ensureDescFormat(desc)
 
+		cls._doNew(user, name, type_id, start_date, desc)
+
 	@classmethod
 	def _doNew(cls, user, name, type_id, start_date, desc):
 
