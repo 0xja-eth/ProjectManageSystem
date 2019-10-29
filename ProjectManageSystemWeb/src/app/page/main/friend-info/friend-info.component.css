@@ -1,0 +1,36 @@
+#content{
+  background-color: white;
+  margin-left: 0px;
+}
+#project-list{
+  height: 600px;
+  width: 80%;
+  background-color: white;
+  padding: 40px;
+}
+/deep/ .el-collapse-item__header{
+  background-color: rgb(84,92,100);
+  color: white;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Avenir,Helvetica,Arial,Sans-serif;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+/deep/ .el-buttom {
+
+}
+.tip {
+  min-width: 20px;
+  height: 20px;
+  background: red;
+  box-sizing: border-box;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  line-height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  display: inline-block;
+}
