@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ErrorType(Enum):
 
 	# Common
@@ -49,7 +50,7 @@ class ErrorType(Enum):
 	InvalidCity			= 153  # 非法的居住地格式
 	InvalidEduId		= 154  # 非法的学历
 	InvalidDuty			= 155  # 非法的职位格式
-	InvalidContcat		= 156  # 非法的联系方式格式
+	InvalidConnact		= 156  # 非法的联系方式格式
 	InvalidDesc			= 157  # 非法的个人描述格式
 	InvalidAvatar		= 158  # 非法的头像格式或大小
 
@@ -145,7 +146,7 @@ class ErrorException(Exception):
 		ErrorType.InvalidCity: 		"非法的居住地格式！",
 		ErrorType.InvalidEduId: 	"非法的学历！",
 		ErrorType.InvalidDuty: 		"非法的职位格式！",
-		ErrorType.InvalidContcat: 	"非法的联系方式格式！",
+		ErrorType.InvalidConnact: 	"非法的联系方式格式！",
 		ErrorType.InvalidDesc: 		"非法的个人描述格式！",
 		ErrorType.InvalidAvatar: 	"非法的头像格式或大小！",
 
