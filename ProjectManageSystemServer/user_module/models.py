@@ -228,7 +228,7 @@ class User(models.Model):
 	# 发送好友请求
 	# TODO(吴宁): 该函数为实际操作的函数，不需检查重复添加
 	def addFriend(self, fuid):
-		pass
+		Friend.objects.create(subject=self.id,object=fuid)
 
 # ===================================================
 #  好友关系表
