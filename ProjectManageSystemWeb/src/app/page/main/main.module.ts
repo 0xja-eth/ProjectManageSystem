@@ -8,8 +8,9 @@ import {ChatDetailComponent} from './chat-detail/chat-detail.component';
 import {CodeChangeComponent} from './code-change/code-change.component';
 import {ShareModule} from '../../share/share.module';
 import {ProjectsInforModule} from './projects-infor/projects-infor.module';
-import {ProjectSystem} from '../../system/project_module/project_system';
-//import { ProjectsInforComponent } from './projects-infor/projects-infor.component';
+
+import {FriendInfoComponent} from "./friend-info/friend-info.component";
+import { NoticeComponent } from './notice/notice.component';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import {ProjectSystem} from '../../system/project_module/project_system';
     ChatRoomComponent,
     ChatDetailComponent,
     CodeChangeComponent,
-    //ProjectsInforComponent,
+
+    FriendInfoComponent,
+    NoticeComponent,
   ],
   imports: [
     ShareModule,

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {PersonalInforComponent} from './personal-infor/personal-infor.component';
 import {ChatRoomComponent} from './chat-room/chat-room.component';
 import {ProjectsInforComponent} from './projects-infor/projects-infor.component';
+import {FriendInfoComponent} from './friend-info/friend-info.component';
 
 const routes: Routes = [
   //{ path: 'code-change', component: CodeChangeComponent},
@@ -10,10 +11,12 @@ const routes: Routes = [
     loadChildren: () => import('./projects-infor/projects-infor.module').then(mod => mod.ProjectsInforModule),
   },
   { path: 'chats', component: ChatRoomComponent},
+  { path: 'friends', component: FriendInfoComponent},
   { path: 'personal', component: PersonalInforComponent},
 
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'projects/', redirectTo: 'projects', pathMatch: 'full' },
+  { path: 'friends/', redirectTo: 'friends', pathMatch: 'full' },
   { path: 'chats/', redirectTo: 'chats', pathMatch: 'full' },
   { path: 'personal/', redirectTo: 'personal', pathMatch: 'full' },
 ];

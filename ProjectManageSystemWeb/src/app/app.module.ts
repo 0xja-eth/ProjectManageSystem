@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import {DataSystem} from './system/data_system';
 
+
 @NgModule({
   declarations: [
     AppComponent,
