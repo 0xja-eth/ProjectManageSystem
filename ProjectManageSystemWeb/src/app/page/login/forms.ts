@@ -1,5 +1,5 @@
-import {UserSystem, Form, LoginResult} from '../../system/user_module/user_system';
-import {ConfigSystem} from '../../system/config_system';
+import {UserService, Form, LoginResult} from '../../system/user_module/user.service';
+import {ConfigSystem} from '../../system/config.system';
 import {Observable} from 'rxjs';
 
 export class LoginForm extends Form{
@@ -7,7 +7,7 @@ export class LoginForm extends Form{
     super(name);
   }
 
-  do(service:UserSystem, type?) : Observable<LoginResult> {
+  do(service:UserService, type?) : Observable<LoginResult> {
     if(!this.checkDo(type)) return;
     return service.login(this.username, this.password);
   }
@@ -74,7 +74,7 @@ export class RegisterForm extends LoginForm {
     this.code_interval = setInterval(this.updateCodeTime.bind(this), 500);
   }
 
-  do(service:UserSystem, type: 'code' | 'do') : Observable<any> {
+  do(service:UserService, type: 'code' | 'do') : Observable<any> {
     if(!this.checkDo(type)) return;
     console.info("after check");
     switch (type) {
@@ -140,7 +140,7 @@ export class ForgetForm extends RegisterForm {
     super(name, username, password, repassword, email, code);
   }
 
-  do(service:UserSystem, type: 'code' | 'do') : Observable<any> {
+  do(service:UserService, type: 'code' | 'do') : Observable<any> {
     if(!this.checkDo(type)) return;
     switch (type) {
       case 'code': return service.sendCode(this.username, this.email, 'forget');

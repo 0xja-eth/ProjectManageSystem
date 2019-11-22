@@ -1,16 +1,16 @@
 
 import {Injectable} from '@angular/core';
-import {InterfaceSystem, NetworkSystem} from '../network_system';
+import {InterfaceSystem, NetworkService} from '../network.service';
 import {Project, ProjectMember, ProjectTask} from './project';
 import {Observable} from 'rxjs';
-import {UserSystem} from '../user_module/user_system';
+import {UserService} from '../user_module/user.service';
 
 @Injectable()
-export class ProjectSystem{
+export class ProjectService{
   static Project: Project;
 
   public static setProject(proj) {
-    ProjectSystem.Project = proj;
+    ProjectService.Project = proj;
   }
 
   public static checkPrivilege() {
@@ -80,7 +80,7 @@ export class ProjectSystem{
       ]),
   ];
 
-  constructor(private network: NetworkSystem) {
+  constructor(private network: NetworkService) {
 
   }
 

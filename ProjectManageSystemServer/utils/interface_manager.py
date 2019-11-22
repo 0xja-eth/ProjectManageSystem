@@ -40,7 +40,7 @@ class InterfaceManager:
 
 	# 获取请求参数字典
 	@classmethod
-	def getRequestDict(cls, request, method='GET', params=[], files=[]):
+	def getRequestDict(cls, request, method='POST', params=[], files=[]):
 
 		data = dict()
 
@@ -150,7 +150,9 @@ class InterfaceManager:
 
 	# 封装Emit数据字典
 	@classmethod
-	def getSuccessEmitDict(cls, type, dict={}):
+	def getSuccessEmitDict(cls, type, dict=None):
+
+		if dict is None: dict = {}
 		dict['type'] = type
 		dict['status'] = ErrorType.Success.value
 

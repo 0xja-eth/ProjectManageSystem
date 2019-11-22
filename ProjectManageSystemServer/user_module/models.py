@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Q
-from utils.model_manager import ModelManager, PictureUpload
+from utils.model_manager import ModelUtils
 from enum import Enum
 import datetime
 
@@ -75,7 +75,7 @@ class User(models.Model):
 
 	# 头像
 	avatar = models.ImageField(null=True, blank=True, verbose_name="头像",
-							   upload_to=PictureUpload('avatars'))
+							   upload_to=ModelUtils.PictureUpload('avatars'))
 
 	# 生日
 	birth = models.DateField(null=True, blank=True, verbose_name="生日")
@@ -109,7 +109,7 @@ class User(models.Model):
 
 	def convertToDict(self, type=None, **args):
 
-		create_time = ModelManager.timeToStr(self.create_time)
+		create_time = ModelUtils.timeToStr(self.create_time)
 
 		from project_module.models import Project
 
@@ -170,18 +170,18 @@ class User(models.Model):
 		# 获取好友列表（已接受的）
 		if type == 'friends':
 			return {
-				'friends': ModelManager.objectsToDict(self.getFriends(), uid=self.id)
+				'friends': ModelUtils.objectsToDict(self.getFriends(), uid=self.id)
 			}
 
 		# 获取发起好友请求列表
 		if type == 'send_reqs':
 			return {
-				'reqs': ModelManager.objectsToDict(self.getSendFriendReqs(), type='send')
+				'reqs': ModelUtils.objectsToDict(self.getSendFriendReqs(), type='send')
 			}
 		# 获取发起好友请求列表
 		if type == 'received_reqs':
 			return {
-				'reqs': ModelManager.objectsToDict(self.getReceivedFriendReqs(), type='received')
+				'reqs': ModelUtils.objectsToDict(self.getReceivedFriendReqs(), type='received')
 			}
 		# 个人详细资料
 		return {
@@ -258,10 +258,10 @@ class Friend(models.Model):
 	def __str__(self):
 		return "%s-%s" % (str(self.subject), str(self.object))
 
-	def convertToDict(self, type=None, uid=None):
+	def convertToDict(self, type=None, **args):
 
-		chat_id = ModelManager.objectToId(self.chat)
-		send_time = ModelManager.timeToStr(self.send_time)
+		chat_id = ModelUtils.objectToId(self.chat)
+		send_time = ModelUtils.timeToStr(self.send_time)
 
 		# received: Object用户查询好友请求时返回的数据（accepted 为 False）
 		if type == "received":
@@ -281,6 +281,7 @@ class Friend(models.Model):
 
 		# 已成为好友，获取好友的信息（accepted 为 True）
 		if self.accepted:
+			uid = args['uid']
 			# 如果传入参数（查询玩家的uid）为发起方ID
 			if uid == self.subject_id:
 				return {

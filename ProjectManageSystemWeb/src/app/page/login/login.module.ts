@@ -5,8 +5,8 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { ShareModule } from '../../share/share.module';
 import { LoginWindowComponent } from './login-window/login-window.component';
-import {UserSystem} from '../../system/user_module/user_system';
-import {NetworkSystem} from '../../system/network_system';
+import {UserService} from '../../system/user_module/user.service';
+import {NetworkService} from '../../system/network.service';
 
 
 @NgModule({
@@ -18,6 +18,6 @@ import {NetworkSystem} from '../../system/network_system';
     ShareModule,
     LoginRoutingModule
   ],
-  providers: [UserSystem, NetworkSystem]
+  providers: [UserService, NetworkService]
 })
 export class LoginModule { }

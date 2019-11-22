@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../../system/project_module/project';
-import {ConfigSystem} from '../../../system/config_system';
-import {ProjectSystem} from '../../../system/project_module/project_system';
+import {ConfigSystem} from '../../../system/config.system';
+import {ProjectService} from '../../../system/project_module/project.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProjectsInforComponent implements OnInit {
 
   // 静态类代号
-  ProjectSystem = ProjectSystem;
+  ProjectSystem = ProjectService;
   self = ProjectsInforComponent;
 
   static DefaultPage = "detail";
@@ -39,7 +39,7 @@ export class ProjectsInforComponent implements OnInit {
 
   constructor(private router: Router,
               private activate:ActivatedRoute,
-              private project: ProjectSystem) {
+              private project: ProjectService) {
     // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
     router.events.subscribe(this.updateProject.bind(this));
   }
@@ -50,8 +50,8 @@ export class ProjectsInforComponent implements OnInit {
 
   updateProject() {
     this.initProjectsData();
-    if(ProjectSystem.Project)
-      this.onProjectChange(ProjectSystem.Project.id);
+    if(ProjectService.Project)
+      this.onProjectChange(ProjectService.Project.id);
     else this.locatePage();
   }
 
@@ -69,7 +69,7 @@ export class ProjectsInforComponent implements OnInit {
   }
 
   selectedProject() {
-    return ProjectSystem.Project || this.getProject(this.selected_pid);
+    return ProjectService.Project || this.getProject(this.selected_pid);
   }
   getProject(pid: number) {
     let proj: Project = null;
@@ -86,7 +86,7 @@ export class ProjectsInforComponent implements OnInit {
     if(this.selected_pid == pid) return;
     this.selected_pid = pid;
     this.page = ProjectsInforComponent.DefaultPage;
-    ProjectSystem.setProject(this.getProject(pid));
+    ProjectService.setProject(this.getProject(pid));
     this.router.navigateByUrl(this.getCurrentUrl());
   }
 

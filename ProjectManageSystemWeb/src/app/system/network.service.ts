@@ -1,9 +1,9 @@
-import {UserSystem} from './user_module/user_system';
+import {UserService} from './user_module/user.service';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, EMPTY, concat} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ViewSystem} from './view_system';
+import {ViewSystem} from './view.system';
 import {take} from 'rxjs/operators';
 
 type HTTPResult<T> = {
@@ -18,27 +18,58 @@ export class Interface {
 
 export class InterfaceSystem {
   static Interfaces = {
-    // DataSystem
+    // DataService
     InitializeData: new Interface('system/data'),
 
-    // UserSystem
+    // UserService
     LoginRoute: new Interface('user/login', 'POST'),
     RegisterRoute: new Interface('user/register', 'POST'),
     ForgetRoute: new Interface('user/forget', 'POST'),
     SendCodeRoute: new Interface('user/code', 'POST'),
 
-    // ProjectSystem
-    GetProjects: new Interface(''),
-    GetProject: new Interface(''),
-  };
+    ResetPwdRoute: new Interface(''),
+    EditInfoRoute: new Interface(''),
+    GetInfoRoute: new Interface(''),
 
-  static getInterface(type:string) {
-    return this.Interfaces[type];
-  }
+    GetFriendsRoute: new Interface(''),
+    AddFriendRoute: new Interface(''),
+    OperFriendRoute: new Interface(''),
+    DeleteFriendRoute: new Interface(''),
+
+    // ProjectService
+    CreateProjectRoute: new Interface(''),
+    GetProjectsRoute: new Interface(''),
+    GetProjectRoute: new Interface(''),
+
+    AddMemberRoute: new Interface(''),
+    DeleteMemberRoute: new Interface(''),
+    EditMemRoleRoute: new Interface(''),
+    ChangeManagerRoute: new Interface(''),
+
+    GetNoticesRoute: new Interface(''),
+    PushNoticeRoute: new Interface(''),
+    DeleteNoticeRoute: new Interface(''),
+
+    GetTasksRoute: new Interface(''),
+    GetTaskDetailRoute: new Interface(''),
+    GetUserTasksRoute: new Interface(''),
+    EditTaskTakeRoute: new Interface(''),
+
+    RequestProgressRoute: new Interface(''),
+    OperProgressRoute: new Interface(''),
+
+    AddTaskRoute: new Interface(''),
+    EditTaskRoute: new Interface(''),
+    DeleteTaskRoute: new Interface(''),
+
+    // ChatService
+    GetChatsRoute: new Interface(''),
+    SendMessageRoute: new Interface(''),
+  };
 }
 
 @Injectable()
-export class NetworkSystem {
+export class NetworkService {
   static HTTP_URL = '/api/';
   static WS_URL = '';
   //static WS_URL = 'ws://127.0.0.1:8000/ws/chat/123/';
@@ -50,7 +81,7 @@ export class NetworkSystem {
   }
 
   startWS() {
-    this.WSObject = new WebSocket(NetworkSystem.WS_URL);
+    this.WSObject = new WebSocket(NetworkService.WS_URL);
     return new Observable(
       observer => {
         this.WSObject.onmessage = (event) => observer.next(event.data);
@@ -64,7 +95,7 @@ export class NetworkSystem {
 
   private static getAuthedData(data?) {
     data = data || {};
-    data.auth = UserSystem.Auth.token;
+    data.auth = UserService.Auth.token;
     return data;
   }
 
@@ -77,7 +108,7 @@ export class NetworkSystem {
     let hide:Observable<T> = new Observable(
       (obs)=>{ViewSystem.HideLoading(); obs.complete();});
     // 授权
-    if(auth) data = NetworkSystem.getAuthedData(data);
+    if(auth) data = NetworkService.getAuthedData(data);
     // 执行
     let do_: Observable<T>;
     if(interface_.method == 'WS') do_ = this.sendWS<T>(interface_.route, data);
@@ -101,7 +132,7 @@ export class NetworkSystem {
     //headers = headers || {};
     //headers['Content-Type'] = "application/x-www-form-urlencoded;charset=utf-8";//"application/json";
 
-    let url = NetworkSystem.HTTP_URL+route;
+    let url = NetworkService.HTTP_URL+route;
     let http: Observable<HTTPResult<T>> = this.http[method.toLowerCase()](url, data, {headers});
     return http.pipe(map(result => {
       if(result.status==0) return result.data; throw result.errmsg;

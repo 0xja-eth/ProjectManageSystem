@@ -1,52 +1,52 @@
 
-from .views import TaskManager
+from .views import TaskView
 from utils.interface_manager import InterfaceManager
 
 Interfaces = {
 	'get': {
 		'params': [['auth', 'str'], ['pid', 'var']],
-		'func': TaskManager.get
+		'func': TaskView.get
 	},
 	'add': {
 		'params': [['auth', 'str'], ['pid', 'int'], ['name', 'str'],
 				['desc', 'str'], ['parent_id', 'int'], ['prev_ids', 'int[]'],
 				['auto_adjust', 'bool'], ['start_date', 'date'],
 				['duration', 'var'], ['end_date', 'var']],
-		'func': TaskManager.add
+		'func': TaskView.add
 	},
 	'edit': {
 		'params': [['auth', 'str'], ['tid', 'int'], ['name', 'str'],
 				['desc', 'str'], ['parent_id', 'int'], ['prev_ids', 'int[]'],
 				['progress', 'int'], ['status_id', 'int'], ['auto_adjust', 'bool'],
 				['start_date', 'date'], ['duration', 'var'], ['end_date', 'var']],
-		'func': TaskManager.edit
+		'func': TaskView.edit
 	},
 	'delete': {
 		'params': [['auth', 'str'], ['tid', 'int']],
-		'func': TaskManager.delete
+		'func': TaskView.delete
 	},
 	'distribute': {
 		'params': [['auth', 'str'], ['tid', 'int'], ['uids', 'int[]']],
-		'func': TaskManager.distribute
+		'func': TaskView.distribute
 	},
 	'adjust': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['tids', 'int[]'], ['prevs', 'int[][]']],
-		'func': TaskManager.adjust
+		'func': TaskView.adjust
 	},
 	'get_prs': {
 		'params': [['auth', 'str'], ['pid', 'var'], ['tid', 'var']],
-		'func': TaskManager.getProgressReqs
+		'func': TaskView.getProgressReqs
 	},
 	'add_pr': {
 		'params': [['auth', 'str'], ['tid', 'int'],
 				['progress', 'int'], ['desc', 'str']],
-		'func': TaskManager.addProgressReq
+		'func': TaskView.addProgressReq
 	},
 	'oper_pr': {
 		'params': [['auth', 'str'], ['prid', 'int'],
 				['result', 'bool'], ['progress', 'val']],
-		'func': TaskManager.operProgressReq
+		'func': TaskView.operProgressReq
 	},
 }
 

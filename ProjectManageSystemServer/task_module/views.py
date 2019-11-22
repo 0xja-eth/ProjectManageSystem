@@ -1,30 +1,30 @@
 from django.shortcuts import render
 from user_module.models import User
-from user_module.views import UserManager
-from project_module.views import ProjectManager
+from user_module.views import UserView
+from project_module.views import ProjectView
 from utils.exception import ErrorException, ErrorType
 from utils.interface_manager import InterfaceManager
-from utils.view_manager import ViewManager
+from utils.view_manager import ViewUtils
 from .models import *
 import datetime
 
 # Create your views here.
-class TaskManager():
+class TaskView():
 
 	# 获取任务
 	@classmethod
 	def get(cls, user: User, pid=None):
 		if pid is None:
-			tasks = ModelManager.getObjectRelatedForAll(
+			tasks = ModelUtils.getObjectRelatedForAll(
 				user.tasktake_set, 'task')
 		else:
 			pid = InterfaceManager.convertDataType(pid, 'int')
 
-			proj = ProjectManager.Common.getProject(id=pid)
+			proj = ProjectView.Common.getProject(id=pid)
 			tasks = proj.tasks(True)
 
 		return {
-			'tasks': ModelManager.objectsToDict(tasks, type='detail')
+			'tasks': ModelUtils.objectsToDict(tasks, type='detail')
 		}
 
 	# 添加任务
@@ -52,10 +52,10 @@ class TaskManager():
 		for prev_id in prev_ids:
 			cls.Common.ensureTaskExist(id=prev_id)
 
-		ProjectManager.Common.ensureProjectManager(user.id, pid)
+		ProjectView.Common.ensureProjectManager(user.id, pid)
 
 		# 校验 & 获取必要数据
-		proj = ProjectManager.Common.getProject(id=pid)
+		proj = ProjectView.Common.getProject(id=pid)
 
 		prev_order = None
 		if prev_order_id is not None:
@@ -101,7 +101,7 @@ class TaskManager():
 		project = task.project
 
 		# 确保项目经理权限
-		ProjectManager.Common.ensureProjectManager(user.id, project.id)
+		ProjectView.Common.ensureProjectManager(user.id, project.id)
 
 		prev_order = None
 		if prev_order_id is not None:
@@ -119,7 +119,7 @@ class TaskManager():
 		project = task.project
 
 		# 确保项目经理权限
-		ProjectManager.Common.ensureProjectManager(user.id, project.id)
+		ProjectView.Common.ensureProjectManager(user.id, project.id)
 
 		project.delete(task)
 
@@ -131,10 +131,10 @@ class TaskManager():
 
 		# 确保用户存在且已加入项目中
 		for uid in uids:
-			ProjectManager.Common.ensureParticipationExist(pid, uid)
+			ProjectView.Common.ensureParticipationExist(pid, uid)
 
 		# 确保项目经理权限
-		ProjectManager.Common.ensureProjectManager(user.id, pid)
+		ProjectView.Common.ensureProjectManager(user.id, pid)
 
 		task.distribute(uids)
 
@@ -143,10 +143,10 @@ class TaskManager():
 	def adjust(cls, user: User, pid, tids, prevs):
 
 		# 获取项目
-		project = ProjectManager.Common.getProject(id=pid)
+		project = ProjectView.Common.getProject(id=pid)
 
 		# 确保项目经理权限
-		ProjectManager.Common.ensureProjectManager(user.id, project.id)
+		ProjectView.Common.ensureProjectManager(user.id, project.id)
 
 		task_data = []
 
@@ -175,7 +175,7 @@ class TaskManager():
 
 		# 如果提供 pid
 		if pid is not None:
-			proj = ProjectManager.Common.getProject(id=pid)
+			proj = ProjectView.Common.getProject(id=pid)
 			return proj.convertToDict('pr')
 
 		# 如果提供 tid
@@ -208,7 +208,7 @@ class TaskManager():
 
 		proj_id = pr.task.project_id
 
-		ProjectManager.Common.ensureProjectManager(user.id, proj_id)
+		ProjectView.Common.ensureProjectManager(user.id, proj_id)
 
 		pr.oper(result, progress)
 
@@ -264,36 +264,36 @@ class TaskManager():
 		# 获取任务
 		@classmethod
 		def getTask(cls, return_type='object', **args) -> Task:
-			return ViewManager.getObject(Task, ErrorType.TaskNotExist,
-										 return_type=return_type, **args)
+			return ViewUtils.getObject(Task, ErrorType.TaskNotExist,
+									   return_type=return_type, **args)
 
 		# 获取进度请求
 		@classmethod
 		def getTaskTake(cls, tid, uid, return_type='object') -> TaskTake:
-			return ViewManager.getObject(TaskTake, ErrorType.TaskTakeNotExist,
-										 task_id=tid, user_id=uid,
-										 return_type=return_type)
+			return ViewUtils.getObject(TaskTake, ErrorType.TaskTakeNotExist,
+									   task_id=tid, user_id=uid,
+									   return_type=return_type)
 
 		# 获取进度请求
 		@classmethod
 		def getTaskProgress(cls, return_type='object', **args) -> TaskProgress:
-			return ViewManager.getObject(TaskProgress, ErrorType.ProgressReqNotExist,
-										 return_type=return_type, **args)
+			return ViewUtils.getObject(TaskProgress, ErrorType.ProgressReqNotExist,
+									   return_type=return_type, **args)
 
 		# 确保任务存在
 		@classmethod
 		def ensureTaskExist(cls, **args):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				Task, ErrorType.TaskNotExist, **args)
 
 		# 确保任务分配存在
 		@classmethod
 		def ensureTaskTakeExist(cls, tid, uid):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				TaskTake, ErrorType.TaskTakeNotExist, task_id=tid, user_id=uid)
 
 		# 确保进度请求存在
 		@classmethod
 		def ensureTaskProgressExist(cls, **args):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				TaskProgress, ErrorType.ProgressReqNotExist, **args)

@@ -1,5 +1,5 @@
 
-from .views import ProjectManager
+from .views import ProjectView
 from utils.interface_manager import InterfaceManager
 
 Interfaces = {
@@ -9,61 +9,61 @@ Interfaces = {
 				['type_id', 'int'], ['start_date', 'date'],
 				['desc','str']],
 		# 逻辑处理函数
-		'func': ProjectManager.new
+		'func': ProjectView.new
 	},
 	'get' : {
 		'params': [['auth', 'str'], ['pid', 'var']],
-		'func': ProjectManager.get
+		'func': ProjectView.get
 	},
 	'edit' : {
 		'params': [['auth', 'str'], ['pid', 'int'], ['name','str'],
 				['type_id', 'int'], ['start_date', 'date'], ['desc','str']],
-		'func': ProjectManager.edit
+		'func': ProjectView.edit
 	},
 	'delete' : {
 		'params': [['auth', 'str'], ['pid', 'int'], ['pw','str']],
-		'func': ProjectManager.delete
+		'func': ProjectView.delete
 	},
 	'get_members' : {
 		'params': [['auth', 'str'], ['pid', 'int']],
-		'func': ProjectManager.getMembers
+		'func': ProjectView.getMembers
 	},
 	'add_members': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['uids','int[]'], ['rids','int[][]'], ['pw','str']],
-		'func': ProjectManager.addMembers
+		'func': ProjectView.addMembers
 	},
 	'delete_members': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['uids','int[]'], ['pw','str']],
-		'func': ProjectManager.deleteMembers
+		'func': ProjectView.deleteMembers
 	},
 	'edit_members': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['uids','int[]'], ['rids','int[][]']],
-		'func': ProjectManager.editMembers
+		'func': ProjectView.editMembers
 	},
 	'change_pm': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['uid','int'], ['pw','str']],
-		'func': ProjectManager.changeProjectManager
+		'func': ProjectView.changeProjectManager
 	},
 	'get_notices': {
 		'params': [['auth', 'str']],
-		'func': ProjectManager.getNotices
+		'func': ProjectView.getNotices
 	},
 	'add_notice': {
 		'params': [['auth', 'str'], ['pid', 'int'],
 				['title','str'], ['content','str']],
-		'func': ProjectManager.addNotice
+		'func': ProjectView.addNotice
 	},
 	'del_notices': {
 		'params': [['auth', 'str'], ['pid','int'], ['nids', 'int']],
-		'func': ProjectManager.deleteNotices
+		'func': ProjectView.deleteNotices
 	},
 	'read_notices': {
 		'params': [['auth', 'str'], ['rids', 'int']],
-		'func': ProjectManager.readNotices
+		'func': ProjectView.readNotices
 	},
 }
 

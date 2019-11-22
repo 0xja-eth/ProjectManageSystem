@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProjectsInforComponent} from '../projects-infor.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Project} from '../../../../system/project_module/project';
-import {ProjectSystem} from '../../../../system/project_module/project_system';
-import {DataSystem} from '../../../../system/data_system';
+import {ProjectService} from '../../../../system/project_module/project.service';
+import {DataSystem} from '../../../../system/data.system';
 
 class MemberInfo {
   roles: string; status: string; free: string;
@@ -47,10 +47,10 @@ class MemberTask {
 })
 export class MembersComponent implements OnInit {
 
-  ProjectSystem = ProjectSystem;
+  ProjectSystem = ProjectService;
   father = ProjectsInforComponent;
 
-  constructor(private project: ProjectSystem,
+  constructor(private project: ProjectService,
               private router_info: ActivatedRoute,
               private router:Router) {
     // 当路由发生变化，存储在浏览器里面的的用户信息发生变化的时候刷新组件
@@ -96,7 +96,7 @@ export class MembersComponent implements OnInit {
   }
 
   updateProject() {
-    this.project_obj = ProjectSystem.Project;
+    this.project_obj = ProjectService.Project;
     let pid = this.router_info.snapshot.params['id'];
     if(this.project_obj && this.project_obj.id == pid) return;
     this.project.getProject(pid).subscribe(this.setProject.bind(this));

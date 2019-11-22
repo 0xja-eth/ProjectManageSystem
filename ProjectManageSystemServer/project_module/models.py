@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Count, Sum
 from user_module.models import User
 from task_module.models import Task, TaskStatus, PrevTask, TaskTake
-from utils.model_manager import ModelManager
+from utils.model_manager import ModelUtils
 from enum import Enum
 import datetime
 
@@ -96,7 +96,7 @@ class Project(models.Model):
 
 		if type == "pr":
 			tasks = self.tasks()
-			return {'tasks': ModelManager.objectsToDict(tasks, type='pr')}
+			return {'tasks': ModelUtils.objectsToDict(tasks, type='pr')}
 
 		# 汇总信息
 		if type == "total":
@@ -122,7 +122,7 @@ class Project(models.Model):
 				'name': self.name,
 				'creator_id': creator.id,
 				'creator_name': creator.name,
-				'notices': ModelManager.objectsToDict(notices)
+				'notices': ModelUtils.objectsToDict(notices)
 			}
 
 		# 获取成员视图数据
@@ -134,9 +134,9 @@ class Project(models.Model):
 
 			members = self.members()
 
-			member_info = ModelManager.objectsToDict(
+			member_info = ModelUtils.objectsToDict(
 				members, type="member_info", proj=self)
-			member_task = ModelManager.objectsToDict(
+			member_task = ModelUtils.objectsToDict(
 				members, type="member_task", proj=self)
 
 			for i in range(members.count()):
@@ -153,10 +153,10 @@ class Project(models.Model):
 				'member_task': member_task,
 			}
 
-		chat_id = ModelManager.objectToId(self.chat)
-		create_time = ModelManager.timeToStr(self.create_time)
-		start_date = ModelManager.timeToStr(self.start_date)
-		end_date = ModelManager.timeToStr(self.end_date)
+		chat_id = ModelUtils.objectToId(self.chat)
+		create_time = ModelUtils.timeToStr(self.create_time)
+		start_date = ModelUtils.timeToStr(self.start_date)
+		end_date = ModelUtils.timeToStr(self.end_date)
 
 		res = {
 			'id': self.id,
@@ -172,9 +172,9 @@ class Project(models.Model):
 		# 获取详情信息（用于详情页展示）
 		if type == "detail":
 
-			members = ModelManager.objectsToDict(
+			members = ModelUtils.objectsToDict(
 				self.members(), type="member", proj=self)
-			tasks = ModelManager.objectsToDict(
+			tasks = ModelUtils.objectsToDict(
 				self.tasks(True), type="project")
 
 			res['members'] = members
@@ -192,7 +192,7 @@ class Project(models.Model):
 
 	# 获取成员数组（返回 User[]）
 	def members(self):
-		return ModelManager.getObjectRelatedForAll(
+		return ModelUtils.getObjectRelatedForAll(
 			self.participation_set, 'user')
 
 	# 增加（多个）成员
@@ -227,9 +227,9 @@ class Project(models.Model):
 	# 修改一个成员角色
 	def editMember(self, uid, rids):
 
-		from .views import ProjectManager
+		from .views import ProjectView
 
-		part = ProjectManager.Common.getParticipation(uid, self.id)
+		part = ProjectView.Common.getParticipation(uid, self.id)
 		roles = self.getRoles(uid=uid)
 
 		# 对于每一个角色ID
@@ -256,27 +256,27 @@ class Project(models.Model):
 	# member_data: {uid, rids}
 	def deleteMembers(self, uids):
 
-		from .views import ProjectManager
+		from .views import ProjectView
 
 		for uid in uids:
-			part = ProjectManager.Common.getParticipation(uid, self.id)
+			part = ProjectView.Common.getParticipation(uid, self.id)
 			part.delete()
 
 	# 角色操作
 	# 获取某角色参与该项目中的角色数组（返回 Role[]）
 	def getRoles(self, user: User=None, uid=None):
 
-		from .views import ProjectManager
+		from .views import ProjectView
 
 		if user is not None: uid = user.id
 
-		part = ProjectManager.Common.getParticipation(uid, self.id)
+		part = ProjectView.Common.getParticipation(uid, self.id)
 
-		return ModelManager.getObjectRelatedForAll(
+		return ModelUtils.getObjectRelatedForAll(
 			part.participationrole_set, 'role', True)
 
 	# 获取某角色参与该项目中的角色ID数组（返回 int[]）
-	def getRoleIds(self, user: User, uid=None):
+	def getRoleIds(self, user: User=None, uid=None):
 		result = []
 		roles = self.getRoles(user, uid)
 		for r in roles: result.append(r.id)
@@ -285,10 +285,10 @@ class Project(models.Model):
 
 	def changeProjectManager(self, creator: User, uid):
 
-		from .views import ProjectManager
+		from .views import ProjectView
 
-		cpart = ProjectManager.Common.getParticipation(creator.id, self.id)
-		mpart = ProjectManager.Common.getParticipation(uid, self.id)
+		cpart = ProjectView.Common.getParticipation(creator.id, self.id)
+		mpart = ProjectView.Common.getParticipation(uid, self.id)
 
 		role = cpart.participationrole_set.filter(role_id=Role.ProjectManagerId)
 		if not role.exists(): return
@@ -319,7 +319,7 @@ class Project(models.Model):
 
 		return tasks
 
-	# 最后一个任务
+	# 最后一个任务（顺序）
 	def lastTask(self):
 		if self.first_task is None: return None
 		temp = self.tasks().filter(next_order__isnull=True)
@@ -336,10 +336,10 @@ class Project(models.Model):
 	# 获取某角色参与该项目中的任务数组（返回 Task 的 QuerySet）
 	def getMemberTasks(self, user: User, status=None):
 		if status is None:
-			return ModelManager.getObjectRelatedForFilter(
+			return ModelUtils.getObjectRelatedForFilter(
 				user.tasktake_set, 'task', task_project=self)
 		else:
-			return ModelManager.getObjectRelatedForFilter(
+			return ModelUtils.getObjectRelatedForFilter(
 				user.tasktake_set, 'task',
 				task__project=self, task__status=status)
 
@@ -616,7 +616,7 @@ class Notice(models.Model):
 
 	def convertToDict(self, type=None, **args):
 
-		from .views import ProjectManager
+		from .views import ProjectView
 
 		result = {
 			'id': self.id,
@@ -627,7 +627,7 @@ class Notice(models.Model):
 
 		if type == 'receive':
 			user = args['args']
-			receive = ProjectManager.Common.\
+			receive = ProjectView.Common.\
 				createOrGetNoticeReceive(self.id, user.id)
 			receive = receive.convertToDict()
 
@@ -662,7 +662,7 @@ class NoticeReceive(models.Model):
 
 	def convertToDict(self):
 
-		read_time = ModelManager.timeToStr(self.read_time, None)
+		read_time = ModelUtils.timeToStr(self.read_time, None)
 
 		if read_time is not None:
 			return {

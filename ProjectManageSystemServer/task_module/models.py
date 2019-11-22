@@ -1,5 +1,5 @@
 from django.db import models
-from utils.model_manager import ModelManager
+from utils.model_manager import ModelUtils
 from utils.exception import ErrorException, ErrorType
 from enum import Enum
 import datetime
@@ -98,15 +98,15 @@ class Task(models.Model):
 
 	def convertToDict(self, type=None):
 
-		start_date = ModelManager.timeToStr(self.start_date)
-		end_date = ModelManager.timeToStr(self.end_date)
+		start_date = ModelUtils.timeToStr(self.start_date)
+		end_date = ModelUtils.timeToStr(self.end_date)
 
 		if type == "pr":
 			prs = self.progressReqs()
 
 			return {
 				'task_name': self.name,
-				'prs': ModelManager.objectsToDict(prs)
+				'prs': ModelUtils.objectsToDict(prs)
 			}
 
 		if type == "project":
@@ -123,7 +123,7 @@ class Task(models.Model):
 		if type == "detail":
 			return self.convertToDict()
 
-		create_time = ModelManager.timeToStr(self.create_time)
+		create_time = ModelUtils.timeToStr(self.create_time)
 
 		return {
 			'id': self.id,
@@ -372,8 +372,8 @@ class TaskProgress(models.Model):
 
 	def converToDict(self, type=None):
 
-		create_time = ModelManager.timeToStr(self.create_time)
-		result_time = ModelManager.timeToStr(self.result_time, None)
+		create_time = ModelUtils.timeToStr(self.create_time)
+		result_time = ModelUtils.timeToStr(self.result_time, None)
 
 		result = {
 			'id': self.id,

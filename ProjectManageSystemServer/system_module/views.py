@@ -4,7 +4,7 @@ from project_module.models import *
 from task_module.models import *
 from chat_module.models import *
 from user_module.views import CodeDatum
-from utils.view_manager import ViewManager
+from utils.view_manager import ViewUtils
 
 # Create your views here.
 class DataManager:
@@ -20,7 +20,7 @@ class DataManager:
 		data['TaskStatuses'] = cls.convertTuplesToDict(Task.TASK_STATUSES)
 		data['TaskLevels'] = cls.convertTuplesToDict(Task.TASK_LEVELS)
 
-		data['Roles'] = ViewManager.getObjects(Role, return_type='dict')
+		data['Roles'] = ViewUtils.getObjects(Role, return_type='dict')
 
 		data['ProjectManagerRoleId'] = Role.ProjectManagerId
 

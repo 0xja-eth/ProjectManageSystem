@@ -1,8 +1,8 @@
-import { Form } from '../../../system/user_module/user_system';
-import {ConfigSystem} from '../../../system/config_system';
+import { Form } from '../../../system/user_module/user.service';
+import {ConfigSystem} from '../../../system/config.system';
 import {Observable} from 'rxjs';
-import {ProjectSystem} from '../../../system/project_module/project_system';
-import {DataSystem} from '../../../system/data_system';
+import {ProjectService} from '../../../system/project_module/project.service';
+import {DataSystem} from '../../../system/data.system';
 
 export class ProjectForm extends Form{
   constructor(form_name:string,
@@ -15,7 +15,7 @@ export class ProjectForm extends Form{
     super(form_name);
   }
 
-  do(service:ProjectSystem, type?) : Observable<Object> {
+  do(service:ProjectService, type?) : Observable<Object> {
     if(!this.checkDo(type)) return;
     if(this.pid>0) {
       /*return service.editProject(this.pid, this.pname,

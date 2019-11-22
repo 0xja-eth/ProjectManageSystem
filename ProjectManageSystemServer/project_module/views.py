@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from utils.exception import ErrorException, ErrorType
-from utils.view_manager import ViewManager
+from utils.view_manager import ViewUtils
 from utils.interface_manager import InterfaceManager
 from user_module.models import User
-from user_module.views import UserManager
+from user_module.views import UserView
 from .models import *
 import datetime, random, re, hashlib, smtplib
 
 # Create your views here.
-class ProjectManager():
+class ProjectView():
 
 	# 业务逻辑
 	# 获取项目
@@ -29,8 +29,8 @@ class ProjectManager():
 		# parts = user.participation_set.all().select_related('project')
 		# projs = ModelManager.getObjectRelated(parts, 'project')
 
-		projs = ModelManager.getObjectRelatedForAll(user.participation_set, 'project')
-		projs = ModelManager.objectsToDict(projs, type="index")
+		projs = ModelUtils.getObjectRelatedForAll(user.participation_set, 'project')
+		projs = ModelUtils.objectsToDict(projs, type="index")
 
 		return {'projects': projs}
 
@@ -93,8 +93,8 @@ class ProjectManager():
 	def delete(cls,user: User, pid, pw):
 
 		# 验证密码
-		UserManager.Check.ensurePasswordFormat(pw)
-		UserManager.Common.ensurePasswordCorrect(user, pw)
+		UserView.Check.ensurePasswordFormat(pw)
+		UserView.Common.ensurePasswordCorrect(user, pw)
 
 		# 身份校验
 		cls.Common.ensureProjectManager(user.id, pid)
@@ -110,8 +110,8 @@ class ProjectManager():
 		cls.Common.ensureProjectManager(user.id, pid)
 
 		# 验证密码
-		UserManager.Check.ensurePasswordFormat(pw)
-		UserManager.Common.ensurePasswordCorrect(user, pw)
+		UserView.Check.ensurePasswordFormat(pw)
+		UserView.Common.ensurePasswordCorrect(user, pw)
 
 		member_data = []
 
@@ -120,7 +120,7 @@ class ProjectManager():
 			rids_ = rids[i]
 
 			# 确保每一个用户都存在
-			UserManager.Common.ensureUserExist(id=uid)
+			UserView.Common.ensureUserExist(id=uid)
 			# 确保每一个角色都存在
 			for rid in rids_:
 				cls.Common.ensureRoleExist(rid)
@@ -163,8 +163,8 @@ class ProjectManager():
 		cls.Common.ensureProjectManager(user.id, pid)
 
 		# 验证密码
-		UserManager.Check.ensurePasswordFormat(pw)
-		UserManager.Common.ensurePasswordCorrect(user, pw)
+		UserView.Check.ensurePasswordFormat(pw)
+		UserView.Common.ensurePasswordCorrect(user, pw)
 
 		proj = cls.Common.getProject(id=pid)
 		proj.deleteMembers(uids)
@@ -177,8 +177,8 @@ class ProjectManager():
 		cls.Common.ensureProjectManager(user.id, pid)
 
 		# 验证密码
-		UserManager.Check.ensurePasswordFormat(pw)
-		UserManager.Common.ensurePasswordCorrect(user, pw)
+		UserView.Check.ensurePasswordFormat(pw)
+		UserView.Common.ensurePasswordCorrect(user, pw)
 
 		proj = cls.Common.getProject(id=pid)
 		proj.changeProjectManager(user, uid)
@@ -190,7 +190,7 @@ class ProjectManager():
 		projs = cls.Common.getProjects(user)
 
 		return {
-			'proj_notices': ModelManager.objectsToDict(projs, type="notices")
+			'proj_notices': ModelUtils.objectsToDict(projs, type="notices")
 		}
 
 	# 发布通知
@@ -239,7 +239,7 @@ class ProjectManager():
 		# 校验项目类型格式
 		@classmethod
 		def ensureTypeFormat(cls, val: int):
-			ViewManager.ensureEnumData(
+			ViewUtils.ensureEnumData(
 				val, ProjectType, ErrorType.InvalidProjTypeId)
 
 		# 校验项目描述格式
@@ -254,49 +254,49 @@ class ProjectManager():
 		# 获取参与关系
 		@classmethod
 		def getParticipation(cls, uid, pid, return_type='object') -> Participation:
-			return ViewManager.getObject(Participation, ErrorType.DoNotParticipated,
-										 return_type=return_type, user_id=uid, project_id=pid)
+			return ViewUtils.getObject(Participation, ErrorType.DoNotParticipated,
+									   return_type=return_type, user_id=uid, project_id=pid)
 
 		# 获取项目
 		@classmethod
 		def getProject(cls, return_type='object', **args) -> Project:
-			return ViewManager.getObject(Project, ErrorType.ProjectNotExist,
-										 return_type=return_type, **args)
+			return ViewUtils.getObject(Project, ErrorType.ProjectNotExist,
+									   return_type=return_type, **args)
 		# 获取用户参加的项目集
 		@classmethod
-		def getProjects(cls, user, return_type='object'):
-			return ModelManager.getObjectRelatedForAll(
+		def getProjects(cls, user):
+			return ModelUtils.getObjectRelatedForAll(
 				user.participation_set, 'project')
 
 		# 获取项目
 		@classmethod
 		def getRole(cls, rid, return_type='object') -> Role:
-			return ViewManager.getObject(Role, ErrorType.RoleNotExist,
-										 return_type=return_type, id=rid)
+			return ViewUtils.getObject(Role, ErrorType.RoleNotExist,
+									   return_type=return_type, id=rid)
 
 		# 获取通知
 		@classmethod
 		def getNotice(cls, return_type='object', **args) -> Notice:
-			return ViewManager.getObject(Notice, ErrorType.NoticeNotExist,
-										 return_type=return_type, **args)
+			return ViewUtils.getObject(Notice, ErrorType.NoticeNotExist,
+									   return_type=return_type, **args)
 
 		# 获取通知接收
 		@classmethod
 		def getNoticeReceive(cls, nid, uid, return_type='object') -> NoticeReceive:
-			return ViewManager.getObject(NoticeReceive, ErrorType.ReceiveNotExist,
-										 notice_id=nid, user_id=uid,
-										 return_type=return_type)
+			return ViewUtils.getObject(NoticeReceive, ErrorType.ReceiveNotExist,
+									   notice_id=nid, user_id=uid,
+									   return_type=return_type)
 
 		# 确保项目存在
 		@classmethod
 		def ensureProjectExist(cls, **args):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				Project, ErrorType.ProjectNotExist, **args)
 
 		# 确保项目存在
 		@classmethod
 		def ensureRoleExist(cls, rid):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				Role, ErrorType.RoleNotExist, id=rid)
 
 		# 确保用户是项目的项目经理
@@ -304,28 +304,28 @@ class ProjectManager():
 		def ensureProjectManager(cls, uid, pid):
 			part = cls.getParticipation(uid, pid)
 			part_roles = part.participationrole_set.all()
-			ViewManager.ensureObjectExist(
+			ViewUtils.ensureObjectExist(
 				ParticipationRole, ErrorType.NotAProjManager,
 				part_roles, role_id=Role.ProjectManagerId)
 
 		# 确保项目参与关系存在
 		@classmethod
 		def ensureParticipationExist(cls, uid, pid):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				Participation, ErrorType.DoNotParticipated,
 				user_id=uid, project_id=pid)
 
 		# 确保项目参与关系不存在
 		@classmethod
 		def ensureParticipationNotExist(cls, uid, pid):
-			return ViewManager.ensureObjectNotExist(
+			return ViewUtils.ensureObjectNotExist(
 				Participation, ErrorType.HaveParticipated,
 				user_id=uid, project_id=pid)
 
 		# 确保通知存在
 		@classmethod
 		def ensureNoticeExist(cls, **args):
-			return ViewManager.ensureObjectExist(
+			return ViewUtils.ensureObjectExist(
 				Notice, ErrorType.NoticeNotExist, **args)
 
 		# 获取或创建一个通知接收数据

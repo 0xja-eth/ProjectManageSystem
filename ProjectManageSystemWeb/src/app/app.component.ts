@@ -1,7 +1,7 @@
 import {Component, ComponentFactoryResolver} from '@angular/core';
 
-import {ViewSystem} from './system/view_system';
-import {DataSystem} from './system/data_system';
+import {ViewSystem} from './system/view.system';
+import {DataSystem} from './system/data.system';
 
 @Component({
   selector: 'app-root',

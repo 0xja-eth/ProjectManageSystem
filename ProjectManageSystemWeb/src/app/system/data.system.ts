@@ -1,7 +1,7 @@
 
-import {InterfaceSystem, NetworkSystem} from './network_system';
+import {InterfaceSystem, NetworkService} from './network.service';
 import {Injectable} from '@angular/core';
-import {ConfigSystem} from './config_system';
+import {ConfigSystem} from './config.system';
 
 class Data {
   static EMPTY = new Data(-1,'未知数据');
@@ -31,7 +31,7 @@ export class DataSystem {
   static PausedStatusId = 5;
   static CancelledStatusId = 6;
 
-  constructor(private network: NetworkSystem){ }
+  constructor(private network: NetworkService){ }
 
   // 初始化所有数据
   initialize() {

@@ -1,6 +1,6 @@
 
 import {AbstractControl} from '@angular/forms';
-import {NetworkSystem, InterfaceSystem} from '../network_system';
+import {NetworkService, InterfaceSystem} from '../network.service';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -49,11 +49,11 @@ export type LoginResult = {
 }
 
 @Injectable()
-export class UserSystem {
+export class UserService {
   static Auth: Authorization;
   static User: User;
 
-  constructor(private network: NetworkSystem) {
+  constructor(private network: NetworkService) {
 
   }
 
@@ -62,7 +62,7 @@ export class UserSystem {
   }
   login(un, pw) : Observable<LoginResult> {
     return this.network.send(InterfaceSystem.Interfaces.LoginRoute, {un, pw})
-      .pipe(map(UserSystem.onLoginSuccess));
+      .pipe(map(UserService.onLoginSuccess));
   }
   forget(un, pw, email, code) : Observable<void> {
     return this.network.send(InterfaceSystem.Interfaces.ForgetRoute, {un, pw, email, code});
@@ -73,8 +73,8 @@ export class UserSystem {
 
   // 登陆成功回调
   private static onLoginSuccess(result: LoginResult): LoginResult{
-    UserSystem.Auth = result.auth;
-    UserSystem.User = result.user;
+    UserService.Auth = result.auth;
+    UserService.User = result.user;
     return result;
   }
 

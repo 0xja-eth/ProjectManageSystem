@@ -2,10 +2,10 @@ import {Component, EventEmitter, forwardRef, Inject, Input, OnInit, Output} from
 import {FormBuilder} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
-import {Form} from '../../system/user_module/user_system';
+import {Form} from '../../system/user_module/user.service';
 import {ForgetForm, LoginForm, RegisterForm} from './forms';
-import {UserSystem, LoginResult} from '../../system/user_module/user_system';
-import {ViewSystem} from '../../system/view_system';
+import {UserService, LoginResult} from '../../system/user_module/user.service';
+import {ViewSystem} from '../../system/view.system';
 
 @Component({
   selector: 'app-login',
@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
   static SendCodeSuccessTitle = "发送验证码成功！";
   static SendCodeSuccessText = "验证码已成功发送到你的邮箱上，请查收！（60秒内有效）";
 
-  constructor(private user: UserSystem, private router_info:ActivatedRoute,
-    @Inject(forwardRef(() => FormBuilder)) private formBuilder: FormBuilder
+  constructor(private user: UserService, private router_info:ActivatedRoute,
+              @Inject(forwardRef(() => FormBuilder)) private formBuilder: FormBuilder
   ) { };
 
   ngOnInit(): void {

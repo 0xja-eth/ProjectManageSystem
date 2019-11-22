@@ -1,6 +1,6 @@
 import {Component, EventEmitter, forwardRef, Inject, Input, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {ConfigSystem} from '../../../system/config_system';
+import {ConfigSystem} from '../../../system/config.system';
 import {LoginForm, RegisterForm, ForgetForm} from '../forms';
 
 @Component({

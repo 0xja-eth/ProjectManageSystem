@@ -1,5 +1,5 @@
 
-from .views import ChatManager
+from .views import ChatView
 from utils.interface_manager import InterfaceManager
 
 Interfaces = {}

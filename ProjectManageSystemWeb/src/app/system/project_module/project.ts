@@ -1,4 +1,4 @@
-import {DataSystem} from '../data_system';
+import {DataSystem} from '../data.system';
 
 export class ProjectMember {
   constructor(public id: number,

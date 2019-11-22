@@ -2,11 +2,11 @@ import {Component, forwardRef, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectsInforComponent} from '../projects-infor.component';
 import {Project} from '../../../../system/project_module/project';
-import { ProjectSystem } from 'src/app/system/project_module/project_system';
+import { ProjectService } from 'src/app/system/project_module/project.service';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 import {ProjectForm} from '../forms';
-import {ConfigSystem} from '../../../../system/config_system';
-import {DataSystem} from '../../../../system/data_system';
+import {ConfigSystem} from '../../../../system/config.system';
+import {DataSystem} from '../../../../system/data.system';
 
 @Component({
   selector: 'app-edit',
@@ -17,11 +17,11 @@ export class EditComponent implements OnInit {
 
   DataSystem = DataSystem;
   ConfigSystem = ConfigSystem;
-  ProjectSystem = ProjectSystem;
+  ProjectSystem = ProjectService;
   father = ProjectsInforComponent;
 
   constructor(private router:Router,
-              private project: ProjectSystem,
+              private project: ProjectService,
               private router_info: ActivatedRoute,
               @Inject(forwardRef(() => FormBuilder))
                 private formBuilder: FormBuilder) {
@@ -42,7 +42,7 @@ export class EditComponent implements OnInit {
   }
 
   updateProject() {
-    this.project_obj = ProjectSystem.Project;
+    this.project_obj = ProjectService.Project;
     let pid = this.router_info.snapshot.params['id'];
     if(this.project_obj && this.project_obj.id == pid)
       return this.makeProjectEditForm();
