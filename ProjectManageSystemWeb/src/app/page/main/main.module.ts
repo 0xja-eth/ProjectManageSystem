@@ -11,6 +11,9 @@ import {ProjectsInforModule} from './projects-infor/projects-infor.module';
 
 import {FriendInfoComponent} from "./friend-info/friend-info.component";
 import { NoticeComponent } from './notice/notice.component';
+import {ProjectService} from '../../system/project_module/project.service';
+import {UserService} from '../../system/user_module/user.service';
+import {ChatService} from '../../system/chat_module/chat.service';
 
 
 @NgModule({
@@ -29,5 +32,6 @@ import { NoticeComponent } from './notice/notice.component';
     MainRoutingModule,
     ProjectsInforModule
   ],
+  providers: [ProjectService, UserService, ChatService]
 })
 export class MainModule { }

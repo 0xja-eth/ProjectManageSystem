@@ -11,6 +11,7 @@ export class ProjectMember {
     return DataSystem.get('Roles', this.role_id).name;
   }
 }
+
 export class ProjectTask {
   constructor(public id: number,
               public order: number,
@@ -40,6 +41,22 @@ export class ProjectTask {
   }
 }
 
+export class Notice {
+  content: string;
+  date: Date;
+  day: string;
+  time: string;
+  constructor(content: string) {
+    this.content = content;
+    this.date = new Date();
+    this.day = this.date.getFullYear() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getDate();
+    const hour = this.date.getHours();
+    const minute = (this.date.getMinutes() < 10) ? ('0' + this.date.getMinutes().toString()) : this.date.getMinutes().toString();
+    this.time = hour + ':' + minute;
+
+  }
+}
+
 export class Project {
   constructor(public id: number,
               public name: string,
@@ -50,7 +67,7 @@ export class Project {
               public description?: string,
               public members: ProjectMember[] = [],
               public tasks: ProjectTask[] = [],
-
+              public notices: Notice[] = []
   ) {}
 
   creator(): ProjectMember {
@@ -106,5 +123,9 @@ export class Project {
 
   type():string {
     return DataSystem.get('ProjectTypes', this.type_id).name;
+  }
+
+  publishNotice(noticeContent: string): void {
+    this.notices.push(new Notice(noticeContent));
   }
 }

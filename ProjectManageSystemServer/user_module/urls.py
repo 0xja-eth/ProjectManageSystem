@@ -34,7 +34,7 @@ Interfaces = {
 		'func': UserView.editInfo
 	},
 	'upload_avatar': {
-		'params': [['auth', 'str']], 'FILES': ['avatar'],
+		'params': [['auth', 'str']], 'files': ['avatar'],
 		'func': UserView.uploadAvatar
 	},
 	'get_friends': {

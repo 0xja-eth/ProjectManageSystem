@@ -1,7 +1,8 @@
 <div id="content">
   <div id="project-list" style="float: left">
     <el-collapse [model]="[1]">
-      <el-collapse-item *ngFor="let project_item of existingProjects" [label]="project_item.projectName">
+      <el-collapse-item *ngFor="let project_item of existingProjects"
+                        [label]="project_item.name">
         <el-card class="box-card" *ngFor="let notice of project_item.notices">
           <div >{{notice.content}}</div>
           <div style="text-align: right">{{notice.day+'    '+notice.time}}</div>

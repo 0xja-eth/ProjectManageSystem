@@ -11,61 +11,65 @@ type HTTPResult<T> = {
 }
 
 export class Interface {
-  constructor(public route:string, public method:'GET'|'POST'|'WS'='GET'){
+  constructor(
+    public route:string,
+    public method:'GET'|'POST'|'WS'='GET'){
 
   }
 }
 
 export class InterfaceSystem {
-  static Interfaces = {
-    // DataService
-    InitializeData: new Interface('system/data'),
+  //static Interfaces = {
+  // DataService
+  static InitializeData = new Interface('system/data');
 
-    // UserService
-    LoginRoute: new Interface('user/login', 'POST'),
-    RegisterRoute: new Interface('user/register', 'POST'),
-    ForgetRoute: new Interface('user/forget', 'POST'),
-    SendCodeRoute: new Interface('user/code', 'POST'),
+  // UserService
+  static LoginRoute = new Interface('user/login', 'POST');
+  static RegisterRoute = new Interface('user/register', 'POST');
+  static ForgetRoute = new Interface('user/forget', 'POST');
+  static SendCodeRoute = new Interface('user/code', 'POST');
 
-    ResetPwdRoute: new Interface(''),
-    EditInfoRoute: new Interface(''),
-    GetInfoRoute: new Interface(''),
+  static ResetPwdRoute = new Interface('');
+  static EditInfoRoute = new Interface('');
+  static GetInfoRoute = new Interface('');
 
-    GetFriendsRoute: new Interface(''),
-    AddFriendRoute: new Interface(''),
-    OperFriendRoute: new Interface(''),
-    DeleteFriendRoute: new Interface(''),
+  static GetFriendsRoute = new Interface('');
+  static SearchFriendRoute = new Interface('');
+  static AddFriendRoute = new Interface('');
+  static OperFriendRoute = new Interface('');
+  static DeleteFriendRoute = new Interface('');
 
-    // ProjectService
-    CreateProjectRoute: new Interface(''),
-    GetProjectsRoute: new Interface(''),
-    GetProjectRoute: new Interface(''),
+  // ProjectService
+  static CreateProjectRoute = new Interface('');
+  static GetProjectsRoute = new Interface('');
+  static GetProjectRoute = new Interface('');
 
-    AddMemberRoute: new Interface(''),
-    DeleteMemberRoute: new Interface(''),
-    EditMemRoleRoute: new Interface(''),
-    ChangeManagerRoute: new Interface(''),
+  static AddMemberRoute = new Interface('');
+  static DeleteMemberRoute = new Interface('');
+  static EditMemRoleRoute = new Interface('');
+  static ChangeManagerRoute = new Interface('');
 
-    GetNoticesRoute: new Interface(''),
-    PushNoticeRoute: new Interface(''),
-    DeleteNoticeRoute: new Interface(''),
+  static GetNoticesRoute = new Interface('');
+  static PushNoticeRoute = new Interface('');
+  static DeleteNoticeRoute = new Interface('');
 
-    GetTasksRoute: new Interface(''),
-    GetTaskDetailRoute: new Interface(''),
-    GetUserTasksRoute: new Interface(''),
-    EditTaskTakeRoute: new Interface(''),
+  static GetTasksRoute = new Interface('');
+  static GetTaskDetailRoute = new Interface('');
+  static GetUserTasksRoute = new Interface('');
+  static EditTaskTakeRoute = new Interface('');
 
-    RequestProgressRoute: new Interface(''),
-    OperProgressRoute: new Interface(''),
+  static RequestProgressRoute = new Interface('');
+  static OperProgressRoute = new Interface('');
 
-    AddTaskRoute: new Interface(''),
-    EditTaskRoute: new Interface(''),
-    DeleteTaskRoute: new Interface(''),
+  static AddTaskRoute = new Interface('');
+  static EditTaskRoute = new Interface('');
+  static DeleteTaskRoute = new Interface('');
 
-    // ChatService
-    GetChatsRoute: new Interface(''),
-    SendMessageRoute: new Interface(''),
-  };
+  // ChatService
+  static GetChatsRoute = new Interface('');
+  static GetChatRoute = new Interface('');
+  static SendMessageRoute = new Interface('');
+  //};
 }
 
 @Injectable()
@@ -95,7 +99,7 @@ export class NetworkService {
 
   private static getAuthedData(data?) {
     data = data || {};
-    data.auth = UserService.Auth.token;
+    data.auth = UserService.Auth? UserService.Auth.token : '';
     return data;
   }
 
@@ -103,10 +107,10 @@ export class NetworkService {
     console.info("send", interface_, data);
     // 显示 Loading
     let show:Observable<T> = new Observable(
-      (obs)=>{ViewSystem.ShowLoading(); obs.complete();});
+      obs=>{ViewSystem.ShowLoading(); obs.complete();});
     // 隐藏 Loading
     let hide:Observable<T> = new Observable(
-      (obs)=>{ViewSystem.HideLoading(); obs.complete();});
+      obs=>{ViewSystem.HideLoading(); obs.complete();});
     // 授权
     if(auth) data = NetworkService.getAuthedData(data);
     // 执行

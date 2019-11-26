@@ -16,40 +16,40 @@
   <el-form [formGroup]="personalForm" label-width="144px" size="small"
            [show-icon]="true" [show-message]="true">
 
-    <el-form-item label="用户名" [required]="true">
-      <el-input formControlName="nickName" name="nickname" [elDisabled]="true"></el-input>
-    </el-form-item>
+<!--    <el-form-item label="用户名" [required]="true">-->
+<!--      <el-input formControlName="nickName" name="nickname" [elDisabled]="true"></el-input>-->
+<!--    </el-form-item>-->
 
     <el-form-item label="姓名" [required]="true">
-      <el-input formControlName="realName"></el-input>
+      <el-input formControlName="name"></el-input>
     </el-form-item>
 
     <el-form-item label="性别" [required]="true">
-      <el-select placeholder="请选择性别" formControlName="sex">
-        <el-option label="男" value="man"></el-option>
-        <el-option label="女" value="woman"></el-option>
+      <el-select placeholder="请选择性别" formControlName="gender">
+        <el-option label="男" value="1"></el-option>
+        <el-option label="女" value="2"></el-option>
       </el-select>
     </el-form-item>
 
     <el-form-item label="出生年月">
-      <el-date-picker formControlName="birthday"></el-date-picker>
+      <el-date-picker formControlName="birth"></el-date-picker>
     </el-form-item>
 
     <el-form-item label="居住地" [required]="true">
-      <el-input formControlName="address"></el-input>
+      <el-input formControlName="city"></el-input>
     </el-form-item>
 
     <el-form-item label="学历">
-            <el-select (modelChange)="eduHandle($event)" formControlName="edubg">
-              <el-option *ngFor="let edu of edubgs"
-                         [label]="edu.label"
-                         [value]="edu.education">
+            <el-select (modelChange)="eduHandle($event)" formControlName="edu_id">
+              <el-option *ngFor="let edu of DataSystem.Educations"
+                         [label]="edu.name"
+                         [value]="edu.id">
               </el-option>
             </el-select>
     </el-form-item>
 
     <el-form-item label="职业" [required]="true">
-      <el-input formControlName="job"></el-input>
+      <el-input formControlName="duty"></el-input>
     </el-form-item>
 
     <el-form-item label="联系方式" [required]="true">
@@ -57,7 +57,7 @@
     </el-form-item>
 
     <el-form-item label="个人描述" [required]="true">
-      <el-input type="textarea" formControlName="description"></el-input>
+      <el-input type="textarea" formControlName="desc"></el-input>
     </el-form-item>
 
     <el-form-item>

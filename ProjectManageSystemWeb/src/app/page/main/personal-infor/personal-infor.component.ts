@@ -3,6 +3,9 @@ import {SafeUrl} from '@angular/platform-browser';
 import { ElMessageService} from 'element-angular/release/message/message.service';
 import { DomSanitizer} from "@angular/platform-browser";
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {UserService} from '../../../system/user_module/user.service';
+import {ConfigSystem} from '../../../system/config.system';
+import {DataSystem} from '../../../system/data.system';
 
 @Component({
   selector: 'app-personal-infor',
@@ -13,35 +16,26 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/for
 export class PersonalInforComponent implements OnInit {
   private personalForm: FormGroup;
   private imageUrl: SafeUrl;
-  private personsex: any[] = [
-    {label: '男', value: 'man'},
-    {label: '女', value: 'woman'}
-    ];
   private sexValue: string;
-  private edubgs: any[] =  [
-    {label: '小学', education: 'primary_school'},
-    {label: '初中', education: 'junior_school'},
-    {label: '高中', education: 'senior_school'},
-    {label: '大学', education: 'university'},
-    {label: '研究生', education: 'graduate'}
-  ];
 
+  DataSystem = DataSystem;
 
   constructor(private message: ElMessageService,
+              private user: UserService,
               private sanitizer: DomSanitizer,
               @Inject(forwardRef(() => FormBuilder)) private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.personalForm = this.formBuilder.group({
-      nickName: ['', [this.nickValidator]],
-      realName: ['', [this.realValidator]],
-      sex: [''],
-      birthday: [''],
-      address: ['', [this.addValidator]],
-      edubg: [''],
-      job: [''],
+      /*nickName: ['', [this.nickValidator]],*/
+      name: ['', [this.realValidator]],
+      gender: [''],
+      birth: [''],
+      city: ['', [this.addValidator]],
+      edu_id: [''],
+      duty: [''],
       contact: [''],
-      description: ['']
+      desc: ['']
     });
   }
 
@@ -68,6 +62,17 @@ export class PersonalInforComponent implements OnInit {
 
   submit(): void {
     console.log(this.personalForm.value);
+
+    let name = this.personalForm.value.name;
+    let gender = this.personalForm.value.gender;
+    let birth = this.personalForm.value.birth;
+    let city = this.personalForm.value.city;
+    let edu_id = this.personalForm.value.edu_id;
+    let duty = this.personalForm.value.duty;
+    let contact = this.personalForm.value.contact;
+    let desc = this.personalForm.value.desc;
+
+    this.user.editInfo(name, gender, birth, city, edu_id, duty, contact, desc);
   }
 
   // statusCtrl(item: string): string {
@@ -83,14 +88,14 @@ export class PersonalInforComponent implements OnInit {
       return { status: 'error', message: '必须输入用户名'};
     }
     return { status: 'success', message: ''};
-  }
+  };
 
   private realValidator = (control: FormControl): ValidateResult => {
     if (!control.value) {
       return { status: 'error', message: '必须输入真实姓名'};
     }
     return { status: 'success', message: ''};
-  }
+  };
 
   private addValidator = (control: FormControl): ValidateResult => {
     if (!control.value) {

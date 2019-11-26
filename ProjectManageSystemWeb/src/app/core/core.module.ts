@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from '../app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import {NetworkModule} from '../network/network.module';
+//import {NetworkModule} from '../network/network.module';
 import {PageModule} from '../page/page.module';
 import {ShareModule} from '../share/share.module';
 import zh from '@angular/common/locales/zh';
@@ -20,7 +20,7 @@ registerLocaleData(zh);
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NetworkModule,
+    //NetworkModule,
     PageModule,
     ShareModule,
     AppRoutingModule

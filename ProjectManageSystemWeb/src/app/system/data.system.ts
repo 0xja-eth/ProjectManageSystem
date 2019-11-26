@@ -35,8 +35,8 @@ export class DataSystem {
 
   // 初始化所有数据
   initialize() {
-    this.network.send(InterfaceSystem.Interfaces.InitializeData)
-      .subscribe(DataSystem.saveData);
+    // this.network.send(InterfaceSystem.InitializeData)
+    //   .subscribe(DataSystem.saveData);
   }
 
   private static saveData(data) {

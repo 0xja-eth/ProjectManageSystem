@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {isEmpty} from "rxjs/operators";
+import {User} from '../../../system/user_module/user';
+import {UserService} from '../../../system/user_module/user.service';
 
 
 @Component({
@@ -9,24 +11,28 @@ import {isEmpty} from "rxjs/operators";
 })
 export class FriendInfoComponent implements OnInit {
 
-  private instanceInfo: FriendInfo;
+  private instanceInfo: User;
   private searchInput: string;
-  friendsData: FriendInfo[] = randomData(20);
-  searchData: FriendInfo[];
+  friendsData: User[];
+  searchData: User[];
 
   // private Groups: Group[] = Group.Groups;
-  constructor() {
+  constructor(private user: UserService) {
 
   }
 
   ngOnInit() {
-    // 生成数据并进行排序
+    this.friendsData = this.getFriends();
+    this.instanceInfo = this.friendsData[0];
+  }
 
-    this.friendsData = randomData(30);
-    this.friendsData = this.friendsData.sort( (a, b) => {
+  getFriends() {
+    let friendsData;
+    this.user.getFriends().subscribe(friends => friendsData = friends);
+    friendsData = friendsData.sort( (a, b) => {
       return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     });
-    this.instanceInfo = this.friendsData[0];
+    return friendsData;
   }
 
   // initGroups(): void{
@@ -41,36 +47,35 @@ export class FriendInfoComponent implements OnInit {
   // }
 
 
-  searchFriend(): FriendInfo[] {
+  searchFriend(): User[] {
     if (this.searchInput === undefined || this.searchInput === "") {
       this.searchData = [];
       document.getElementById("notice1").hidden = true;
       return;
     }
     document.getElementById("notice1").hidden = false;
+
     let reg = RegExp( this.searchInput );
-    console.log("输入内容: ");
-    console.log(this.searchInput);
-    let dataFound: FriendInfo[] = [];
-    for (const soloInfo of this.friendsData) {
-      if ( reg.test( soloInfo.name)) {
-        dataFound.push( soloInfo );
-      }
-    }
-    console.log("找到的数据：");
-    console.log(dataFound);
-    // document.getElementById("inner-friends-list").hidden = true;
+
+    let dataFound: User[] = [];
+
+    for (const soloInfo of this.friendsData)
+      if (reg.test(soloInfo.name))
+        dataFound.push(soloInfo);
+
+    this.user.searchFriend(this.searchInput).subscribe(
+      data=>{if(data) dataFound.push(data);}
+    );
+
     this.searchData = dataFound;
+
     return dataFound;
   }
 
-  addFriend(newFriend: FriendInfo): void {
-    this.friendsData.push(newFriend);
-    this.instanceInfo = newFriend;
-    this.friendsData = this.friendsData.sort( (a, b) => {
-      return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
-    });
-    alert("好友请求已发送！");
+  addFriend(newFriend: User): void {
+    this.user.addFriend(newFriend.id).subscribe(
+      ()=>alert("好友请求已发送！")
+    );
   }
 
 //   groupFriends() {
@@ -101,70 +106,18 @@ export class FriendInfoComponent implements OnInit {
     }
   }
 
-  showFriendInfo(info: FriendInfo): void {
+  showFriendInfo(info: User): void {
     this.instanceInfo = info;
     document.getElementById("searchButton").hidden = true;
 
   }
 
-  showNewFriendInfo(info: FriendInfo): void {
+  showNewFriendInfo(info: User): void {
     this.instanceInfo = info;
     document.getElementById("searchButton").hidden = false;
   }
-}
-
-class FriendInfo {
-  accountNumber: string;
-  name: string;
-  remark: string;
-  gender: string;
-  birthday: string;
-  age: number;
-  // constellation: string;
-  // yearOfBirth: string;
-  imgURL: string;
-  constructor(accountNumber: string, name, remark, gender, birthday, age, imgURL) {
-    this.accountNumber = accountNumber;
-    this.name = name;
-    this.remark = remark;
-    this.gender = gender;
-    this.birthday = birthday;
-    this.age = age;
-    // this.constellation = constellation;
-    // this.yearOfBirth = yearOfBirth;
-    this.imgURL = imgURL;
-  }
-}
 
 
-function randomString(len: number): string {
-  const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-  const maxPos = $chars.length;
-  let pwd = '';
-  for (let i = 0; i < len; i++) {
-    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-  }
-  console.log(pwd);
-  return pwd;
-}
-function randomAccountNumber(): string {
-  const $chars = '0123456789';
-  const accountLen = 11;
-  let pwd = '';
-  for (let i = 0; i < accountLen; i++) {
-    pwd += $chars.charAt(Math.floor(Math.random() * accountLen));
-  }
-  return pwd;
-}
-
-function randomData(len: number): FriendInfo[] {
-  let data: FriendInfo[] = [];
-  for ( let i = 0; i < len; i++) {
-    data.push(new FriendInfo(randomAccountNumber(), randomString(10), randomString(6),
-      Math.floor(Math.random() * 2) ? '男' : '女', "1949/10/1 ", Math.floor(Math.random()* 80),
-      '../../assets/images/' + Math.floor(Math.random() * 5 + 1) + '.jpg'));
-  }
-  return data;
 }
 
 

@@ -14,6 +14,7 @@ class TaskView():
 	# 获取任务
 	@classmethod
 	def get(cls, user: User, pid=None):
+
 		if pid is None:
 			tasks = ModelUtils.getObjectRelatedForAll(
 				user.tasktake_set, 'task')

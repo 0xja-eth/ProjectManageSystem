@@ -7,6 +7,7 @@ class Message {
 export class Chat {
   id: number;
   name: string;
-  msg: Message[];
-  group?: boolean;
+  msg?: Message[];
+  fid?: number;
+  pid?: number;
 }

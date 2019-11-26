@@ -84,15 +84,17 @@ export class ProjectService{
 
   }
 
-  getProjects() {
+  getProjects(): Observable<Project[]> {
     return new Observable<Project[]>((obs)=>obs.next(this.projects_data));
-    //return this.network.send(InterfaceSystem.Interfaces.GetProjects);
+    // let interfece_ = InterfaceSystem.GetProjectsRoute;
+    // return this.network.send(interfece_, {}, true);
   }
 
-  getProject(pid) {
+  getProject(pid): Observable<Project> {
     return new Observable<Project>((obs)=>obs.next(
       this.projects_data.find(p=>p.id==pid)));
-    //return this.network.send(InterfaceSystem.Interfaces.GetProject, {pid});
+    // let interfece_ = InterfaceSystem.GetProjectRoute;
+    // return this.network.send(interfece_, {pid}, true);
   }
 
   getTasks(tids=[], pid=null, uid=null) {
@@ -117,6 +119,21 @@ export class ProjectService{
   }
   deleteMember(pid, mids, pwd) {
 
+  }
+
+  getNotices(pid) {
+    let interface_ = InterfaceSystem.GetNoticesRoute;
+    this.network.send(interface_, {}, true);
+  }
+
+  pushNotice(pid, title, content) {
+    let interface_ = InterfaceSystem.PushNoticeRoute;
+    this.network.send(interface_, {pid, title, content}, true);
+  }
+
+  deleteNotice(nid) {
+    let interface_ = InterfaceSystem.DeleteNoticeRoute;
+    this.network.send(interface_, {nid}, true);
   }
 
 }

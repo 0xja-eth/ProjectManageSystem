@@ -24,14 +24,14 @@ class InterfaceManager:
 	def recieveRequest(cls, request, func, method='POST', params=[], files=[]):
 		try:
 			# 获取数据
-			data = cls.getRequestDict(request, method=method, params=params, files=files)
+			dict = cls.getRequestDict(request, method=method, params=params, files=files)
 
 			# 如果传输包含 auth 数据，获取其用户
-			if 'auth' in data:
-				data['user'] = AuthorizationManager.getUser(data['auth'])
-				del data['auth']
+			if 'auth' in dict:
+				dict['user'] = AuthorizationManager.getUser(dict['auth'])
+				del dict['auth']
 
-			res = {'data': func(**data)}
+			res = {'data': func(**dict)}
 
 		except ErrorException as exception:
 			return cls.getErrorResponse(exception)
